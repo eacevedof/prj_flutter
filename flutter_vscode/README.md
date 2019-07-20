@@ -26,5 +26,23 @@
         this._conteo++;
         });
     ```
-
+- 5.13 Creando más acciones en nuestro contador 
+    - Se desacopla la creación de botones en floatingActionButton
+    - Función privada _crearBotones
+    - Se define un array de acciones. (botones 0, -, +)
+    - Alineando en el eje X con Row(...)
+    ```dart
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.end,
+      children: <Widget>[
+        SizedBox(width: 30),
+        FloatingActionButton(child: Icon(Icons.exposure_zero), onPressed: null,),
+        Expanded(child: SizedBox(width: 5.0)),
+        FloatingActionButton(child: Icon(Icons.remove), onPressed: null,),
+        SizedBox(width: 5.0,),
+        FloatingActionButton(child: Icon(Icons.add), onPressed: null,),
+      ],
+    );
+    ```
+- 5.14
 

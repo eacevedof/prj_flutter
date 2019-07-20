@@ -38,24 +38,26 @@ class _ContadorPageState extends State<ContadorPage> {
         )
       ),
       
-      floatingActionButton: FloatingActionButton(
-        //child: Text("Hola"),
-        child: Icon( Icons.add),
-        onPressed: () {
-          //print("contando...");
-          
-          //setState refresca la pantalla
-          setState(() {
-            this._conteo++;
-          });
-        },
-      ),
-
-      //floatingActionButtonLocation: FloatingActionButtonLocation.startTop,
+      floatingActionButton: _crearBotones(),
 
     );
-
   }//build
+
+  Widget _crearBotones() {
+    
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.end,
+      children: <Widget>[
+        SizedBox(width: 30),
+        FloatingActionButton(child: Icon(Icons.exposure_zero), onPressed: null,),
+        Expanded(child: SizedBox(width: 5.0)),
+        FloatingActionButton(child: Icon(Icons.remove), onPressed: null,),
+        SizedBox(width: 5.0,),
+        FloatingActionButton(child: Icon(Icons.add), onPressed: null,),
+      ],
+    );
+
+  }// _crearBotones
 
 }
 

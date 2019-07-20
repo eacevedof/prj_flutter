@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget{
       debugShowCheckedModeBanner: false,
       home: Center(
           // child: HomePage(),
-          child: new ContadorPage(),
+          child: new ContadorPage(), // StatefulWidget
         )
     );
   }
