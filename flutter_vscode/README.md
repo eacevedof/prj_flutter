@@ -6,3 +6,6 @@
 - 5.8 Organizando dentro del layout
     - Alineando con columnas 
     - Aplicando el estilo al texto
+- 5.9 Botón flotante - FloatingActionButton
+    - Usando la clase Icon en el botón
+    - Aplico evento onPressed

@@ -26,7 +26,14 @@ class HomePage extends StatelessWidget {
             Text("0", style: this.oEstilo),
           ],
         )
-      )
+      ),
+      floatingActionButton: FloatingActionButton(
+        //child: Text("Hola"),
+        child: Icon( Icons.add),
+        onPressed: () {
+          print("Hola Mundo");
+        },  //null desactiva el botón
+      ),
     );
 
   }//build
