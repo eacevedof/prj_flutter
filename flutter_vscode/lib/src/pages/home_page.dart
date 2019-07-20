@@ -8,6 +8,7 @@ import 'package:flutter/widgets.dart';
 class HomePage extends StatelessWidget {
 
   final TextStyle oEstilo = new TextStyle(fontSize: 25);
+  final conteo = 10;
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +25,7 @@ class HomePage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text("Número de clicks:", style: this.oEstilo),
-            Text("0", style: this.oEstilo),
+            Text('$this.conteo', style: this.oEstilo),
           ],
         )
       ),
@@ -34,11 +35,12 @@ class HomePage extends StatelessWidget {
         child: Icon( Icons.add),
         onPressed: () {
           print("Hola Mundo");
+          this.conteo = conteo++;
         },  //null desactiva el botón
       ),
 
       //floatingActionButtonLocation: FloatingActionButtonLocation.startTop,
-      
+
     );
 
   }//build

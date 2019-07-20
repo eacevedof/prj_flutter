@@ -11,4 +11,8 @@
     - Aplico evento onPressed
 - 5.10 Tarea - Cambiar la ubicación del FloatingActionButton
     - `floatingActionButtonLocation: FloatingActionButtonLocation.startTop,`
+- 5.11. Contador problema del StatelessWidget
+    - Se define un atributo final conteo
+    - No se puede modificar al hacer click en el botón + ya que da un error porque se asume que es una constante
+
 
