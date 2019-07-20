@@ -14,5 +14,17 @@
 - 5.11 Contador problema del StatelessWidget
     - Se define un atributo final conteo
     - No se puede modificar al hacer click en el botón + ya que da un error porque se asume que es una constante
+- 5.12 StatefulWidget
+    - Se crea contador_page que es un statefulwidget
+    - Sus atributos son ahora privados "_"
+    - Se crea clase privada con "_"
+        - `class _ContadorPageState extends State<ContadorPage>`
+    - Uso de setState para refrescar la pantalla
+    - Nota: `$'this._conteo'` no va. Hay que cambiarlo por `_conteo` sin `this`
+    ```dart
+    setState(() {
+        this._conteo++;
+        });
+    ```
 
 

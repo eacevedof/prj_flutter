@@ -35,7 +35,7 @@ class HomePage extends StatelessWidget {
         child: Icon( Icons.add),
         onPressed: () {
           print("Hola Mundo");
-          this.conteo = conteo++;
+          //conteo++; error
         },  //null desactiva el botón
       ),
 
