@@ -4,9 +4,9 @@
  */
 //material design
 import 'package:flutter/material.dart';
-
-//importaciones propias
-import 'src/app.dart';
+// importaciones propias
+// import 'src/app.dart';
+import 'package:flutter_vscode/src/app.dart';
 
 void main() {
   runApp(new MyApp()); //podría ser sin "new"
