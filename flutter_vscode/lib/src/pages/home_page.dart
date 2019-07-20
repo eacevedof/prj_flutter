@@ -7,8 +7,11 @@ import 'package:flutter/widgets.dart';
 
 class HomePage extends StatelessWidget {
 
+  final TextStyle oEstilo = new TextStyle(fontSize: 25);
+
   @override
   Widget build(BuildContext context) {
+
 
     return Scaffold(
       appBar: AppBar(
@@ -16,10 +19,16 @@ class HomePage extends StatelessWidget {
         centerTitle: true,
       ),
       body: Center(
-        child: Text("Hola Mundo"),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Text("Número de clicks:", style: this.oEstilo),
+            Text("0", style: this.oEstilo),
+          ],
+        )
       )
     );
-    
+
   }//build
 
 
