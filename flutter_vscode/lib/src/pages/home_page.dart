@@ -18,6 +18,7 @@ class HomePage extends StatelessWidget {
         title: Text("Título"),
         centerTitle: true,
       ),
+      
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -27,6 +28,7 @@ class HomePage extends StatelessWidget {
           ],
         )
       ),
+      
       floatingActionButton: FloatingActionButton(
         //child: Text("Hola"),
         child: Icon( Icons.add),
@@ -34,6 +36,9 @@ class HomePage extends StatelessWidget {
           print("Hola Mundo");
         },  //null desactiva el botón
       ),
+
+      //floatingActionButtonLocation: FloatingActionButtonLocation.startTop,
+      
     );
 
   }//build

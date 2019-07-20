@@ -9,3 +9,6 @@
 - 5.9 Botón flotante - FloatingActionButton
     - Usando la clase Icon en el botón
     - Aplico evento onPressed
+- 5.10 Tarea - Cambiar la ubicación del FloatingActionButton
+    - `floatingActionButtonLocation: FloatingActionButtonLocation.startTop,`
+
