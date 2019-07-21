@@ -53,18 +53,6 @@
     - El stateful solo publica la clase tipo State
     - Parece que Flutter es una mezcla de objetos del DOM llevados a clases que solo se puede interactuar con estos usando programación
 
-> Esto hay que moverlo a otro README.md
+## [Cap 6](https://github.com/eacevedof/prj_flutter/tree/master/flutter_componentes)
 
-- 6.3 Demostración de la aplicación (que realizaremos)
-    - Listado de opciones
-    - La opción de alerta (popup)
-    - Fade In Image en el avatar
-    - Efectos de tarjetas
-    - Animated container (como hacer un clip con un vectorial)
-    - Formulario con distintos inputs
-    - Slider, check y switch
-    - Loading en scroll de imágenes
-    - Pull to refresh
 
-- 6.4 Inicio de proyecto - Componentes
-    - 
