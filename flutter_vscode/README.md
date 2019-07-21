@@ -44,5 +44,12 @@
       ],
     );
     ```
-- 5.14
-
+- 5.14 Implementar funcionalidad de los botones
+    - Se desacoplan las acciones en metodos privados
+    - Las acciones solo actualizan el atributo `_conteo`
+    - Estos métodos se asignan en **onPressed** de cada FloatingActionButton correspondiente
+- 5.15 Resumen
+    - Lo más complicado es el refactor del Stateless al Stateful
+    - El stateful solo publica la clase tipo State
+    - Parece que Flutter es una mezcla de objetos del DOM llevados a clases que solo se puede interactuar con estos usando programación
+    
