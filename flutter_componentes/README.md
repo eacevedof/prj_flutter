@@ -1,4 +1,4 @@
-# flutter_componentes
+# CAP 6 - flutter_componentes
 
 - 6.3 Demostración de la aplicación (que realizaremos)
     - Listado de opciones
@@ -12,4 +12,6 @@
     - Pull to refresh
 
 - 6.4 Inicio de proyecto - Componentes
-    - 
+    - snippet **mateapp**
+    - se creo home_temp.dart
+    
