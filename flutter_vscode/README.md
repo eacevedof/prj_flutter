@@ -52,4 +52,5 @@
     - Lo más complicado es el refactor del Stateless al Stateful
     - El stateful solo publica la clase tipo State
     - Parece que Flutter es una mezcla de objetos del DOM llevados a clases que solo se puede interactuar con estos usando programación
-    
+
+- 6.3 Demostración de la aplicación (que realizaremos)
