@@ -10,8 +10,11 @@
     - Slider, check y switch
     - Loading en scroll de imágenes
     - Pull to refresh
-
 - 6.4 Inicio de proyecto - Componentes
     - snippet **mateapp**
     - se creo home_temp.dart
+- 6.5 Listview
+    - ListViewBuilder para muchos registros
+    - ListTile son como las tarjetas contenedoras
+    - Divider() son las lineas de division entre los ListTile
     
