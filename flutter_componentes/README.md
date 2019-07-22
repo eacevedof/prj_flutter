@@ -50,3 +50,8 @@
         }).toList();
     }    
     ```
+- 6.8 Página - HomePage
+    - Se define la homepage final
+    - Se crean dos metodos de lista
+    - ctrl + . sugiere la creacion del método
+    - st less sugiere el snippet de nueva página stateless
