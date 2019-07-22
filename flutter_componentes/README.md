@@ -55,3 +55,17 @@
     - Se crean dos metodos de lista
     - ctrl + . sugiere la creacion del método
     - st less sugiere el snippet de nueva página stateless
+- 6.9 Leer un archivo JSON Local
+    - Para configurar recursos externos (data/menu_opts.json)
+    - fichero: pubspec.yaml
+        ```yaml
+        assets:
+            - data/menu_opts.json
+        ```
+    - Presionamos F5 para que cargue el nuevo archivo
+- 6.10 Convertir el JSONString en un Map
+    - import y show
+    - json.decode(): convierte a un objeto Map
+    - Trabajando con futuros (promesas)
+    - Uso de async y await
+
