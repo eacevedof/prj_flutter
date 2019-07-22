@@ -68,4 +68,7 @@
     - json.decode(): convierte a un objeto Map
     - Trabajando con futuros (promesas)
     - Uso de async y await
+- 6.11 Future Builder 
+    - Widget que permite dibujarese a si mismo basado en el último estado
+    - Clase chunga, no me entero... :S  Tengo que repetirla
 

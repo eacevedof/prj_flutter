@@ -17,10 +17,25 @@ class HomePage extends StatelessWidget {
   }
 
   Widget _lista() {
-    print(oMenuProvider.opciones);
-    return ListView(
-      children: _listaItems(),
+
+    //print(oMenuProvider.opciones);
+    oMenuProvider.cargarData().then((opt){
+      print("_lista");
+      print(opt);
+    });
+    return FutureBuilder(
+      future: oMenuProvider.cargarData(),
+      initialData: [],
+      builder: (BuildContext context, AsyncSnapshot<List<dynamic>> snapshot){
+        print(snapshot.data);
+
+        return ListView(
+          children: _listaItems(),
+        );
+      },
     );
+
+
   }
 
   List<Widget> _listaItems() {
