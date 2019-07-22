@@ -29,5 +29,24 @@
       Lista..add(oWidget)..add(Divider()); 
     }
     return Lista;
-  }// _crear_items
+    }// _crear_items
+    ```
+- 6.7 Método map de las listas y ListTile
+    ```dart
+    //crea lista con iconos que permiten hacer "click" (onTap)
+    List<Widget> _crearItemsCorta() {
+        return this.opciones.map((opt) {
+        return Column(
+            children: <Widget>[
+            ListTile(
+                title: Text( opt + "!"),
+                subtitle: Text("Cualquier cosa"),
+                leading: Icon(Icons.account_balance_wallet),
+                trailing: Icon(Icons.keyboard_arrow_right),
+                onTap: (){},
+            )
+            ],
+        ); 
+        }).toList();
+    }    
     ```
