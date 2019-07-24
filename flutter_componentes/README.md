@@ -194,7 +194,7 @@
       }// routes
     ); // MaterialApp
     ```
-- 6.15  Rutas generadas dinámicamente y archivo de rutas independiente
+- 6.15 Rutas generadas dinámicamente y archivo de rutas independiente
     - Que hacer con una ruta que no existe
     - onGenerateRoute: Define una ruta dinámica
     - externalizando las rutas a un archivo independiente
@@ -218,4 +218,34 @@
             builder: ( BuildContext context ) => AlertPage()
         );
     },
+    ```
+- 6.16 Card Widget
+    - Se crea un listado de tarjetas con texto y botones
+    - Se aplica icono a la tarjeta y padding
+    - EdgeInsets
+    ```dart
+    Card(
+      child: Column(
+        children: <Widget>[
+          ListTile(
+            leading: Icon(Icons.photo_album, color: Colors.blue),
+            title: Text("Soy el titulo de esta tarjeta"),
+            subtitle: Text("Aqui estamos con la descripción de la tarjeta que quiero que ustedes vean para tener una idea de lo que quiero"),
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: <Widget>[
+              FlatButton(
+                child: Text("Cancelar"),
+                onPressed: (){},
+              ),
+              FlatButton(
+                child: Text("Ok"),
+                onPressed: (){},
+              ),              
+            ],
+          )
+        ],
+      ),
+    );    
     ```
