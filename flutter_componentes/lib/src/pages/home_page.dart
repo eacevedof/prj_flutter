@@ -55,13 +55,16 @@ class HomePage extends StatelessWidget {
         leading: getIcon(opt["icon"]),
         trailing: Icon(Icons.keyboard_arrow_right, color: Colors.blue),
         onTap: () {
-          final route = MaterialPageRoute(
-            builder: (context) => AlertPage()
-          );
+          //pushNamed busca la ruta en MyApp.routes y en base a esta carga la pantalla que es un widget Scaffold
+          Navigator.pushNamed(context, opt["ruta"]);
+
+          //final route = MaterialPageRoute(
+          // builder: (context) => AlertPage()
+          //);
 
           //context: es el build context, es el que tiene la información de la navegación
           //información global de la app
-          Navigator.push(context, route);
+          //Navigator.push(context, route);
         },
 
       );

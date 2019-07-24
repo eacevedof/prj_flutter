@@ -175,5 +175,27 @@
         Navigator.push(context, route);
     },    
     ```
+- 6.14 Navegar con rutas con nombre
+    - en main.dart hay que definir las rutas
+    ```dart
+    // home_page.dart
+    onTap: Navigator.pushNamed(context, opt["ruta"]);
+
+    //main.dart
+    return MaterialApp(
+      title: 'Componentes App',
+      debugShowCheckedModeBanner: false,
+      initialRoute: "/",
+      routes: <String, WidgetBuilder>{
+        "/"     : ( BuildContext context) => HomePage(),
+        "alert" : ( BuildContext context) => AlertPage(),
+        "avatar": ( BuildContext context) => AvatarPage(),
+      }// routes
+    ); // MaterialApp
+    ```
+    
+
+
+
 
 
