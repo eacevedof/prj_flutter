@@ -70,5 +70,60 @@
     - Uso de async y await
 - 6.11 Future Builder 
     - Widget que permite dibujarese a si mismo basado en el último estado
-    - Clase chunga, no me entero... :S  Tengo que repetirla
+    - Ejemplo future builder:
+    ```dart
+    Future<List<dynamic>> cargarData() async {
+    final resp = await rootBundle.loadString("data/menu_opts.json");
+        Map dataMap = json.decode(resp);
+        //print(dataMap["rutas"]);
+        opciones = dataMap["rutas"];
+        return opciones;
+    }
+
+    Widget _lista() {
+        //print(oMenuProvider.opciones);
+        oMenuProvider.cargarData().then((opt){
+            //aqui no se puede poner ListView pq si tarda mucho la respuesta pareceria que la app esta colgada
+            print("_lista");
+            print(opt);
+        });
+
+        return FutureBuilder(
+            //future es lo que vamos a esperar
+            future: oMenuProvider.cargarData(),
+            //la info por defecto mientras se resuelve el future
+            initialData: [],
+            //el renderizador
+            //tiene etapas
+            builder: (BuildContext context, AsyncSnapshot<List<dynamic>> snapshot){
+                //aqui se puede hacer loaders
+                print("builder");
+                print(snapshot.data);
+
+                return ListView(
+                    children: _listaItems(snapshot.data),
+                );
+            }, // builder
+        ); // FutureBuilder
+    } // _lista
+
+    List<Widget> _listaItems(List<dynamic> data) {
+        final List<Widget> opciones = [];
+
+        data.forEach( (opt) {
+            final oWidget = ListTile(
+                title: Text(opt["texto"]),
+                leading: Icon(Icons.account_circle, color: Colors.blue),
+                trailing: Icon(Icons.keyboard_arrow_right, color: Colors.blue),
+                onTap: () {
+
+                },
+            ); // ListTile
+            opciones..add(oWidget)
+                    ..add(Divider());
+        }); // data.foreach
+
+        return opciones;
+    } //_listaItems
+    ```
 
