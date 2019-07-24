@@ -143,5 +143,37 @@
         return Icon( _icons[nombreIcono], color:Colors.blue);
     }    
     ```
+- 6.13 Navegar a una nueva pantalla en Flutter
+    - En el onTap vamos a realizar la nevegación
+    - definimos navegación
+    ```dart
+    class AlertPage extends StatelessWidget {
+        @override
+        Widget build(BuildContext context) {
+            return Scaffold(
+                appBar: AppBar(
+                    title: Text("Alert Page"),
+                ),
+                //botón de retorno
+                floatingActionButton: FloatingActionButton(
+                    child: Icon(Icons.add_location),
+                    onPressed: (){
+                        Navigator.pop(context);
+                    },
+                ),
+            ); //Scaffold
+        } // build
+    } // AlertPage
+
+    onTap: () {
+        final route = MaterialPageRoute(
+            builder: (context) => AlertPage()
+        );
+
+        //context: es el build context, es el que tiene la información de la navegación
+        //información global de la app
+        Navigator.push(context, route);
+    },    
+    ```
 
 
