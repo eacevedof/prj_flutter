@@ -179,6 +179,7 @@
     - en main.dart hay que definir las rutas
     ```dart
     // home_page.dart
+    //pushNamed busca la ruta en MyApp.routes y en base a esta carga la pantalla que es un widget Scaffold
     onTap: Navigator.pushNamed(context, opt["ruta"]);
 
     //main.dart
@@ -193,9 +194,28 @@
       }// routes
     ); // MaterialApp
     ```
-    
+- 6.15  Rutas generadas dinámicamente y archivo de rutas independiente
+    - Que hacer con una ruta que no existe
+    - onGenerateRoute: Define una ruta dinámica
+    - externalizando las rutas a un archivo independiente
+    ```dart
+    //routes.dart
+    Map<String, WidgetBuilder> getApplicationRoutes() {
+        return <String, WidgetBuilder>{
+            "/"     : ( BuildContext context) => HomePage(),
+            "alert" : ( BuildContext context) => AlertPage(),
+            "avatar": ( BuildContext context) => AvatarPage(),
+        };
+    }// getApplicationRoutes    
 
+    main.dart
+    routes: getApplicationRoutes(),
 
-
-
-
+    onGenerateRoute: ( RouteSettings settings) {
+        print("Ruta llamada: ${ settings.name }");
+        //página por defecto para rutas
+        return MaterialPageRoute(
+            builder: ( BuildContext context ) => AlertPage()
+        );
+    },
+    ```
