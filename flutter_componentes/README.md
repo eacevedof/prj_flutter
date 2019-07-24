@@ -126,4 +126,22 @@
         return opciones;
     } //_listaItems
     ```
+- 6.12 Utilidades - Obtener ícono por strings
+    - No existe un método que nos permita obtener un icono en base al string
+    - icons_helper 0.0.8 es una opción pero no la recomienda Fernando
+    - Realizarémos nuestro propio generador de íconos en base al string que le pasemos
+    - carpeta src/utils
+    - archivo: src/utils/icono_string_util.dart
+    ```dart
+    final _icons = <String, IconData>{
+        "add_alert"       : Icons.add_alert,
+        "accessibility"   : Icons.accessibility,
+        "folder_open"     : Icons.folder_open,
+    };
+
+    Icon getIcon( String nombreIcono) {
+        return Icon( _icons[nombreIcono], color:Colors.blue);
+    }    
+    ```
+
 
