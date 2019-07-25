@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 
 class CardPage extends StatelessWidget {
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -12,7 +13,9 @@ class CardPage extends StatelessWidget {
       body: ListView(
         padding: EdgeInsets.all(10.0), //..symetric(horizontal:50.0),
         children: <Widget>[
-          _cardTipo1()
+          _cardTipo1(),
+          SizedBox(height: 30.0,),
+          _cardTipo2()
         ],
       ),
     );
@@ -44,5 +47,29 @@ class CardPage extends StatelessWidget {
       ),
     );
   }// _cardTipo1
+
+  Widget _cardTipo2() {
+    return Card(
+      child: Column(
+        children: <Widget>[
+          FadeInImage(
+            image: NetworkImage("https://static.photocdn.pt/images/articles/2017_1/iStock-545347988.jpg"),
+            placeholder: AssetImage("assets/jar-loading.gif"),
+            fadeInDuration: Duration( milliseconds: 200),
+            height: 250.0,
+            fit: BoxFit.cover,
+          ),
+
+          //Image(
+            //image: NetworkImage("https://static.photocdn.pt/images/articles/2017_1/iStock-545347988.jpg"),
+          //),
+          Container(
+            padding: EdgeInsets.all(10.0),
+            child: Text("No tengo idea de que poner")
+          )
+        ], // <Widget> []
+      )
+    ); // Card
+  }// _cardTipo2
 
 }// CardPage
