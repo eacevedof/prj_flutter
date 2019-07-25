@@ -285,3 +285,9 @@
         ); // Card
     }// _cardTipo2        
     ```
+- 6.18 Resolviendo - The method 'forEach' was called on null
+    ```dart
+    //la info por defecto mientras se resuelve el future, esto se le envia al snapshot.data
+    initialData: [],    
+    ```
+- 

@@ -30,7 +30,7 @@ class HomePage extends StatelessWidget {
     return FutureBuilder(
       //future es lo que vamos a esperar
       future: oMenuProvider.cargarData(),
-      //la info por defecto mientras se resuelve el future
+      //la info por defecto mientras se resuelve el future, esto se le envia al snapshot.data
       initialData: [],
       //el renderizador
       //tiene etapas
@@ -48,6 +48,8 @@ class HomePage extends StatelessWidget {
 
   List<Widget> _listaItems(List<dynamic> data, BuildContext context) {
     final List<Widget> opciones = [];
+
+    //if (data == null) return opciones;
 
     data.forEach( (opt) {
       final oWidget = ListTile(
