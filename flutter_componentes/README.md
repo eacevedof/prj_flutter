@@ -290,4 +290,27 @@
     //la info por defecto mientras se resuelve el future, esto se le envia al snapshot.data
     initialData: [],    
     ```
-- 
+- 6.19 Personalizando el estilo de las cards
+    - emulando un card de imágen
+    ```dart
+    return Container(
+      child: ClipRRect(
+        child: oContainerCard,
+        borderRadius: BorderRadius.circular(30.0),
+      ),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(30.0),
+        color: Colors.white,
+        boxShadow: <BoxShadow>[
+          BoxShadow(
+            color: Colors.black26,
+            blurRadius: 10.0,
+            spreadRadius: 2.0,
+            offset: Offset(2.0,-10.0)
+          ),
+        ]
+        //color: Colors.red
+      ),
+    );    
+    ```
+- 6.20 
