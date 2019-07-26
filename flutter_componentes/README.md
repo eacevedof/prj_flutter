@@ -313,4 +313,48 @@
       ),
     );    
     ```
-- 6.20 
+- 6.20 Widget - Alert
+    - Personalizando un modal de alert
+    ```dart
+    //alert_page.dart
+    body: Center(
+        child: RaisedButton(
+            child: Text("Mostrar Alerta"),
+            color: Colors.blue,
+            textColor: Colors.white,
+            shape: StadiumBorder(),
+            onPressed: ()=>_mostrarAlerta(context),
+        ),
+    ),
+
+    ... 
+
+    void _mostrarAlerta(BuildContext context){
+        showDialog(
+            context: context,
+            barrierDismissible: true,//se cierra la alerta haciendo click afuera
+            builder: (context){
+                return AlertDialog(
+                    title: Text("Titulo"),
+                    content: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: <Widget>[
+                            Text("Contenido de la caja de la alerta"),
+                            FlutterLogo(size: 100.0,)
+                        ],
+                    ),
+                    actions: <Widget>[
+                        FlatButton(
+                            child: Text("Cancelar"),
+                            onPressed: ()=>Navigator.of(context).pop(),
+                        ),
+                        FlatButton(
+                            child: Text("Ok"),
+                            onPressed: ()=>Navigator.of(context).pop(),
+                        )            
+                    ],
+                ); // AlertDialog
+            } // builder
+        ); //showDialog
+    }// _mostrarAlerta    
+    ```
