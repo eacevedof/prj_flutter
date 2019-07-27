@@ -474,3 +474,7 @@
       },
     );
     ```
+- 6.24 Email y Password fields
+    - parecido a inputtext
+    - obscureText: true, para password
+    - keyboardType: TextInputType.emailAddress, para email
