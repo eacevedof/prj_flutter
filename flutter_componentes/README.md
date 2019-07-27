@@ -478,3 +478,44 @@
     - parecido a inputtext
     - obscureText: true, para password
     - keyboardType: TextInputType.emailAddress, para email
+- 6.25 Datepicker
+    ```dart
+    _selectDate(BuildContext context) async {
+        DateTime picked = await showDatePicker(
+            context: context,
+            initialDate: new DateTime.now(),
+            firstDate: new DateTime(2018),
+            lastDate: new DateTime(2025),
+        );
+
+        if (picked != null){
+            setState(() {
+                _fecha = picked.toString();
+                _oFieldDateController.text = _fecha;
+            });
+        }
+    }// _selectDate
+
+    Widget _crearFecha(BuildContext context){
+        return TextField(
+            enableInteractiveSelection: false,
+            controller: _oFieldDateController,
+            decoration: InputDecoration(
+                border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(20.0)
+                ),
+                hintText: "Fecha de nacimiento", //placeholder
+                labelText: "Fecha de nacimiento",//label
+                suffixIcon: Icon(Icons.perm_contact_calendar),//icono derecho
+                icon: Icon(Icons.calendar_today)//icono izquierdo
+            ),
+
+            onTap: (){
+                FocusScope.of(context).requestFocus(new FocusNode());
+                _selectDate(context);
+            },
+        );
+    }// _crearFecha    
+    ```
+- 6.26. Cambiar el idioma del Datepicker
+    - 
