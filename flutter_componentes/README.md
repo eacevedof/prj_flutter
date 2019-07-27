@@ -395,4 +395,51 @@
       )
     ); //Scaffold
     ```
+- 6.22 Container y AnimatedContainer
+    - Animated container
+    ```dart
+    // cambiar el estado
+    // detecta cambios en las variables privadas y refresca la pantalla
+    onPressed: (){
+          setState(() { 
+            _width = 80.0;
+            _height = 75.0; 
+            _color = Colors.lightGreen;
+          });
+        },    
+    ```
+    - darth.math
+    - objeto Random()
+    ```dart
+    body: Center(
+        child: AnimatedContainer(
+            width: _width,
+            height: _height,
+            decoration: BoxDecoration(
+                borderRadius: _borderRadius,
+                color: _color
+            ),
+            duration: Duration(seconds: 1), //animación (curves=animación predefinida)
+            curve: Curves.fastOutSlowIn, // tipo de transición
+        ),
+    ),  
+
+    void _cambiarForma(){
+        final rnd = Random();
+
+        // detecta cambios en las variables privadas y refresca la pantalla
+        setState(() {
+        _width = rnd.nextInt(300).toDouble();
+        _height = rnd.nextInt(300).toDouble();
+        _color = Color.fromRGBO(rnd.nextInt(300),rnd.nextInt(300),rnd.nextInt(300), 1);
+
+        _borderRadius = BorderRadius.circular(rnd.nextInt(100).toDouble());
+        });
+    }// _cambiarForma      
+    ```
+    - [Curvas animadas](https://docs.flutter.io/flutter/animation/Curves-class.html)
+
+    - 1 https://flutter.dev/docs/cookbook/animation/animated-container
+
+
     
