@@ -1,5 +1,4 @@
 import 'dart:math';
-
 import 'package:flutter/material.dart';
 
 class InputPage extends StatefulWidget {
@@ -14,8 +13,8 @@ class _InputPageState extends State<InputPage> {
   String _email = "";
   String _password = "";
   String _fecha = "";
+  //este es un observador para el input de fecha
   TextEditingController _oFieldDateController = new TextEditingController();
-
 
   @override
   Widget build(BuildContext context) {
@@ -118,6 +117,7 @@ class _InputPageState extends State<InputPage> {
       initialDate: new DateTime.now(),
       firstDate: new DateTime(2018),
       lastDate: new DateTime(2025),
+      locale: Locale("es","ES"),
     );
 
     if (picked != null){

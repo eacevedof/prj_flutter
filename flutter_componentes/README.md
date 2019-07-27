@@ -518,4 +518,23 @@
     }// _crearFecha    
     ```
 - 6.26. Cambiar el idioma del Datepicker
-    - 
+    - https://flutter.dev/docs/development/accessibility-and-localization/internationalization#specifying-supportedlocales
+    - https://docs.flutter.io/flutter/flutter_localizations/GlobalMaterialLocalizations-class.html
+    ```dart
+    //pubspec.yaml
+    flutter_localizations:
+        sdk: flutter
+    // main.dart
+    localizationsDelegates: [
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate
+    ],
+
+    supportedLocales: [
+        const Locale("en","US"),
+        const Locale("es","ES"),
+    ],
+
+    //input_page.dart
+    locale: Locale("es","ES"),
+    ```
