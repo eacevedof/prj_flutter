@@ -538,3 +538,4 @@
     //input_page.dart
     locale: Locale("es","ES"),
     ```
+6.27 Dropdown y DropdownMenuItem
