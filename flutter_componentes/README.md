@@ -438,8 +438,39 @@
     }// _cambiarForma      
     ```
     - [Curvas animadas](https://docs.flutter.io/flutter/animation/Curves-class.html)
+    - https://flutter.dev/docs/cookbook/animation/animated-container
+- 6.23 inputFields
+    ```dart
+    body: ListView(
+        padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 20),
+        children: <Widget>[
+            _crearInput(),//devuelve TextField()
+            Divider(),
+            _crearPersona(),//devuelve ListTile()
+        ],
+    ),
 
-    - 1 https://flutter.dev/docs/cookbook/animation/animated-container
+    return TextField(
+      // autofocus: true,
+      textCapitalization: TextCapitalization.sentences,
 
+      decoration: InputDecoration(
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(20.0)
+        ),
+        counter: Text("Letras ${_nombre.length}"),//texto debajo derecho
+        hintText: "Nombre de la persona", //placeholder
+        labelText: "Nombre",//label
+        helperText: "Solo es el nombre",//texto debajo
+        suffixIcon: Icon(Icons.accessibility),//icono derecho
+        icon: Icon(Icons.account_circle)//icono izquierdo
+      ),
 
-    
+      onChanged: (valor){
+        setState(() {
+          _nombre = valor;
+          print(_nombre);          
+        });
+      },
+    );
+    ```
