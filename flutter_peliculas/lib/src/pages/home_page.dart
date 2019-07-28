@@ -7,7 +7,11 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
 
     return Scaffold(
-      body: Text("Hola Mundo!!!"),
+      //safearea salva el nodge (el hueco en la pantalla, pestaña negra)
+      body: SafeArea(
+        child: Text("Hola Mundo!!!"),
+      )
+
     );
 
   }// build
