@@ -58,21 +58,40 @@ class _ListviewPageState extends State<ListviewPage> {
   }//dispose
 
   Widget _crearLista(){
-    return ListView.builder(
-      //permite identificar el estado del scroll
-      controller: _oScrollController,
-      itemCount: _listaNumeros.length,
-      //no se como hace flutter para cargar los siguientes al último index y no repetir la
-      //carga de todo. Solo se me ocurre que recorra los nuevos items pero donde guarda el estado anterior?
-      itemBuilder: (BuildContext context,int index){
-        final imagen = _listaNumeros[index];
-        return FadeInImage(
-          image: NetworkImage("https://picsum.photos/500/300/?image=${imagen}"),
-          placeholder: AssetImage("assets/jar-loading.gif"),
-        );
-      },
+
+    //RefreshIndicator es el icono de rueda que aparece en twitter al refrescar el timeline
+    return RefreshIndicator(
+
+      onRefresh: obtenerPagina1,//debe devolver un Future
+
+      child: ListView.builder(
+        //permite identificar el estado del scroll
+        controller: _oScrollController,
+        itemCount: _listaNumeros.length,
+        //no se como hace flutter para cargar los siguientes al último index y no repetir la
+        //carga de todo. Solo se me ocurre que recorra los nuevos items pero donde guarda el estado anterior?
+        itemBuilder: (BuildContext context,int index){
+          final imagen = _listaNumeros[index];
+          return FadeInImage(
+            image: NetworkImage("https://picsum.photos/500/300/?image=${imagen}"),
+            placeholder: AssetImage("assets/jar-loading.gif"),
+          );
+        },
+      ),// child
+
     );
+
   }// _crearLista
+
+  Future<Null> obtenerPagina1() async {
+    final oDuration = new Duration(seconds: 2);
+    new Timer(oDuration, () {
+      _listaNumeros.clear(); //borro todo el array
+      //_ultimoItem++;
+      _agregar10();
+    });
+    return Future.delayed(oDuration);
+  }// obtenerPagina1
 
   void _agregar10(){
     for(var i=0; i<10; i++){
