@@ -1,4 +1,5 @@
 # CAP 6 - flutter_componentes
+### [Código fuente original](https://github.com/Klerith/flutter-componentes)
 
 - 6.3 Demostración de la aplicación (que realizaremos)
     - Listado de opciones
@@ -807,7 +808,8 @@
             ),// child
         );
     }// _crearLista 
-       
+
+    //porque el future es null??
     Future<Null> obtenerPagina1() async {
         final oDuration = new Duration(seconds: 2);
         new Timer(oDuration, () {
@@ -818,4 +820,9 @@
         return Future.delayed(oDuration);
     }// obtenerPagina1    
     ```
+- 6.34 Resumen de la sección
+    - Ejemplo opcional de enrutar por variable estatica
+    - En un stateless widget también se pueden usar inputs pero se necesitan otras herramientas
+    para poder interactuar con ellos
+    - [Youtube - Widgets de la semana](https://www.youtube.com/watch?v=b_sQ9bMltGU&amp;list=PLjxrf2q8roU23XGwz3Km7sQZFTdB996iG&amp;index=1)
 
