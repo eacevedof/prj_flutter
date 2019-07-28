@@ -673,6 +673,7 @@
             itemBuilder: (BuildContext context,int index){
                 final imagen = _listaNumeros[index];
                 return FadeInImage(
+                    //api rest con imágenes aleatorias
                     image: NetworkImage("https://picsum.photos/500/300/?image=${imagen}"),
                     placeholder: AssetImage("assets/jar-loading.gif"),
                 );
@@ -680,4 +681,5 @@
         );
     }// _crearLista
     ```
-       
+
+
