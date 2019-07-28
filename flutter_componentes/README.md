@@ -620,4 +620,37 @@
         );
     }// _crearImagen    
     ```
-    
+- 6.29 Checkbox y Swiches
+    ```dart
+    //slider_page.dart
+    //es como un radio horizontal
+    Widget _crearSwitch(){
+        //listtile a diferencia de checkbox a secas, permite que se haga click en toda la linea
+        return SwitchListTile( 
+            title: Text("Bloquear slider"),
+            value: _bloquearCheck,      
+            onChanged: (valor){
+                setState(() {
+                _bloquearCheck = valor;
+                });
+            },
+        );
+    }// _crearSwitch  
+
+    Widget _crearCheckbox(){
+        //listtile a diferencia de checkbox a secas, permite que se haga click en toda la linea
+        return CheckboxListTile( 
+            value: _bloquearCheck,
+            title: Text("Bloquear slider"),
+            onChanged: (valor){
+                setState(() {
+                _bloquearCheck = valor;
+                });
+            },
+        );  
+    }
+
+    //el null bloquea el slider
+    onChanged:(_bloquearCheck) ? null: (valor){
+    ```
+- 
