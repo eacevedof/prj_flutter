@@ -2,11 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7639eb1f-db75-4293-b69a-c959ab17df9a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/flutter_componentes/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_componentes/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flutter_componentes/data/menu_opts.json" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_componentes/data/menu_opts.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flutter_componentes/lib/src/pages/home_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_componentes/lib/src/pages/home_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flutter_componentes/lib/src/routes/routes.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_componentes/lib/src/routes/routes.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flutter_componentes/lib/src/utils/icono_string_util.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_componentes/lib/src/utils/icono_string_util.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_componentes/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_componentes/lib/main.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_componentes/lib/src/pages/input_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_componentes/lib/src/pages/input_page.dart" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -20,8 +18,8 @@
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-10" />
     <option name="y" value="-10" />
-    <option name="width" value="1939" />
-    <option name="height" value="1049" />
+    <option name="width" value="1940" />
+    <option name="height" value="1050" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -68,7 +66,7 @@
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <layout>
       <window_info id="Captures" order="0" weight="0.25" />
-      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.3342282" />
+      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.33892617" />
       <window_info id="Structure" order="2" side_tool="true" />
       <window_info id="Image Layers" order="3" />
       <window_info id="Designer" order="4" />

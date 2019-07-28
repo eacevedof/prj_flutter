@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_componentes/src/pages/alert_page.dart';
 import 'package:flutter_componentes/src/routes/routes.dart';
-import 'package:flutter_localizations/flutter_localizations.dart'
+import 'package:flutter_localizations/flutter_localizations.dart';
  
 void main() => runApp(MyApp());
  

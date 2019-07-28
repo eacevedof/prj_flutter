@@ -13,6 +13,10 @@ class _InputPageState extends State<InputPage> {
   String _email = "";
   String _password = "";
   String _fecha = "";
+  String _opcionSeleccionada = "volar";
+
+  List _poderes = ["volar","rayos x","super aliento","super fuerza"];
+  
   //este es un observador para el input de fecha
   TextEditingController _oFieldDateController = new TextEditingController();
 
@@ -33,6 +37,8 @@ class _InputPageState extends State<InputPage> {
           _crearPassword(),
           Divider(),
           _crearFecha(context),              
+          Divider(),
+          _crearDropdown(),
           Divider(),
           _crearPersona(),//devuelve ListTile()
         ],
@@ -132,7 +138,7 @@ class _InputPageState extends State<InputPage> {
   Widget _crearFecha(BuildContext context){
     return TextField(
       enableInteractiveSelection: false,
-      controller: _oFieldDateController,
+      controller: _oFieldDateController, //observador que permite redibujar el valor seleccionado en el input
       decoration: InputDecoration(
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(20.0)
@@ -150,11 +156,44 @@ class _InputPageState extends State<InputPage> {
     );
   }// _crearFecha
 
+  List<DropdownMenuItem<String>> getOpcionesDropdown() {
+    List<DropdownMenuItem<String>> lista = new List();
+    _poderes.forEach((poder){
+      lista.add(DropdownMenuItem(
+        child: Text(poder),
+        value: poder,
+        //key:
+      ));
+    });    
+    return lista;
+  } // getOpcionesDropdown
+
+  Widget _crearDropdown(){
+    return Row(
+      children: <Widget>[
+        Icon(Icons.select_all),
+        SizedBox(width: 30.0), //espacio entre icono e input
+        Expanded( //expanded: hace que se ocupe todo el ancho de la pantalla
+          child: DropdownButton(
+            value: _opcionSeleccionada, //valor seleccionado
+            items: getOpcionesDropdown(),//devuelve: List<DropdownMenuItem<String>>
+            onChanged: (optselected){
+              setState(() {
+                _opcionSeleccionada = optselected;
+              });
+            },
+          )
+        ),
+      ],
+    );
+  }// _crearDropdown
+
   Widget _crearPersona(){
     return ListTile(
       title: Text("Nombre es: $_nombre"),
       subtitle: Text("Email es: $_email, passw: $_password"),
-
+      //leading: Text(_opcionSeleccionada),//leading: pone el texto justificado izquierdo
+      trailing: Text(_opcionSeleccionada),//leading: pone el texto justificado al lado derecho
     );
   }// _crearPersona
 

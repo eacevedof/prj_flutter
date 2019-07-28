@@ -480,6 +480,8 @@
     - keyboardType: TextInputType.emailAddress, para email
 - 6.25 Datepicker
     ```dart
+    //se necesita definir un controlador para poder mostrar el valor seleccionado
+    //en el input
     _selectDate(BuildContext context) async {
         DateTime picked = await showDatePicker(
             context: context,
@@ -538,4 +540,37 @@
     //input_page.dart
     locale: Locale("es","ES"),
     ```
-6.27 Dropdown y DropdownMenuItem
+- 6.27 Dropdown y DropdownMenuItem
+    ```dart
+    List<DropdownMenuItem<String>> getOpcionesDropdown() {
+        List<DropdownMenuItem<String>> lista = new List();
+        _poderes.forEach((poder){
+            lista.add(DropdownMenuItem(
+                child: Text(poder),
+                value: poder,
+                //key:
+            ));
+        });    
+        return lista;
+    } // getOpcionesDropdown
+
+    Widget _crearDropdown(){
+        return Row(
+        children: <Widget>[
+            Icon(Icons.select_all),
+            SizedBox(width: 30.0), //espacio entre icono e input
+            Expanded( //expanded: hace que se ocupe todo el ancho de la pantalla
+                child: DropdownButton(
+                    value: _opcionSeleccionada, //valor seleccionado
+                    items: getOpcionesDropdown(),//devuelve: List<DropdownMenuItem<String>>
+                    onChanged: (optselected){
+                        setState(() {
+                            _opcionSeleccionada = optselected;
+                        });
+                    },
+                )
+            ),
+        ],
+        );
+    }// _crearDropdown    
+    ```
