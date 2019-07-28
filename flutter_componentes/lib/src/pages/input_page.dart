@@ -151,6 +151,7 @@ class _InputPageState extends State<InputPage> {
 
       onTap: (){
         FocusScope.of(context).requestFocus(new FocusNode());
+        //se hace llamada asincrona para cargar el widget: showDatePicker
         _selectDate(context);
       },
     );

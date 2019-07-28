@@ -716,4 +716,74 @@
     //indica al listviewBuilder que habrá un listener
     controller: _oScrollController,
     ```
+- 6.32 InfiniteScroll con Futures
+    - Esta clase me ha resultado un poco dificil de seguir.
+    - Hay async sin await porque hay un timer
+    ```dart
+    void initState() {
+        super.initState();
+        _agregar10();
+        //se disparará cada vez que se haga el scroll
+        _oScrollController.addListener((){
+            //si la pos actual es de x pixeles y lo máximo permitido por el scroll es x se agregan 10
+            if(_oScrollController.position.pixels == _oScrollController.position.maxScrollExtent){
+                //fetchdata():_isLoading=true,refresca (carga el loader), despues de 2 segundos llama a respuestaHTTP
+                //respuestaHTTP: _isLoading=false, reposiciona el scroll para ver siguiente imagen
+                //que llama a:_agregar10() que actualiza la variable _listaNumeros y fuerza un refresco
+                //que lanza el método build que a su vez ejecuta _crearLista()
+                //recupera de _listaNumeros[index] el num de imagen para hacer la petición y la muestra
+                fetchData(); 
+            }
+        });
+    }// initState
+
+    Future fetchData() async {
+        _isLoading = true;
+        setState(() {});
+        final oDuration = new Duration(seconds: 2);
+        //respuestaHTTP, llama a _agregar10
+        return new Timer(oDuration, respuestaHTTP);
+    }// fetchData
+
+    void respuestaHTTP(){
+        _isLoading = false;
+        _oScrollController.animateTo(
+            //mueve el scroll hacia abajo de modo que se pueda ver que hay una siguiente imágen
+            _oScrollController.position.pixels + 100,
+            curve: Curves.fastOutSlowIn,
+            duration: Duration(milliseconds: 250)
+        );
+        _agregar10();
+    }// respuestaHTTP
+
+    Widget _crearLoading(){
+        if(_isLoading){
+            return Column(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.end, //abajo del todo
+                children: <Widget>[
+                    Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                            CircularProgressIndicator() //loader
+                        ],
+                    ),
+                    SizedBox(height: 15.0,)
+                ],
+            );
+        }//if is_loading
+        return Container();
+    }// _crearLoading
+
+    //no se como hace flutter para cargar los siguientes al último index y no repetir la
+    //carga de todo. Solo se me ocurre que recorra los nuevos items pero donde guarda el estado anterior?
+    itemBuilder: (BuildContext context,int index){
+        final imagen = _listaNumeros[index];
+        return FadeInImage(
+            image: NetworkImage("https://picsum.photos/500/300/?image=${imagen}"),
+            placeholder: AssetImage("assets/jar-loading.gif"),
+        );
+    },
+    ```
+
 
