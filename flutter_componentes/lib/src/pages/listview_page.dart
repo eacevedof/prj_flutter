@@ -7,7 +7,23 @@ class ListviewPage extends StatefulWidget {
 
 class _ListviewPageState extends State<ListviewPage> {
   
-  List<int> _listaNumeros = [10,20,30,40,50,60];
+  //observador del scroll al que le podemos preguntar la posicion 
+  ScrollController _oScrollController = new ScrollController();
+  List<int> _listaNumeros = new List();
+  int _ultimoItem = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    _agregar10();
+    //se disparará cada vez que se haga el scroll
+    _oScrollController.addListener((){
+      //si la pos actual es de x pixeles y lo máximo permitido por el scroll es x se agregan 10
+      if(_oScrollController.position.pixels == _oScrollController.position.maxScrollExtent){
+        _agregar10();
+      }
+    });
+  }// initState
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +37,9 @@ class _ListviewPageState extends State<ListviewPage> {
 
   Widget _crearLista(){
     return ListView.builder(
+      controller: _oScrollController,
       itemCount: _listaNumeros.length,
+      //no se porque se define como una función anónima
       itemBuilder: (BuildContext context,int index){
         final imagen = _listaNumeros[index];
         return FadeInImage(
@@ -32,4 +50,13 @@ class _ListviewPageState extends State<ListviewPage> {
     );
   }// _crearLista
 
+  void _agregar10(){
+    for(var i=0; i<10; i++){
+      _ultimoItem++;
+      _listaNumeros.add(_ultimoItem);
+    }
+    //refresca el componente
+    setState(() {
+    });
+  }// _agregar10
 }// _ListviewPageState

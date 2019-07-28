@@ -681,5 +681,39 @@
         );
     }// _crearLista
     ```
+- 6.31 InfiniteScroll
+    - Carga de forma progresiva imágenes de 10 en 10
+    ```dart
+    //listview_page.dart
+    //observador del scroll al que le podemos preguntar la posicion 
+    ScrollController _oScrollController = new ScrollController();
+    List<int> _listaNumeros = new List();
+    int _ultimoItem = 0;
 
+    @override
+    void initState() {
+        super.initState();
+        _agregar10();
+        //se disparará cada vez que se haga el scroll
+        _oScrollController.addListener((){
+        //si la pos actual es de x pixeles y lo máximo permitido por el scroll es x se agregan 10
+        if(_oScrollController.position.pixels == _oScrollController.position.maxScrollExtent){
+            _agregar10();
+        }
+        });
+    }// initState    
+
+    void _agregar10(){
+        for(var i=0; i<10; i++){
+            _ultimoItem++;
+            _listaNumeros.add(_ultimoItem);
+        }
+        //refresca el componente
+        setState(() {
+        });
+    }// _agregar10    
+
+    //indica al listviewBuilder que habrá un listener
+    controller: _oScrollController,
+    ```
 
