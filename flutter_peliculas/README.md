@@ -13,6 +13,11 @@
     - flutter_swiper: ^1.1.6
     - import 'package:flutter_swiper/flutter_swiper.dart';
     ```dart
+    home_page.dart
+    children: <Widget>[
+        _swiperTarjetas()
+    ], 
+    ... 
     Widget _swiperTarjetas() {
         return Container(
         padding: EdgeInsets.only(top: 10.0),
@@ -32,3 +37,23 @@
         );
     }// _swiperTarjetas    
     ```
+- 7.6 Widget personalizado - CardSwiper
+    - desacoplando el widget Swiper en una clase separada
+    - creacion carpeta widgets
+    - archivo: card_swiper_widget.dart
+    ```dart
+    child: Swiper(
+        layout: SwiperLayout.STACK,
+        itemWidth: _screenSize.width * 0.7,
+        itemHeight: _screenSize.height * 0.5,          
+        itemBuilder: (BuildContext context, int index){
+        return ClipRRect(
+            borderRadius: BorderRadius.circular(20.0),
+            child: Image.network("http://via.placeholder.com/350x150",fit: BoxFit.cover),
+        );
+        },
+        itemCount: peliculas.length,
+        pagination: new SwiperPagination(), //los ... puntos
+        control: new SwiperControl(),// pestañas de navegacion
+    ),   
+    ```    
