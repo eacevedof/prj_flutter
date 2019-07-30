@@ -64,3 +64,9 @@
     - [https://www.themoviedb.org/settings/api](https://www.themoviedb.org/settings/api)
     - [https://developers.themoviedb.org/3/movies/get-movie-details](https://developers.themoviedb.org/3/movies/get-movie-details)
     - [https://image.tmdb.org/t/p/w500/](https://image.tmdb.org/t/p/w500/)
+- 7.8 Modelo de Película
+    - Extension Paste Json as code
+    - Modelo: pelicula_model.dart
+    - El modelo cuenta con dos clases, una el modelo y otra el repositorio de modelos
+    
+
