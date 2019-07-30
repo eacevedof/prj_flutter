@@ -57,3 +57,10 @@
         control: new SwiperControl(),// pestañas de navegacion
     ),   
     ```    
+- 7.7 TheMovieDB - ApiKey y documentación
+    - [https://www.themoviedb.org/ (crear apikey )](https://www.themoviedb.org/)
+        - Hasta 10000 peticiones gratuitas
+    - [https://www.themoviedb.org/u/eduardoaf](https://www.themoviedb.org/u/eduardoaf)
+    - [https://www.themoviedb.org/settings/api](https://www.themoviedb.org/settings/api)
+    - [https://developers.themoviedb.org/3/movies/get-movie-details](https://developers.themoviedb.org/3/movies/get-movie-details)
+    - [https://image.tmdb.org/t/p/w500/](https://image.tmdb.org/t/p/w500/)
