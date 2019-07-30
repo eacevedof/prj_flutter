@@ -12,7 +12,7 @@ class Peliculas {
 
     for(var item in jsonList){
       final pelicula = new Pelicula.fromJsonMap(item);
-      items.add(pelicula)
+      items.add(pelicula);
     }
 
   }

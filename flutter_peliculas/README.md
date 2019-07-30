@@ -68,5 +68,11 @@
     - Extension Paste Json as code
     - Modelo: pelicula_model.dart
     - El modelo cuenta con dos clases, una el modelo y otra el repositorio de modelos
+- 7.9 Películas provider
+    - peliculas_provider.dart
+    - Paquete http 0.12.0+2 instalación (http: ^0.12.0+2)
+    - El provider hace una peticion asincrona en forma de Future
+    - El provider usa el repositiorio Peliculas para transformar el await json en un array de objetos pelicula
     
+
 
