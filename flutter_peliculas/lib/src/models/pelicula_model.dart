@@ -61,7 +61,7 @@ class Pelicula {
     voteAverage		  = json["vote_average"] / 1;
     title			      = json["title"];			
     popularity		  = json["popularity"] / 1;		
-    posterPath		  = json["posterPath"];		
+    posterPath		  = json["poster_path"];		
     originalLanguage	= json["original_language"];
     originalTitle	  = json["original_title"];	
     genreIds		    = json["genre_ids"].cast<int>();	
@@ -70,6 +70,15 @@ class Pelicula {
     overview		    = json["overview"];
     releaseDate		  = json["release_date"];
   } 
+
+  String getPosterImg(){
+
+    if( posterPath == null)
+      return "https://gambit.gg/design/images/no-pic.jpg";
+    
+    return "https://image.tmdb.org/t/p/w500/$posterPath";
+    
+  }// getPosterImg
 
 }// Pelicula
 

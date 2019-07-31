@@ -73,6 +73,60 @@
     - Paquete http 0.12.0+2 instalación (http: ^0.12.0+2)
     - El provider hace una peticion asincrona en forma de Future
     - El provider usa el repositiorio Peliculas para transformar el await json en un array de objetos pelicula
-    
+- 7.10 Mostrar póster de películas en el Swiper   
+    - Configurar asset
+    ```dart
+    assets:
+        - assets/img/    
+    ```
+    ```dart
+    //home_page.dart
+    Widget _swiperTarjetas() {
+        return FutureBuilder(
+            future: peliculasProvider.getEnCines(),
+            builder: (BuildContext context, AsyncSnapshot<List> snapshot) {
+                if (snapshot.hasData) {
+                return CardSwiper(
+                    peliculas: snapshot.data
+                );
+                }
+                //entra aqui cuando el future se está resolviendo o no se tiene información
+                else
+                {
+                //devuelve un loading
+                return  Container(
+                    height: 400.0,
+                    child: Center(
+                    child: CircularProgressIndicator()
+                    )
+                );
+                }
+            },
+        );
+    }// _swiperTarjetas
+
+    //card_swiper_widget.dart
+    child: Swiper(
+        layout: SwiperLayout.STACK,
+        itemWidth: _screenSize.width * 0.7,
+        itemHeight: _screenSize.height * 0.5,          
+        itemBuilder: (BuildContext context, int index){
+            //crea un rectangulo redondeado
+            return ClipRRect(
+            borderRadius: BorderRadius.circular(20.0),
+            //child: Image.network("http://via.placeholder.com/350x150",fit: BoxFit.cover),
+            child: FadeInImage(
+                //como alcanza la variable interna posterPath?
+                image: NetworkImage(peliculas[index].getPosterImg()),
+                placeholder: AssetImage("assets/img/no-image.jpg"),
+                fit: BoxFit.cover,
+            ),
+            );
+        },
+        itemCount: peliculas.length,
+        //pagination: new SwiperPagination(), //los ... puntos
+        //control: new SwiperControl(),// pestañas de navegacion
+    ),    
+    ```
 
 
