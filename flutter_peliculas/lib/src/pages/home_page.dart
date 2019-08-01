@@ -1,4 +1,3 @@
-
 //@file: home_page.dart
 import 'package:flutter/material.dart';
 import 'package:flutter_peliculas/src/providers/peliculas_provider.dart';
@@ -29,7 +28,8 @@ class HomePage extends StatelessWidget {
       body: Container(
         child: Column(
           children: <Widget>[
-            _swiperTarjetas()
+            _swiperTarjetas(),
+            _footer(context)
           ],
         )
       )
@@ -63,5 +63,27 @@ class HomePage extends StatelessWidget {
     );
 
   }// _swiperTarjetas
+
+  Widget _footer(BuildContext context){
+
+    return Container(
+      width: double.infinity,
+      child: Column(
+        children: <Widget>[
+          Text("Populares",style: Theme.of(context).textTheme.subhead),
+          FutureBuilder(
+            future: peliculasProvider.getPopulares(),
+            builder: (BuildContext context,AsyncSnapshot<List> snapshot){
+              snapshot.data.forEach(
+                (p) => print(p.title)
+              );
+              return Container();
+            }//builder
+          ),
+        ],
+      ),
+    );
+
+  }// _footer
 
 }// HomePage

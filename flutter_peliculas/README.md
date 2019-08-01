@@ -128,5 +128,43 @@
         //control: new SwiperControl(),// pestañas de navegacion
     ),    
     ```
+- 7.11 Obtener películas populares
+    ```dart
+    // peliculas_provider.dart
+    Future<List<Pelicula>> getPopulares() async {
+        print("provider.getPopulares");
+        final url = Uri.https(_url,"3/movie/popular",{
+        "api_key": _apikey, "language":_language
+        });
+
+        //espera la solitud
+        final respuesta = await http.get(url);
+        final decodedData = json.decode(respuesta.body);
+
+        //carga en peliculas.items los resultados en forma de objetos pelicula
+        final peliculas = new Peliculas.fromJsonList(decodedData["results"]);
+        print(peliculas.items);
+        return peliculas.items;
+    }// getPopulares
+
+    //@file: home_page.dart
+    Widget _footer(BuildContext context){
+        return Container(
+            width: double.infinity,
+            child: Column(
+                children: <Widget>[
+                Text("Populares",style: Theme.of(context).textTheme.subhead),
+                FutureBuilder(
+                    future: peliculasProvider.getPopulares(),
+                    builder: (BuildContext context,AsyncSnapshot<List> snapshot){
+                        snapshot.data.forEach((p) => print(p.title));
+                        return Container();
+                    }//builder
+                ),
+                ],
+            ),
+        );
+    }// _footer
+    ```
 
 
