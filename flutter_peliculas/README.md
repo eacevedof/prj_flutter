@@ -167,7 +167,11 @@
     }// _footer
     ```
 - 7.12 Nota posible problema en la siguiente clase
-<h4><strong>Nota (opcional):</strong></h4><p>En la siguiente clase, no probé la vista en todos los dispositivos, y unos que tienen pantalla muy pequeña se apreciará este error:</p><figure><img src="https://udemy-images.s3.amazonaws.com:443/redactor/raw/2019-05-24_03-14-51-6086d05ce4757c8429d47282a8561cae.png"></figure><p>Lo que significa que hay más contenido de puede desplegar la pantalla.. entonces hay varias formas de resolver esto, una de ellas es hacer las tarjetas más pequeñas y darles proporciones más acertadas, o bien hacer las tarjetas principales más pequeñas también, para que tengamos suficiente espacio...</p><p><br></p><p><strong>Solución en video:</strong></p><p>Esto lo corregí en este video, pueden verlo y luego regresar a la clase.</p><p><a href="https://www.udemy.com/flutter-ios-android-fernando-herrera/learn/lecture/14708408#overview" rel="noopener noreferrer" target="_blank">https://www.udemy.com/flutter-ios-android-fernando-herrera/learn/lecture/14708408#overview</a></p><p><br></p><p>Disculpen el inconveniente.</p>
+<h4><strong>Nota (opcional):</strong></h4><p>En la siguiente clase, no probé la vista en todos los dispositivos, y unos que tienen pantalla muy pequeña se apreciará este error:</p><figure><img src="https://udemy-images.s3.amazonaws.com:443/redactor/raw/2019-05-24_03-14-51-6086d05ce4757c8429d47282a8561cae.png"></figure><p>Lo que significa que hay más contenido de puede desplegar la pantalla.. entonces hay varias formas de resolver esto, una de ellas es hacer las tarjetas más pequeñas y darles proporciones más acertadas, o bien hacer las tarjetas principales más pequeñas también, para que tengamos suficiente espacio...</p>
+<p><strong>Solución en video:</strong></p>
+<p>Esto lo corregí en este video, pueden verlo y luego regresar a la clase.</p>
+<p><a href="https://www.udemy.com/flutter-ios-android-fernando-herrera/learn/lecture/14708408#overview" rel="noopener noreferrer" target="_blank">https://www.udemy.com/flutter-ios-android-fernando-herrera/learn/lecture/14708408#overview</a></p>
+<p>Disculpen el inconveniente.</p>
 
 
 
