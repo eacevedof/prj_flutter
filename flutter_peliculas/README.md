@@ -259,5 +259,15 @@
     - La intención es que movie_horizontal solo se encargue de pintar los datos recibidos.
     - La solución pasa por hacer la petición en el **home_page.dart**
     - Existe un Widget especializado para eso. Se llama **Stream**
+- 7.15 Introducción a los Streams
+    - Stream, flujo de información en un solo sentido.
+    - En **react** se llaman **observables**
+    - **StreamTransformer** aplica cambios al stream
+    - **StreamController** gestiona las transformaciones del stream
+        - **Sink** objeto dentro de SController, añade información al stream
+        - **Stream** obtener el stram final
+    - En lo que nos corresponde. Tendremos una entrada de nuevas peliculas y la salida sera la lista completa de las películas.
+
+
 
 
