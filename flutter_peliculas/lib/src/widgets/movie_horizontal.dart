@@ -26,7 +26,7 @@ class MovieHorizontal extends StatelessWidget {
   }// build
 
   List<Widget> _tarjetas(BuildContext context){
-    return peliculas.map((pelicula) {
+    return peliculas.map((oModelPelicula) {
       return Container(
         margin: EdgeInsets.only(right:1.8),
         child: Column(
@@ -34,16 +34,16 @@ class MovieHorizontal extends StatelessWidget {
             ClipRRect(
               borderRadius: BorderRadius.circular(20.0),
               child: FadeInImage(
-                image: NetworkImage(pelicula.getPosterImg()),
+                //modelpelicula devuelve una url
+                image: NetworkImage(oModelPelicula.getPosterImg()),
                 placeholder: AssetImage("assets/img/no-image.jpg"),
                 fit: BoxFit.cover,
                 height: 100.0,//si pongo más se sale de la pantalla
-
               ),
             ),
             SizedBox(height: 5.0,),
             Text(
-              pelicula.title, 
+              oModelPelicula.title, 
               overflow: TextOverflow.ellipsis,
               style: Theme.of(context).textTheme.caption,
             ),

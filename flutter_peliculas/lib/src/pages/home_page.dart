@@ -6,7 +6,9 @@ import 'package:flutter_peliculas/src/widgets/movie_horizontal.dart';
 
 class HomePage extends StatelessWidget {
   
-  final peliculasProvider = new PeliculasProvider();
+  //El provider usa internamente el modelo para generar un
+  //listado de modelos a partir del json que le llega
+  final oProvPeliculas = new PeliculasProvider();
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +31,11 @@ class HomePage extends StatelessWidget {
       body: Container(
         child: Column(
           children: <Widget>[
+            //realiza la llamada al endpoint usando un Fut builder. 
+            //devuelve un widget que se ha formado en el fut builder
             _swiperTarjetas(),
+            //devuelve un widget container con otros widgets dentro 
+            //usa context para cambiar el estilo de la palabra Populares
             _footer(context)
           ],
         )
@@ -42,7 +48,12 @@ class HomePage extends StatelessWidget {
   Widget _swiperTarjetas() {
 
     return FutureBuilder(
-      future: peliculasProvider.getEnCines(),
+      //llamada asincrona a: 3/movie/now_playing
+      //devuelve un Future<List<pelicula>>
+      future: oProvPeliculas.getEnCines(),
+
+      //supongo que el builder se está ejecutando constantemente mientras no se
+      //ha resuelto el "future list"
       builder: (BuildContext context, AsyncSnapshot<List> snapshot) {
         if (snapshot.hasData) {
           return CardSwiper(
@@ -72,18 +83,23 @@ class HomePage extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
+
           Container(
             padding: EdgeInsets.only(left:20.0),
             child: Text("Populares",style: Theme.of(context).textTheme.subhead)),
+          
           SizedBox(height: 5.0,),
+          
           FutureBuilder(
-            future: peliculasProvider.getPopulares(),
+            //llamada asincrona a: 3/movie/popular
+            future: oProvPeliculas.getPopulares(),
             builder: (BuildContext context,AsyncSnapshot<List> snapshot){
               if(snapshot.hasData)
                 return MovieHorizontal(peliculas:snapshot.data);
               return CircularProgressIndicator();
             }//builder
           ),
+
         ],
       ),
     );

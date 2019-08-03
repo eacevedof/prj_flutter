@@ -251,5 +251,7 @@
         );
     }// _footer    
     ```
-
+- 7.14 Problema con los futures
+    - Cuando se llega al final del PageView se debería cargar la siguiente página con los populares
+    - En **movie_horizontal.dart** podríamos hacer la llamada a la siguiente página usando 
 

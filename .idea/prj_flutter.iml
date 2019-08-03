@@ -7,6 +7,8 @@
       <excludeFolder url="file://$MODULE_DIR$/android_studio/build" />
       <excludeFolder url="file://$MODULE_DIR$/flutter_componentes/.pub" />
       <excludeFolder url="file://$MODULE_DIR$/flutter_componentes/build" />
+      <excludeFolder url="file://$MODULE_DIR$/flutter_peliculas/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/flutter_peliculas/build" />
       <excludeFolder url="file://$MODULE_DIR$/flutter_vscode/.pub" />
       <excludeFolder url="file://$MODULE_DIR$/flutter_vscode/build" />
     </content>
