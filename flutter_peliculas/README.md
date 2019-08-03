@@ -252,6 +252,12 @@
     }// _footer    
     ```
 - 7.14 Problema con los futures
+    - Introducción a **Stream**
     - Cuando se llega al final del PageView se debería cargar la siguiente página con los populares
-    - En **movie_horizontal.dart** podríamos hacer la llamada a la siguiente página usando 
+    - En **movie_horizontal.dart** podríamos hacer la llamada a la siguiente página usando el listado peliculas, pero es un stateless widget.
+    - Si se transforma en un StatefulWidget se perdería la posibilidad de que sea un estandar reutilizable.
+    - La intención es que movie_horizontal solo se encargue de pintar los datos recibidos.
+    - La solución pasa por hacer la petición en el **home_page.dart**
+    - Existe un Widget especializado para eso. Se llama **Stream**
+
 
