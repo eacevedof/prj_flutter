@@ -290,6 +290,20 @@
             Sink<String> get inputSink => _oStreamCtrl.sink;
             //Que clase de info saldrá?
             Stream<String> get outputStream => _oStreamCtrl.stream;
+
+            //cerrar el stream
+            void dispose(){
+                //?: si existe lo cierra sino no hace nada
+                _oStreamCtrl?.close();
+            }
         }
         ```
+    - El StreamBuilder renderizará un widget cada vez que recibe información de un Stream
+    - El **sb** en su propiedad builder (es una func anonima) recibe dos parámetros:
+        - context: Información del arbol de widgets y más...
+        - snapshot: Información referente al estado del Stream y la información que sale del Stream
+            - estado del stream: cargando, error, etc.
+    - Se implementará parcialmente el patrón **Bloc**
+    
+    
 
