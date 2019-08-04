@@ -507,8 +507,9 @@
         );
     }// build   
     ```    
-
-
+- 7.20 Pasar argumentos de una página a otra usando el PushNamed
+    - detectar click o tap en tarjeta
+    - GestureDetector: Aplica eventos a un widget
     
     
 
