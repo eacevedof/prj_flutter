@@ -331,11 +331,117 @@
         final resp = await _procesarRespuesta(url);
         //agrego todas las peliculas en mi lista populares
         _populares.addAll(resp);
-        //se coloca en el inicio del stream de datos
+        //se coloca en el inicio del stream de datos para que puedan ser escuchados
         popularesSink(_populares);
         //devuelvo la lista de peliculas
         return resp;
     }// getPopulares    
+    ```
+- 7.18 Streambuilder
+    ```dart
+    //movie_horizontal.dart
+    final Function siguientePagina; //funcion callback 
+
+    //este constructor se llama desde home_page.dart -> _footer
+    MovieHorizontal({ @required this.peliculas, @required  this.siguientePagina});
+
+    final _pageController = new PageController(          
+            initialPage: 1,
+            viewportFraction: 0.3 //items por pantalla
+            );
+
+    @override
+    Widget build(BuildContext context) {
+        final _screenSize = MediaQuery.of(context).size;
+
+        //listener para detectar fin de pagina
+        _pageController.addListener((){
+        //detectar fin de página horizontal
+        if (_pageController.position.pixels >= _pageController.position.maxScrollExtent - 200){
+            //siguientePagina será el método: oProvPeliculas.getPopulares que recarga los datos de la sig
+            //pagina en el stream
+            siguientePagina();
+        }
+        });
+
+        return Container(
+        height: _screenSize.height * 0.2,
+        //slider del footer
+        child: PageView(
+            pageSnapping: false,
+            controller: _pageController,
+            children: _tarjetas(context),
+        ),
+        
+        );
+    }// build    
+
+    //home_page.dart
+    @override
+    Widget build(BuildContext context) {
+        //añade datos al stream con popularesSink(_populares);->_popularesStreamController.sink.add
+        oProvPeliculas.getPopulares();
+        return Scaffold(
+        appBar: AppBar(
+            centerTitle: false,
+            title: Text("Películas en cines"),
+            backgroundColor: Colors.indigoAccent,
+            actions: <Widget>[
+            IconButton(
+                icon: Icon(Icons.search), //icono lupa
+                onPressed: () {
+
+                },
+            )
+            ],
+        ),
+        //safearea salva el nodge (el hueco en la pantalla, pestaña negra)
+        body: Container(
+            child: Column(
+            children: <Widget>[
+                //realiza la llamada al endpoint usando un Fut builder. 
+                //devuelve un widget que se ha formado en el fut builder
+                _swiperTarjetas(),
+                //devuelve un widget container con otros widgets dentro 
+                //usa context para cambiar el estilo de la palabra Populares
+                _footer(context)
+            ],
+            )
+        )
+        );
+    }// build    
+
+    Widget _footer(BuildContext context){
+        return Container(
+            width: double.infinity,
+            child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                    Container(
+                        padding: EdgeInsets.only(left:20.0),
+                        child: Text("Populares",style: Theme.of(context).textTheme.subhead)),
+                    
+                    SizedBox(height: 5.0,),
+                    
+                    //cambiamos de future a stream. Ahora estamos a la escucha del stream
+                    StreamBuilder(
+                        //el stream que se va a escuchar
+                        stream: oProvPeliculas.popularesStream, //_popularesStreamController.stream;
+                        builder: (BuildContext context,AsyncSnapshot<List> snapshot){
+                            if(snapshot.hasData)
+                                return MovieHorizontal(
+                                    peliculas:snapshot.data,
+                                    //pasar una funcion como argumento. getPopulares incrementa _popularesPage++; y hace la 
+                                    //llamada asincrona e inscribe el resultado en el stream
+                                    siguientePagina: oProvPeliculas.getPopulares,
+                                );
+                            return CircularProgressIndicator();
+                        }//builder
+                    ),
+                ],// children
+            ),// column
+        );// contaier
+    }// _footer    
     ```
     
     

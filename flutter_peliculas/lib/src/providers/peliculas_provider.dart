@@ -45,7 +45,7 @@ class PeliculasProvider {
     final resp = await _procesarRespuesta(url);
     //agrego todas las peliculas en mi lista populares
     _populares.addAll(resp);
-    //se coloca en el inicio del stream de datos
+    //se coloca en el inicio del stream de datos para que puedan ser escuchados
     popularesSink(_populares);
     //devuelvo la lista de peliculas
     return resp;

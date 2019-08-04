@@ -12,7 +12,9 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
+    
+    //añade datos al stream con popularesSink(_populares);->_popularesStreamController.sink.add
+    oProvPeliculas.getPopulares();
     return Scaffold(
       appBar: AppBar(
         centerTitle: false,
@@ -90,12 +92,18 @@ class HomePage extends StatelessWidget {
           
           SizedBox(height: 5.0,),
           
-          FutureBuilder(
+          //cambiamos de future a stream. Ahora estamos a la escucha del stream
+          StreamBuilder(
             //llamada asincrona a: 3/movie/popular
-            future: oProvPeliculas.getPopulares(),
+            stream: oProvPeliculas.popularesStream, //_popularesStreamController.stream;
             builder: (BuildContext context,AsyncSnapshot<List> snapshot){
               if(snapshot.hasData)
-                return MovieHorizontal(peliculas:snapshot.data);
+                return MovieHorizontal(
+                  peliculas:snapshot.data,
+                  //pasar una funcion como argumento. getPopulares incrementa _popularesPage++; y hace la 
+                  //llamada asincrona e inscribe el resultado en el stream
+                  siguientePagina: oProvPeliculas.getPopulares,
+                );
               return CircularProgressIndicator();
             }//builder
           ),
