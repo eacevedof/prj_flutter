@@ -267,7 +267,29 @@
         - **Sink** objeto dentro de SController, añade información al stream
         - **Stream** obtener el stram final
     - En lo que nos corresponde. Tendremos una entrada de nuevas peliculas y la salida sera la lista completa de las películas.
+- 7.16 Introducción al patrón Bloc y al manejo de estado de la aplicación
+    - Bloc: business logic component
+    - Permite la comunicación entre distintos widget del arbol de widget sin tener que hacer una propagación por todos los nodos del camino.
+    - Es importante cerrar el stream
+    - En el proceso de comunicación de dos widgets:
+        - A emite un sink a Bloc
+        - Bloc hace el tratamiento correspondiente con el stream, ya sea utilizando un provider o un http, data, API call
+        - Finalmente devuelve un resultado (con steram) al widget B
+    - Dos streamscontroller:
+        - SingleSubscription
+            - Por defecto
+            - Si hay un stream y el streamcontroller esta escuchando tendra la exclusividad y hasta que no deje de escuchar ningun otro controller podra hacerlo.
 
-
-
+        - Broadcast
+            - 
+    - Métodos sink y stream
+        ```dart
+        class MiBloc {
+            StreamController<String> _oStreamCtrl = new StreamController<String>();
+            //Qué clase de información entrará al sink
+            Sink<String> get inputSink => _oStreamCtrl.sink;
+            //Que clase de info saldrá?
+            Stream<String> get outputStream => _oStreamCtrl.stream;
+        }
+        ```
 
