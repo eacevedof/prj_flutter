@@ -338,6 +338,7 @@
     }// getPopulares    
     ```
 - 7.18 Streambuilder
+    - con estas modificaciones el footer ya pagina!
     ```dart
     //movie_horizontal.dart
     final Function siguientePagina; //funcion callback 
