@@ -1,5 +1,5 @@
 # CAP 7 - flutter_peliculas
-### [Código fuente original]()
+### [Código fuente original](https://github.com/jalfonsosuarez/peliculas)
 
 - 7.4 Inicio del proyecto - Películas
     ```dart
@@ -304,6 +304,39 @@
         - snapshot: Información referente al estado del Stream y la información que sale del Stream
             - estado del stream: cargando, error, etc.
     - Se implementará parcialmente el patrón **Bloc**
+- 7.17 Creando un Stream de películas
+    ```dart
+    //peliculas_provider.dart
+    int _popularesPage = 0;
+    List<Pelicula> _populares = new List();
+
+    //si no llevara broadcast solo podria escuchar uno solo el stream
+    final _popularesStreamController = StreamController<List<Pelicula>>.broadcast();
+    //agrega al stream el listado de peliculas
+    Function(List<Pelicula>) get popularesSink => _popularesStreamController.sink.add;
+    Stream<List<Pelicula>> get popularesStream => _popularesStreamController.stream;
+
+    //cada vez que se entra a la pantalla se abriria un stream por eso hay que cerrarlo
+    void disposeStreams(){
+        _popularesStreamController?.close();
+    }
+
+    Future<List<Pelicula>> getPopulares() async {
+        print("provider.getPopulares");
+        _popularesPage++;
+        final url = Uri.https(_url,"3/movie/popular",{
+            "api_key": _apikey, "language":_language, "page": _popularesPage.toString(),
+        });
+
+        final resp = await _procesarRespuesta(url);
+        //agrego todas las peliculas en mi lista populares
+        _populares.addAll(resp);
+        //se coloca en el inicio del stream de datos
+        popularesSink(_populares);
+        //devuelvo la lista de peliculas
+        return resp;
+    }// getPopulares    
+    ```
     
     
 
