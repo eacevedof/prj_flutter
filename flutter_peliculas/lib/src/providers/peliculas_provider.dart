@@ -12,6 +12,8 @@ class PeliculasProvider {
   String _language = "es-ES";
 
   int _popularesPage = 0;
+  bool _cargando = false;
+
   List<Pelicula> _populares = new List();
 
   //si no llevara broadcast solo podria escuchar uno solo el stream
@@ -37,7 +39,16 @@ class PeliculasProvider {
   Future<List<Pelicula>> getPopulares() async {
     print("provider.getPopulares");
 
+    if( _cargando ) 
+    {
+      print("get_populares is cargando me salgo");
+      return [];
+    }
+    _cargando = true;
+
     _popularesPage++;
+    print("Cargando siguientes...");
+
     final url = Uri.https(_url,"3/movie/popular",{
       "api_key": _apikey, "language":_language, "page": _popularesPage.toString(),
     });
@@ -47,6 +58,7 @@ class PeliculasProvider {
     _populares.addAll(resp);
     //se coloca en el inicio del stream de datos para que puedan ser escuchados
     popularesSink(_populares);
+    _cargando = false;
     //devuelvo la lista de peliculas
     return resp;
     

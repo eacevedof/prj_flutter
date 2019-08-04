@@ -444,6 +444,71 @@
         );// contaier
     }// _footer    
     ```
+- 7.19 Optimizaciones para nuestra aplicación
+    - Se piden más datos de los necesarios
+    - En ningún momento se le dice que espere a que llegue al final del scroll para que haga la siguiente carga
+    - Esto se soluciona con un booleano 
+    - PageView y PageView.builder
+    - pv.builder es más optimo ya que carga bajo demanda
+    ```dart
+    //peliculas_provider.dart
+    Future<List<Pelicula>> getPopulares() async {
+        print("provider.getPopulares");
+
+        if( _cargando ) 
+        {
+            print("get_populares is cargando me salgo");
+            return [];
+        }
+        _cargando = true;
+
+        _popularesPage++;
+        print("Cargando siguientes...");
+
+        final url = Uri.https(_url,"3/movie/popular",{
+            "api_key": _apikey, "language":_language, "page": _popularesPage.toString(),
+        });
+
+        final resp = await _procesarRespuesta(url);
+        //agrego todas las peliculas en mi lista populares
+        _populares.addAll(resp);
+        //se coloca en el inicio del stream de datos para que puedan ser escuchados
+        popularesSink(_populares);
+        _cargando = false;
+        //devuelvo la lista de peliculas
+        return resp;
+    }// getPopulares
+
+    //movie_horizontal.dart
+    Widget build(BuildContext context) {
+        final _screenSize = MediaQuery.of(context).size;
+
+        //listener para detectar fin de pagina
+        _pageController.addListener((){
+            //detectar fin de página horizontal
+            if (_pageController.position.pixels >= _pageController.position.maxScrollExtent - 200){
+                //siguientePagina será el método: oProvPeliculas.getPopulares que recarga los datos de la sig
+                //pagina en el stream
+                siguientePagina();
+            }
+        });
+
+        return Container(
+            height: _screenSize.height * 0.2,
+            //slider del footer. El pageview va a renderizar todos los items que se hayan cargado al mismo tiempo
+            //Pageview.builder los va creando bajo demanda
+            child: PageView.builder(
+                pageSnapping: false,
+                controller: _pageController,
+                itemCount: peliculas.length,
+                //children: _tarjetas(context), //no va para pv.builder
+                itemBuilder: (context, i) => _tarjeta(context, peliculas[i]),
+            ),
+        );
+    }// build   
+    ```    
+
+
     
     
 

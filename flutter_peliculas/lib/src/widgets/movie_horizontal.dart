@@ -30,15 +30,44 @@ class MovieHorizontal extends StatelessWidget {
 
     return Container(
       height: _screenSize.height * 0.2,
-      //slider del footer
-      child: PageView(
+      //slider del footer. El pageview va a renderizar todos los items que se hayan cargado al mismo tiempo
+      //Pageview.builder los va creando bajo demanda
+      child: PageView.builder(
         pageSnapping: false,
         controller: _pageController,
-        children: _tarjetas(context),
+        itemCount: peliculas.length,
+        //children: _tarjetas(context), //no va para pv.builder
+        itemBuilder: (context, i) => _tarjeta(context, peliculas[i]),
       ),
       
     );
   }// build
+
+  Widget _tarjeta(BuildContext context, Pelicula oModelPelicula){
+    return Container(
+        margin: EdgeInsets.only(right:1.8),
+        child: Column(
+          children: <Widget>[
+            ClipRRect(
+              borderRadius: BorderRadius.circular(20.0),
+              child: FadeInImage(
+                //modelpelicula devuelve una url
+                image: NetworkImage(oModelPelicula.getPosterImg()),
+                placeholder: AssetImage("assets/img/no-image.jpg"),
+                fit: BoxFit.cover,
+                height: 100.0,//si pongo más se sale de la pantalla
+              ),
+            ),
+            SizedBox(height: 5.0,),
+            Text(
+              oModelPelicula.title, 
+              overflow: TextOverflow.ellipsis,
+              style: Theme.of(context).textTheme.caption,
+            ),
+          ],
+        ),
+      );    
+  }// _tarjeta
 
   List<Widget> _tarjetas(BuildContext context){
     return peliculas.map((oModelPelicula) {
