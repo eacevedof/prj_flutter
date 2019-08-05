@@ -511,5 +511,5 @@
     - detectar click o tap en tarjeta
     - GestureDetector: Aplica eventos a un widget
     
-    
+
 
