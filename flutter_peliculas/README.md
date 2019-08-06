@@ -510,6 +510,21 @@
 - 7.20 Pasar argumentos de una página a otra usando el PushNamed
     - detectar click o tap en tarjeta
     - GestureDetector: Aplica eventos a un widget
-    
+    - La página que envía se apoya en el enrutador:
+    ```dart
+    //main.dart
+    routes: {
+        "/" : (BuildContext context) => HomePage(),
+        "detalle" : (BuildContext context) => PeliculaDetalle(),
+    },
 
+    //movie_horizontal.dart
+    Navigator.pushNamed(context, "detalle", arguments: oModelPelicula);
+
+    //pelicula_detalle_page.dart
+    //La página que recibe recupera la variable con:
+    final Pelicula oModelPelicula = ModalRoute.of(context).settings.arguments;
+    ```
+-
+    
 
