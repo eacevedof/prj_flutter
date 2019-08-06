@@ -76,10 +76,18 @@ class Pelicula {
     if( posterPath == null)
       return "https://gambit.gg/design/images/no-pic.jpg";
     
-    return "https://image.tmdb.org/t/p/w500/$posterPath";
+    return "https://image.tmdb.org/t/p/w500$posterPath";
     
   }// getPosterImg
 
+  String getBackgroundImg(){
+
+    if( backdropPath == null)
+      return "https://gambit.gg/design/images/no-pic.jpg";
+    
+    return "https://image.tmdb.org/t/p/w500$backdropPath";
+    
+  }// getBackgroundImg
 }// Pelicula
 
 
