@@ -48,14 +48,17 @@ class MovieHorizontal extends StatelessWidget {
         margin: EdgeInsets.only(right:1.8),
         child: Column(
           children: <Widget>[
-            ClipRRect(
-              borderRadius: BorderRadius.circular(20.0),
-              child: FadeInImage(
-                //modelpelicula devuelve una url
-                image: NetworkImage(oModelPelicula.getPosterImg()),
-                placeholder: AssetImage("assets/img/no-image.jpg"),
-                fit: BoxFit.cover,
-                height: 100.0,//si pongo más se sale de la pantalla
+            Hero(
+              tag: oModelPelicula.id,//id único que debe identificar la tarjeta
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(20.0),
+                child: FadeInImage(
+                  //modelpelicula devuelve una url
+                  image: NetworkImage(oModelPelicula.getPosterImg()),
+                  placeholder: AssetImage("assets/img/no-image.jpg"),
+                  fit: BoxFit.cover,
+                  height: 100.0,//si pongo más se sale de la pantalla
+                ),
               ),
             ),
             SizedBox(height: 5.0,),
@@ -67,7 +70,6 @@ class MovieHorizontal extends StatelessWidget {
           ],
         ),
       );    
-
       return GestureDetector(
         child: tarjeta,
         onTap: (){

@@ -705,7 +705,40 @@
             );
     }// _actorTarjeta    
     ```
+- 7.26. Hero Animation
+    - [https://flutter.dev/docs/development/ui/animations/hero-animations](https://flutter.dev/docs/development/ui/animations/hero-animations)
+    - Widget flotante
+    - De la pantalla principal (Peliculas en cines) se pasará con animación pasando la imágen
+    - es importante que tengan el mismo tag para que se asocie la animación
+    ```dart
+    //movie_horizontal.dart
+    Hero(
+        tag: oModelPelicula.id,//id único que debe identificar la tarjeta
+        child: ClipRRect(
+        borderRadius: BorderRadius.circular(20.0),
+        child: FadeInImage(
+            //modelpelicula devuelve una url
+            image: NetworkImage(oModelPelicula.getPosterImg()),
+            placeholder: AssetImage("assets/img/no-image.jpg"),
+            fit: BoxFit.cover,
+            height: 100.0,//si pongo más se sale de la pantalla
+        ),
+        ),
+    ),
 
+    //pelicula_detalle_page.dart
+    children: <Widget>[
+        Hero(
+        tag: oPelicula.id,
+        child: ClipRRect(
+            borderRadius: BorderRadius.circular(20.0),
+            child: Image(
+                image: NetworkImage(oPelicula.getPosterImg()),
+                height: 150.0,
+            ),
+        ),
+    ),
+    ```
 
 
     
