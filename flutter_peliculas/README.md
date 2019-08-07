@@ -625,6 +625,12 @@
         );
     }    
     ```
+- 7.23 Modelo para manejar los actores de la película
+    - crear modelo actores_model.dart
+    - seleccionamos el json y en el nuevo fichero ejecutamos el comando 
+    - de vscode: paste json as code
+    - se crea loader de Actor
+    - se crea clase de apoyo para listado de actores `class Cast`
 
 
     
