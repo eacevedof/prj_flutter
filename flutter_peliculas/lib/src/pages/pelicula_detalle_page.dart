@@ -1,7 +1,9 @@
 //@file: pelicula_detalle_page.dart
 
 import 'package:flutter/material.dart';
+import 'package:flutter_peliculas/src/models/actor_model.dart';
 import 'package:flutter_peliculas/src/models/pelicula_model.dart';
+import 'package:flutter_peliculas/src/providers/peliculas_provider.dart';
 
 class PeliculaDetalle extends StatelessWidget {
 
@@ -23,6 +25,7 @@ class PeliculaDetalle extends StatelessWidget {
                 _descripcion(oModelPelicula),
                 _descripcion(oModelPelicula),
                 _descripcion(oModelPelicula),
+                _crearCasting(oModelPelicula),
               ]
             )
           ),
@@ -88,10 +91,66 @@ class PeliculaDetalle extends StatelessWidget {
   }// _posterTitulo
 
   Widget _descripcion(Pelicula oPelicula){
+
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 20.0),
       child: Text(oPelicula.overview,textAlign: TextAlign.justify,),
     );
-  }
+    
+  } //_descripcion
+
+  /**
+   * crea footer con el elenco de actores
+   */
+  Widget _crearCasting(Pelicula oPelicula){
+
+    final peliProvider = new PeliculasProvider();
+
+    return FutureBuilder(
+      future: peliProvider.getCast(oPelicula.id.toString()),
+      //initialData: InitialData, no pq se pondrá un loading
+      builder: (BuildContext context, AsyncSnapshot<List> snapshot) {
+        if(snapshot.hasData){
+          return _crearActoresPageView(snapshot.data);
+        }
+        return Center(child:CircularProgressIndicator());
+      },
+    );
+
+  }// _crearCasting
+
+  Widget _crearActoresPageView(List<Actor> actores){
+    return SizedBox(
+      height: 200.0,
+      child: PageView.builder(
+        pageSnapping: false,//para que no se frene 
+        itemCount: actores.length,
+        controller: PageController(
+          viewportFraction: 0.3,
+          initialPage: 1,
+        ),
+        itemBuilder: (context, i) => _actorTarjeta(actores[i]),
+      ),
+    );
+  }// _crearActoresPageView
+
+  Widget _actorTarjeta(Actor actor){
+    return Container(
+      child: Column(
+        children: <Widget>[
+          ClipRRect(
+            borderRadius: BorderRadius.circular(20.0),
+            child: FadeInImage(
+              image: NetworkImage(actor.getPhoto()),
+              placeholder: AssetImage("assets/img/no-image.jpg"),
+              height: 150.0,
+              fit: BoxFit.cover,
+            ),
+          ),
+          Text(actor.name,overflow: TextOverflow.ellipsis,)
+        ],
+      )
+    );
+  }// _actorTarjeta
 
 }// PeliculaDetalle

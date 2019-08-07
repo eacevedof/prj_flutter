@@ -648,6 +648,63 @@
         return cast.actores;
     }// getCast
     ```
+- 7.25. Crear un pageview de actores
+    ```dart
+    //pelicula_detalle_page.dart
+    /**
+    * crea footer con el elenco de actores
+    */
+    Widget _crearCasting(Pelicula oPelicula){
+
+    final peliProvider = new PeliculasProvider();
+
+    return FutureBuilder(
+        future: peliProvider.getCast(oPelicula.id.toString()),
+        //initialData: InitialData, no pq se pondrá un loading
+        builder: (BuildContext context, AsyncSnapshot<List> snapshot) {
+        if(snapshot.hasData){
+        return _crearActoresPageView(snapshot.data);
+        }
+        return Center(child:CircularProgressIndicator());
+        },
+    );
+
+    }// _crearCasting
+
+    Widget _crearActoresPageView(List<Actor> actores){
+        return SizedBox(
+            height: 200.0,
+            child: PageView.builder(
+                pageSnapping: false,//para que no se frene 
+                itemCount: actores.length,
+                controller: PageController(
+                    viewportFraction: 0.3,
+                    initialPage: 1,
+                ),
+                itemBuilder: (context, i) => _actorTarjeta(actores[i]),
+            ),
+        );
+    }// _crearActoresPageView
+
+    Widget _actorTarjeta(Actor actor){
+        return Container(
+                child: Column(
+                    children: <Widget>[
+                    ClipRRect(
+                        borderRadius: BorderRadius.circular(20.0),
+                        child: FadeInImage(
+                        image: NetworkImage(actor.getPhoto()),
+                        placeholder: AssetImage("assets/img/no-image.jpg"),
+                        height: 150.0,
+                        fit: BoxFit.cover,
+                        ),
+                    ),
+                    Text(actor.name,overflow: TextOverflow.ellipsis,)
+                    ],
+                )
+            );
+    }// _actorTarjeta    
+    ```
 
 
 
