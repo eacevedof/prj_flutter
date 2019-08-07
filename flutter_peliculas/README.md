@@ -631,6 +631,24 @@
     - de vscode: paste json as code
     - se crea loader de Actor
     - se crea clase de apoyo para listado de actores `class Cast`
+- 7.24 Servicio para obtener los actores de la película 
+    ```dart
+    //peliculas_provider.dart
+    Future<List<Actor>> getCast(String peliId) async {
+        print("provider.getCast");
+        final url = Uri.https(_url,"3/movie/$peliId/credits",{
+        "api_key": _apikey, 
+        "language":_language
+        });
+
+        final resp = await http.get(url);
+        final decodedData = json.decode(resp.body);
+        final cast = new Cast.fromJsonList(decodedData["cast"]);
+
+        return cast.actores;
+    }// getCast
+    ```
+
 
 
     
