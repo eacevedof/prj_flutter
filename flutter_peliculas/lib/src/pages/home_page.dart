@@ -24,7 +24,7 @@ class HomePage extends StatelessWidget {
           IconButton(
             icon: Icon(Icons.search), //icono lupa
             onPressed: () {
-
+              //showSearch(context:context,);
             },
           )
         ],

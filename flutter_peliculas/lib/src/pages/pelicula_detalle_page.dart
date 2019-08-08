@@ -102,7 +102,7 @@ class PeliculaDetalle extends StatelessWidget {
 
   } //_descripcion
 
-  /**
+  /*
    * crea footer con el elenco de actores
    */
   Widget _crearCasting(Pelicula oPelicula){

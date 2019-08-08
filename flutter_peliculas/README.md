@@ -772,6 +772,10 @@
             Hero(
                 tag: oPelicula.uniqueId,    
     ```
+- 7.28. Search Delegate
+    - En HomePage.build se incluye el showSearch
+    - se crea una clase search_delegate.dart
+    - Se sobrescriben los 4 metodos (se deja la plantilla para el sig. capítulo)
 
 
 
