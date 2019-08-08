@@ -2,11 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7639eb1f-db75-4293-b69a-c959ab17df9a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/prj_flutter.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/prj_flutter.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/flutter_peliculas/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_peliculas/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flutter_peliculas/lib/src/pages/pelicula_detalle_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_peliculas/lib/src/pages/pelicula_detalle_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flutter_peliculas/lib/src/widgets/movie_horizontal.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_peliculas/lib/src/widgets/movie_horizontal.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_peliculas/lib/src/widgets/card_swiper_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_peliculas/lib/src/widgets/card_swiper_widget.dart" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -68,7 +65,6 @@
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <layout>
-      <window_info id="Build Variants" side_tool="true" />
       <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
       <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.3590604" />
       <window_info id="Structure" order="2" side_tool="true" />
@@ -77,8 +73,7 @@
       <window_info id="Resources Explorer" order="5" />
       <window_info id="Capture Tool" order="6" />
       <window_info id="Favorites" order="7" side_tool="true" />
-      <window_info anchor="bottom" id="Logcat" />
-      <window_info anchor="bottom" id="Android Profiler" show_stripe_button="false" />
+      <window_info id="Build Variants" order="8" side_tool="true" />
       <window_info anchor="bottom" id="Run" order="0" />
       <window_info anchor="bottom" id="TODO" order="1" />
       <window_info anchor="bottom" id="Debug" order="2" />
@@ -86,12 +81,14 @@
       <window_info anchor="bottom" id="Event Log" order="4" side_tool="true" />
       <window_info anchor="bottom" id="Flutter Performance" order="5" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="6" />
-      <window_info anchor="right" id="Device File Explorer" side_tool="true" />
+      <window_info anchor="bottom" id="Logcat" order="7" />
+      <window_info anchor="bottom" id="Android Profiler" order="8" show_stripe_button="false" />
       <window_info anchor="right" id="Capture Analysis" order="0" />
       <window_info anchor="right" id="Theme Preview" order="1" />
       <window_info anchor="right" id="Flutter Inspector" order="2" />
       <window_info anchor="right" id="Flutter Outline" order="3" />
       <window_info anchor="right" id="Palette&#9;" order="4" />
+      <window_info anchor="right" id="Device File Explorer" order="5" side_tool="true" />
     </layout>
   </component>
 </project>

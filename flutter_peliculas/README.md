@@ -739,6 +739,40 @@
         ),
     ),
     ```
+- 7.27 Hero Animation en las tarjetas principales
+    ```dart
+    //pelicula_model.dart
+    class Pelicula {
+        String uniqueId;
+    ...
+    //card_swipper_widget.dart
+    peliculas[index].uniqueId = '${peliculas[index].id}-tarjeta';
+    //crea un rectangulo redondeado
+    return Hero(
+        tag: peliculas[index].uniqueId,    
+    ...
+    //movie_horizontal.dart
+    Widget _tarjeta(BuildContext context, Pelicula oModelPelicula){
+
+        oModelPelicula.uniqueId = '${oModelPelicula.id}-poster';
+        final tarjeta = Container(
+            margin: EdgeInsets.only(right:1.8),
+            child: Column(
+            children: <Widget>[
+                Hero(
+                //tag: oModelPelicula.id,//id único que debe identificar la tarjeta
+                tag: oModelPelicula.uniqueId,    
+    ...
+    //pelicula_detalle.dart
+    Widget _posterTitulo(BuildContext context,Pelicula oPelicula){
+        return Container(
+        padding: EdgeInsets.symmetric(horizontal: 20.0),
+        child: Row(
+            children: <Widget>[
+            Hero(
+                tag: oPelicula.uniqueId,    
+    ```
+
 
 
     
