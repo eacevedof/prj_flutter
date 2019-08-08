@@ -776,7 +776,74 @@
     - En HomePage.build se incluye el showSearch
     - se crea una clase search_delegate.dart
     - Se sobrescriben los 4 metodos (se deja la plantilla para el sig. capítulo)
+- 7.29. BuildActions y BuildLeading 
+    ```dart
+    //home_page.dart
+    Widget build(BuildContext context) {
+    
+        //añade datos al stream con popularesSink(_populares);->_popularesStreamController.sink.add
+        oProvPeliculas.getPopulares();
+        return Scaffold(
+        appBar: AppBar(
+            centerTitle: false,
+            title: Text("Películas en cines"),
+            backgroundColor: Colors.indigoAccent,
+            actions: <Widget>[
+            IconButton(
+                icon: Icon(Icons.search), //icono lupa
+                onPressed: () {
+                showSearch(
+                    context:context, 
+                    delegate: DataSearch(),
+                    query:"Hola"// valor por defecto de busqueda
+                );
+                },
+    ...
+    //search_delegate.dart
+    class DataSearch extends SearchDelegate{
+        @override
+        //debe devolver una lista de widgets
+        List<Widget> buildActions(BuildContext context) {
+            // Las acciones de nuestro AppBar p.e. un icono para limpiar el texto o cancelar la busqueda
+            return [
+                IconButton(
+                    icon: Icon(Icons.clear),//La x de limpiar
+                    onPressed: (){
+                    //print("CLICK!!");
+                    query = ""; // con esto se limpia la caja
+                    },
+                ),
+            ];
+        }
 
+        @override
+        Widget buildLeading(BuildContext context) {
+            // Icono a la izquierda del AppBar
+            return IconButton(
+                icon: AnimatedIcon(
+                    icon: AnimatedIcons.menu_arrow,
+                    progress: transitionAnimation, //tiempo en el que se va animar este icono
+                ),
+                onPressed: (){
+                    close(context,null);//regresa a la pantalla anterior
+                },
+            );
+        }
+
+        @override
+        Widget buildResults(BuildContext context) {
+            // Crea los resultados que vamos a mostrar
+            return Container();
+        }
+
+        @override
+        Widget buildSuggestions(BuildContext context) {
+            // las sugerencias cuando la persona escribe
+            return Container();
+        }
+
+    }// class DataSearch    
+    ```
 
 
     

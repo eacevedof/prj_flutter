@@ -1,6 +1,7 @@
 //@file: home_page.dart
 import 'package:flutter/material.dart';
 import 'package:flutter_peliculas/src/providers/peliculas_provider.dart';
+import 'package:flutter_peliculas/src/search/search_delegate.dart';
 import 'package:flutter_peliculas/src/widgets/card_swiper_widget.dart';
 import 'package:flutter_peliculas/src/widgets/movie_horizontal.dart';
 
@@ -24,7 +25,11 @@ class HomePage extends StatelessWidget {
           IconButton(
             icon: Icon(Icons.search), //icono lupa
             onPressed: () {
-              //showSearch(context:context,);
+              showSearch(
+                context:context, 
+                delegate: DataSearch(),
+                query:"Hola"// valor por defecto de busqueda
+              );
             },
           )
         ],
