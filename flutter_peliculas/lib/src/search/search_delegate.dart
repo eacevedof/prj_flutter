@@ -3,6 +3,17 @@ import 'package:flutter/material.dart';
 
 class DataSearch extends SearchDelegate{
 
+  String seleccion = "";
+
+  final peliculas = [
+    "Spiderman","Aquaman","Batman","Shazam!","Ironman","Capitan América","superman",
+    "Ironman 1","Ironman 2","Ironman 3"
+  ];
+
+  final peliculasRecientes = [
+    "Spiderman","Capitan América"
+  ];
+
   @override
   //debe devolver una lista de widgets
   List<Widget> buildActions(BuildContext context) {
@@ -33,15 +44,42 @@ class DataSearch extends SearchDelegate{
   }
 
   @override
+  //Al hacer click en el elemento encontrado se puede llamar a este metodo
   Widget buildResults(BuildContext context) {
     // Crea los resultados que vamos a mostrar
-    return Container();
+    return Center(
+      child: Container(
+        height: 100.0,
+        width: 100.0,
+        color: Colors.blueAccent,
+        child: Text(seleccion),
+      ),
+    );
   }
 
   @override
   Widget buildSuggestions(BuildContext context) {
+    final listaSugerida = (query.isEmpty)
+                          ? peliculasRecientes 
+                          : peliculas.where(
+                              (p)=>p.toLowerCase().startsWith(query.toLowerCase())
+                            ).toList();
+
+
     // las sugerencias cuando la persona escribe
-    return Container();
+    return ListView.builder(
+      itemCount: listaSugerida.length,
+      itemBuilder: (context, i) {
+        return ListTile(
+          leading: Icon(Icons.movie),
+          title: Text(listaSugerida[i]),
+          onTap: (){
+            seleccion = listaSugerida[i];
+            showResults(context);//llama a buildResults
+          },
+        );
+      },
+    );
   }
 
 }// class DataSearch

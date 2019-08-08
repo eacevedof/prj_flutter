@@ -844,7 +844,48 @@
 
     }// class DataSearch    
     ```
+- 7.30 BuildSuggestions y BuildResults
+    - Buscador y acceso al detalle al presionar sobre un item encontrado
+    ```dart
+    //search_delegate.dart
+    @override
+    //Al hacer click en el elemento encontrado se puede llamar a este metodo
+    Widget buildResults(BuildContext context) {
+        // Crea los resultados que vamos a mostrar
+        return Center(
+        child: Container(
+            height: 100.0,
+            width: 100.0,
+            color: Colors.blueAccent,
+            child: Text(seleccion),
+        ),
+        );
+    }   
 
+    Widget buildSuggestions(BuildContext context) {
+        final listaSugerida = (query.isEmpty)
+                            ? peliculasRecientes 
+                            : peliculas.where(
+                                (p)=>p.toLowerCase().startsWith(query.toLowerCase())
+                                ).toList();
+
+
+        // las sugerencias cuando la persona escribe
+        return ListView.builder(
+        itemCount: listaSugerida.length,
+        itemBuilder: (context, i) {
+            return ListTile(
+            leading: Icon(Icons.movie),
+            title: Text(listaSugerida[i]),
+            onTap: (){
+                seleccion = listaSugerida[i];
+                showResults(context);//llama a buildResults
+            },
+            );
+        },
+        );
+    }
+    ```
 
     
 
