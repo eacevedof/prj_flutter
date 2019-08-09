@@ -10,4 +10,6 @@
     - App 2: Diseño app de clima con pantalla de dashboard
     - Button Navigation Bar
 - 8.4. (129) Explicación del diseño en Flutter
+- 8.5. Inicio de proyecto - Diseños
+    - vscode snippet meteapp
     - 
