@@ -954,6 +954,10 @@
     - Fernando hará una versión del código que hay en la web de Flutter
     - Si se desea seguir practicando el diseño de las apps hay mucho material
         - Pinterest, Applabs etc
-- 8.2 (127)
+- 8.3. (128) Demostración de la aplicación - Diseños en Flutter
+    - App 1: hacer scroll y regresar arriba
+    - App 2: Diseño app de clima con pantalla de dashboard
+    - Button Navigation Bar
+    
     
 
