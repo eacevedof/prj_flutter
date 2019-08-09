@@ -12,4 +12,5 @@
 - 8.4. (129) Explicación del diseño en Flutter
 - 8.5. Inicio de proyecto - Diseños
     - vscode snippet meteapp
+- 8.6. Diseño básico - parte 1
     - 
