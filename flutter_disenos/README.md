@@ -29,5 +29,12 @@
     - vscode: Extensión Lorem Ipsum
     - Al Text no se le puede aplicar padding, para esto hay que envolverlo en un Container
     - Row: mainAxisAlignment: MainAxisAlignment.spaceEvenly, Distribuye de forma homogenea los iconos (los anchos de los <td>)
-    - se deja con overflow vertical en el Scaffold que se solucionará en el sig video
-    
+    - se deja con overflow vertical en el widget Column que se solucionará en el sig video (con un SingleChildScrollView)
+- 8.8. Diseño básico - parte 3
+    - Ojo con las rotaciones y el nodge (de los iphone)
+    - Recoloca imágen:
+        - height: 180.0,
+        - fit: BoxFit.cover  
+    - SafeArea para evitar que el nodge se coma información
+    - Fin diseño 1
+
