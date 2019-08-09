@@ -31,6 +31,7 @@
     - Row: mainAxisAlignment: MainAxisAlignment.spaceEvenly, Distribuye de forma homogenea los iconos (los anchos de los <td>)
     - se deja con overflow vertical en el widget Column que se solucionará en el sig video (con un SingleChildScrollView)
 - 8.8. Diseño básico - parte 3
+    - SingleChildScrollView sirve para que permita hacer scroll
     - Ojo con las rotaciones y el nodge (de los iphone)
     - Recoloca imágen:
         - height: 180.0,
