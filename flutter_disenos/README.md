@@ -13,4 +13,14 @@
 - 8.5. Inicio de proyecto - Diseños
     - vscode snippet meteapp
 - 8.6. Diseño básico - parte 1
-    - 
+    ```dart
+    //basico_page.dart
+    div.padding  => Container( padding: EdgeInsets.symmetric(horizontal: 30.0, vertical: 20.0),
+    Column => tiene como hijos widgets que son filas => childs: <tr>
+    Row => tiene como hijos widgets que son columnas => childs: <td>
+    crossAxisAlignment: CrossAxisAlignment.start  => align-contet: left
+    Expanded => div.widht = 100%
+    SizedBox(height: 6.0,) => <span></span>
+    TextStyle(fontSize: 20.0, fontWeight:FontWeight.bold) => font-size:20; font-weight:bold; 
+    Image(image: NetworkImage("https://www.xtravelperu.com/wp-content/uploads/2016/12/machupicchu-santa-teresa.jpg"),), => <img href=>
+    ```
