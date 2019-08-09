@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="7639eb1f-db75-4293-b69a-c959ab17df9a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/flutter_peliculas/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_peliculas/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flutter_peliculas/lib/src/widgets/card_swiper_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_peliculas/lib/src/widgets/card_swiper_widget.dart" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -26,8 +25,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="ProjectPane" />
       <pane id="PackagesPane" />
+      <pane id="ProjectPane" />
       <pane id="Scope" />
       <pane id="AndroidView" />
     </panes>

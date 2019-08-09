@@ -886,6 +886,66 @@
         );
     }
     ```
+- 7.31 Buscar películas en TheMovieDB
+    - En el provider se crea un buscar pelicula
+    ```dart
+    //peliculas_provider.dart
+    Future<List<Pelicula>> buscarPelicula(String query) async {
+        print("provider.buscarPelicula");
+        final url = Uri.https(_url,"3/search/movie",{
+        "api_key": _apikey, 
+        "language":_language,
+        "query": query
+        });
 
+        return await _procesarRespuesta(url);
+    }// buscarPelicula    
+
+    //search_delegate.dart
+    final oProvider = new PeliculasProvider();
+    ...
+    Widget buildSuggestions(BuildContext context) {
+        if(query.isEmpty)
+            return Container();
+
+        return FutureBuilder(
+            future: oProvider.buscarPelicula(query),
+            builder: (BuildContext context, AsyncSnapshot<List<Pelicula>> snapshot) {
+                if(snapshot.hasData){
+                    final peliculas = snapshot.data;
+                    return ListView(
+                        children: peliculas.map((pelicula){
+                            return ListTile(
+                                leading: FadeInImage(
+                                image: NetworkImage(pelicula.getPosterImg()),
+                                placeholder: AssetImage("assets/img/no-image.jpg"),
+                                width: 50.0,
+                                fit: BoxFit.contain,
+                                ),
+                                title: Text(pelicula.title),
+                                subtitle: Text(pelicula.originalTitle),
+                                onTap:(){
+                                close(context,null);
+                                pelicula.uniqueId = "";
+                                Navigator.pushNamed(context,"detalle",arguments: pelicula);
+                                //una vez que estamos en el detalle de la película podemos navegar y 
+                                //volver, pero al hacer esto, perdemos la barra de busqueda.
+                                //para mantener la barra habría que usar el método "buildResults"
+                                //no se muestra en este video :(
+                                }
+                            );
+                        }).toList(),
+                    );
+                }
+                else
+                {
+                    return Center(
+                        child: CircularProgressIndicator(),
+                    );
+                }
+            },//builder
+        );//FutureBuilder
+    }// buildSuggestions
+    ```
     
 

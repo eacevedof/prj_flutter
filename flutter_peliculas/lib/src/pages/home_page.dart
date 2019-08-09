@@ -28,7 +28,7 @@ class HomePage extends StatelessWidget {
               showSearch(
                 context:context, 
                 delegate: DataSearch(),
-                query:"Hola"// valor por defecto de busqueda
+                query:""// valor por defecto de busqueda
               );
             },
           )
