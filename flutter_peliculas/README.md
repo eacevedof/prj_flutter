@@ -947,17 +947,5 @@
         );//FutureBuilder
     }// buildSuggestions
     ```
-## 8 Diseños en Flutter
-- 8.1 (126) Introducción
-    - Separar un diseño y convertirlo en Widgets 
-    - Container, Rows, Columns
-    - Fernando hará una versión del código que hay en la web de Flutter
-    - Si se desea seguir practicando el diseño de las apps hay mucho material
-        - Pinterest, Applabs etc
-- 8.3. (128) Demostración de la aplicación - Diseños en Flutter
-    - App 1: hacer scroll y regresar arriba
-    - App 2: Diseño app de clima con pantalla de dashboard
-    - Button Navigation Bar
-    
     
 
