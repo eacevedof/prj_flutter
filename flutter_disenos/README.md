@@ -24,3 +24,10 @@
     TextStyle(fontSize: 20.0, fontWeight:FontWeight.bold) => font-size:20; font-weight:bold; 
     Image(image: NetworkImage("https://www.xtravelperu.com/wp-content/uploads/2016/12/machupicchu-santa-teresa.jpg"),), => <img href=>
     ```
+- 8.7 Diseño básico - parte 2
+    - basico_page.dart
+    - vscode: Extensión Lorem Ipsum
+    - Al Text no se le puede aplicar padding, para esto hay que envolverlo en un Container
+    - Row: mainAxisAlignment: MainAxisAlignment.spaceEvenly, Distribuye de forma homogenea los iconos (los anchos de los <td>)
+    - se deja con overflow vertical en el Scaffold que se solucionará en el sig video
+    
