@@ -947,5 +947,13 @@
         );//FutureBuilder
     }// buildSuggestions
     ```
+## 8 Diseños en Flutter
+- 8.1 (126) Introducción
+    - Separar un diseño y convertirlo en Widgets 
+    - Container, Rows, Columns
+    - Fernando hará una versión del código que hay en la web de Flutter
+    - Si se desea seguir practicando el diseño de las apps hay mucho material
+        - Pinterest, Applabs etc
+- 8.2 (127)
     
 
