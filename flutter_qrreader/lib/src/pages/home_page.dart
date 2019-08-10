@@ -1,6 +1,8 @@
 //home_page.dart
 import 'package:flutter/material.dart';
+import 'package:flutter_qrreader/src/models/scan_model.dart';
 import 'package:flutter_qrreader/src/pages/direcciones_page.dart';
+import 'package:flutter_qrreader/src/providers/db_provider.dart';
 import 'package:qrcode_reader/qrcode_reader.dart';
 
 import 'mapas_page.dart';
@@ -51,16 +53,22 @@ class _HomePageState extends State<HomePage> {
     //theframework.es
     //geo:40.64717223609042,-73.96886244257814
     print("scan_qr");
-    String futreString = "";
+    String futureString = "http://theframework.es";
+
+    if( futureString != null){
+      final oScanModel = ScanModel(valor:futureString);
+      DbProvider.oDb.nuevoScan(oScanModel);
+    }
+
     // try {
     //   //con el await esperamos un string de lo contrario esperariamos un Future
-    //   futreString = await new QRCodeReader().scan();
+    //   futureString = await new QRCodeReader().scan();
     // }catch(e){
-    //   futreString = e.toString();
+    //   futureString = e.toString();
     // }
 
-    // print("scan_qr.futurestring: $futreString");
-    // if(futreString!=null)
+    // print("scan_qr.futureString: $futreString");
+    // if(futureString!=null)
     //   print("Tenemos Información");
 
   }//scan_qr

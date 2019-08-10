@@ -290,3 +290,45 @@
     return res;
   }  
   ```
+- 9.15. Grabando el Scan en base de datos
+  - Ya inserta pero no se refresca el listado automaticamente
+  - El refersco automático se verá en la prox clase
+  ```dart
+  //db_provider.dart
+  //exporta el modelo en los archivos que usan db_provider
+  export 'package:flutter_qrreader/src/models/scan_model.dart';
+
+  //home_page.dart
+    String futureString = "http://theframework.es";
+
+    if( futureString != null){
+      final oScanModel = ScanModel(valor:futureString);
+      DbProvider.oDb.nuevoScan(oScanModel);
+    }
+  
+  //mapas_page.dart
+  Widget build(BuildContext context) {
+    return FutureBuilder<List<ScanModel>>(
+      future: DbProvider.oDb.getScanAll(),
+      builder: (BuildContext context, AsyncSnapshot<List<ScanModel>> snapshot) {
+        if(!snapshot.hasData){
+          return Center(child: CircularProgressIndicator(),);
+        }
+        final scans = snapshot.data;
+        if(scans.length == 0){
+          return Center(child: Text("No hay info"),);
+        }
+
+        return ListView.builder(
+          itemCount: scans.length,
+          itemBuilder: (context, i) => ListTile(
+            leading: Icon(Icons.cloud_queue, color: Theme.of(context).primaryColor),
+            title: Text(scans[i].valor),
+            trailing: Icon(Icons.keyboard_arrow_right, color: Colors.grey),
+          ),
+        );
+
+      },
+    );
+  }//build 
+  ```

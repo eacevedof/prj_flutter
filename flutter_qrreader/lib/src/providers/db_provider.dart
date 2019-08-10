@@ -1,16 +1,19 @@
 //db_provider.dart
 import 'dart:io';
 
-import 'package:flutter_qrreader/src/models/scan_model.dart';
 import "package:path/path.dart";
 import 'package:path_provider/path_provider.dart';
 import 'package:sqflite/sqflite.dart';
+
+import 'package:flutter_qrreader/src/models/scan_model.dart';
+//exporta el modelo en los archivos que usan db_provider
+export 'package:flutter_qrreader/src/models/scan_model.dart';
 
 class DbProvider{
 
   static Database _objDb;
 
-  static final DbProvider objDbProv = DbProvider._();
+  static final DbProvider oDb = DbProvider._();
 
   DbProvider._();
 
@@ -66,7 +69,7 @@ class DbProvider{
     return res.isNotEmpty ? ScanModel.fromJson(res.first) : null;   
   }
 
-  Future<List<ScanModel>> getScanAll(int id) async {
+  Future<List<ScanModel>> getScanAll() async {
     final db = await database;
     final res = await db.query("scans");
     //devuelve una lista de mapas
