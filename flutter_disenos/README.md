@@ -38,4 +38,5 @@
         - fit: BoxFit.cover  
     - SafeArea para evitar que el nodge se coma información
     - Fin diseño 1
-
+- 8.9. Diseño con scroll - parte 1
+    - 
