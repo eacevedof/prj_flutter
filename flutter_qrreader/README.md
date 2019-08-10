@@ -233,4 +233,37 @@
     return res;
   }
   ```
+- 9.12. SQFLite - Obtener registros
+  - metodos de lectura por id y por *
+  ```dart
+  //obtener datos
+  Future<ScanModel> getScanId(int id) async {
+    final db = await database;
+    final res = await db.query("scans", where: "id=?",whereArgs: [id]);
+    //devuelve una lista de mapas
+    return res.isNotEmpty ? ScanModel.fromJson(res.first) : null;   
+  }
+
+  Future<List<ScanModel>> getScanAll(int id) async {
+    final db = await database;
+    final res = await db.query("scans");
+    //devuelve una lista de mapas
+    List<ScanModel> list = res.isNotEmpty 
+                              ? res.map((c) => ScanModel.fromJson(c)).toList()
+                              : [];
+    return list;
+  }
+
+  Future<List<ScanModel>> getScanTipo(String tipo) async {
+    final db = await database;
+    String sql = """
+    SELECT * FROM scans WHERE tipo='$tipo'
+    """;
+    final res = await db.rawQuery(sql);
+    List<ScanModel> list = res.isNotEmpty 
+                              ? res.map((c) => ScanModel.fromJson(c)).toList()
+                              : [];
+    return list;
+  }  
+  ```
 
