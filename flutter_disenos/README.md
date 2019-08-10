@@ -207,4 +207,46 @@
         );
     }// _get_titulos_wg   
     ```
+- 8.14. Diseño compuesto - BottomNavigationBar
+    - Para personalizar la barra de navegación se necesita tocar el "theme"
+    - Se crea un Theme donde se importa los datos del Theme actual y es ahi donde se personaliza
+    ```dart
+    //botones_page.dart
+    bottomNavigationBar: _get_bottom_navbar(context),
+    ... 
+    Widget _get_bottom_navbar(BuildContext context){
+        //la única forma de customizar el BottomNavigationBar implica
+        //cambiar el tema global de la app
+        return Theme(
+            data: Theme.of(context).copyWith(
+                //fondo de la barra
+                canvasColor: Color.fromRGBO(55, 57, 84, 1.0),
+                primaryColor: Colors.pink,
+                textTheme: Theme.of(context).textTheme.copyWith(
+                //color del icono en gris por defecto
+                caption: TextStyle(color: Color.fromRGBO(116, 117, 152, 1.0))
+                ),
+            ),//data
+            child: BottomNavigationBar(     
+                items: [
+                    BottomNavigationBarItem(
+                        icon: Icon(Icons.calendar_today, size: 30.0,),
+                        title: Container(),
+                    ),
+
+                    BottomNavigationBarItem(
+                        icon: Icon(Icons.bubble_chart, size: 30.0),
+                        title: Container(),
+                    ),
+
+                    BottomNavigationBarItem(
+                        icon: Icon(Icons.supervised_user_circle, size: 30.0),
+                        title: Container(),
+                    ),     
+                ],
+            ),//child
+        );//Theme
+    }// _get_bottom_navbar
+    ```
+
 

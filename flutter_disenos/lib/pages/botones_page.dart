@@ -20,7 +20,34 @@ class BotonesPage  extends StatelessWidget {
             ),
           ),
         ],
-      )
+      ),
+      
+      bottomNavigationBar: _get_bottom_navbar(context),
+
+      // bottomNavigationBar: BottomNavigationBar(
+      //   //color iconos
+      //   fixedColor: Colors.pink,
+
+      //   items: <BottomNavigationBarItem>[
+        
+      //     BottomNavigationBarItem(
+      //       icon: Icon(Icons.calendar_today),
+      //       title: Container(),
+      //     ),        
+
+      //     BottomNavigationBarItem(
+      //       icon: Icon(Icons.pie_chart_outlined),
+      //       title: Container(),
+      //     ),
+
+      //     BottomNavigationBarItem(
+      //       icon: Icon(Icons.supervised_user_circle),
+      //       title: Container(),
+      //     ),      
+
+      //   ],
+      // ),
+
     );
 
   }// build
@@ -92,5 +119,41 @@ class BotonesPage  extends StatelessWidget {
       ],
     );
   }// _get_fondo_wg
+
+  Widget _get_bottom_navbar(BuildContext context){
+    //la única forma de customizar el BottomNavigationBar implica
+    //cambiar el tema global de la app
+    return Theme(
+      data: Theme.of(context).copyWith(
+        //fondo de la barra
+        canvasColor: Color.fromRGBO(55, 57, 84, 1.0),
+        primaryColor: Colors.pink,
+        textTheme: Theme.of(context).textTheme.copyWith(
+          //color del icono en gris por defecto
+          caption: TextStyle(color: Color.fromRGBO(116, 117, 152, 1.0))
+        ),
+      ),
+      child: BottomNavigationBar(
+        
+        items: [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.calendar_today, size: 30.0,),
+            title: Container(),
+          ),
+
+          BottomNavigationBarItem(
+            icon: Icon(Icons.bubble_chart, size: 30.0),
+            title: Container(),
+          ),
+
+          BottomNavigationBarItem(
+            icon: Icon(Icons.supervised_user_circle, size: 30.0),
+            title: Container(),
+          ),     
+        ],
+      ),
+    );
+
+  }// _get_bottom_navbar
 
 }// class BotonesPage
