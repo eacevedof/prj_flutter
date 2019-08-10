@@ -12,11 +12,38 @@ class BotonesPage  extends StatelessWidget {
       body: Stack(
         children: <Widget>[
           _get_fondo_wg(),
+          SingleChildScrollView(
+            child: Column(
+              children: <Widget>[
+                _get_titulos_wg()
+              ],
+            ),
+          ),
         ],
       )
     );
 
   }// build
+
+  Widget _get_titulos_wg(){
+    //salva el nodge
+    return SafeArea(
+
+      child: Container(
+        padding: EdgeInsets.all(20.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Text("Classify transaction", style: TextStyle(color: Colors.white,fontSize: 30.0, fontWeight:FontWeight.bold)),
+            SizedBox(height: 10.0,),
+            Text("Classify this transaction into a particular category", style: TextStyle(color:Colors.white,fontSize: 18.0,)),
+          ],
+        ),
+        
+      ),
+    );
+
+  }// _get_titulos_wg
 
   Widget _get_fondo_wg(){
     final gradiente = Container(
