@@ -96,4 +96,19 @@ class DbProvider{
     return res;
   }
 
+  //actualizar registros
+  Future<int> deleteScan(int id) async {
+    final db = await database;
+    //devuelve la cantidad de registros actualizados
+    final res = await db.delete("scans",where: "id = ?",whereArgs: [id]);
+    return res;
+  }
+
+  Future<int> deleteScanAll() async {
+    final db = await database;
+    //devuelve la cantidad de registros actualizados
+    final sql = """DELETE FROM scans""";
+    final res = await db.rawDelete(sql);
+    return res;
+  }
 }//DbProvider

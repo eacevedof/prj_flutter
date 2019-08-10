@@ -278,4 +278,15 @@
     return res;
   }
   ```
-
+- 9.14. SQFLite - Borrar registros
+  - consulta delete
+  ```dart
+  //db_provider.dart
+  Future<int> deleteScanAll() async {
+    final db = await database;
+    //devuelve la cantidad de registros actualizados
+    final sql = """DELETE FROM scans""";
+    final res = await db.rawDelete(sql);
+    return res;
+  }  
+  ```
