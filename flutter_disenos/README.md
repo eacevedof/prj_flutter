@@ -49,5 +49,46 @@
         scrollDirection: Axis.vertical,
     ...
     ```
-    
+- 8.10. Diseño con scroll - parte 2
+    - Componente Stack, permite solapar widgets
+    ```dart
+    Widget _get_color_fondo_wg() {
+        return Container(
+        width: double.infinity, //todo el ancho posible
+        height: double.infinity, //todo el alto posible
+        color: Color.fromRGBO(108,192,218,0.5),//0.5 semi-transparente
+        );
+    }  //_get_color_fondo_wg
+
+    Widget _get_img_fondo_wg() {
+        return Container(
+        width: double.infinity, //todo el ancho posible
+        height: double.infinity, //todo el alto posible
+        child: Image(
+            image: AssetImage("assets/img/scroll-1.png"),
+            //image: AssetImage("assets/scroll-1.png"),
+        ),
+        );
+    }  //_get_img_fondo_wg
+
+    Widget _get_textos_wg() {
+        final estiloTexto = TextStyle(color: Colors.white, fontSize:50.0);
+        
+        return SafeArea(
+        child: Column( 
+            children: <Widget>[
+            SizedBox(height: 20.0,),
+            Text("11º",style: estiloTexto,),
+            Text("Miercoles",style: estiloTexto,),
+            //expanded: estira el widget al ancho o alto posible
+            Expanded(
+                child: Container(),
+            ),
+            Icon(Icons.keyboard_arrow_down, size:70.0, color: Colors.white),
+            ],
+        ),
+        );
+    }  //_get_textos_wg      
+    ```
+    - 
 
