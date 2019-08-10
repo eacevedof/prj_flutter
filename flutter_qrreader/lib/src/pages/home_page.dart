@@ -1,6 +1,7 @@
 //home_page.dart
 import 'package:flutter/material.dart';
 import 'package:flutter_qrreader/src/pages/direcciones_page.dart';
+import 'package:qrcode_reader/qrcode_reader.dart';
 
 import 'mapas_page.dart';
 
@@ -32,13 +33,11 @@ class _HomePageState extends State<HomePage> {
       body: _get_page_wg(iCurrPage),
       bottomNavigationBar: _get_bottom_navbar(),
 
-      //boton azul en el medio
+      //boton azul en el medio que ejecuta el scanner de QR
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.filter_center_focus),
-        onPressed: (){
-
-        },
+        onPressed: scan_qr,
         //esto se relaciona con main.dart y la propiedad theme
         backgroundColor: Theme.of(context).primaryColor,
       ),
@@ -46,6 +45,25 @@ class _HomePageState extends State<HomePage> {
     );
 
   }//build
+
+  void scan_qr() async {
+    //lee el qr y lo transorma en el sitio web
+    //theframework.es
+    //geo:40.64717223609042,-73.96886244257814
+    print("scan_qr");
+    String futreString = "";
+    try {
+      //con el await esperamos un string de lo contrario esperariamos un Future
+      futreString = await new QRCodeReader().scan();
+    }catch(e){
+      futreString = e.toString();
+    }
+
+    print("scan_qr.futurestring: $futreString");
+    if(futreString!=null)
+      print("Tenemos Información");
+
+  }//scan_qr
 
   Widget _get_bottom_navbar(){
 

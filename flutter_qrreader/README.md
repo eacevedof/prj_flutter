@@ -95,3 +95,46 @@
       ),  
     )  
     ```
+- 9.7. Leer un código QR
+    - https://pub.dev/packages/qrcode_reader
+    - Instalar paquete qrcode_reader 0.4.4
+    - pubscpec.yaml
+    - Me estaba dando error: Flutter MissingPluginException error
+      - Para solucionarlo tuve que ejecutar: flutter upgrade 
+      - Limpiar la maq virtual (wipe data)
+      - Reiniciar vscode
+      - Volver a ejecutar
+    ```dart
+    //home_page.dart
+        //boton azul en el medio que ejecuta el scanner de QR
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+        floatingActionButton: FloatingActionButton(
+          child: Icon(Icons.filter_center_focus),
+          onPressed: scan_qr,
+          //esto se relaciona con main.dart y la propiedad theme
+          backgroundColor: Theme.of(context).primaryColor,
+        ),
+
+      );
+
+    }//build
+
+    void scan_qr() async {
+      //lee el qr y lo transorma en el sitio web
+      //theframework.es
+      //geo:40.64717223609042,-73.96886244257814
+      print("scan_qr");
+      String futreString = "";
+      try {
+        //con el await esperamos un string de lo contrario esperariamos un Future
+        futreString = await new QRCodeReader().scan();
+      }catch(e){
+        futreString = e.toString();
+      }
+
+      print("scan_qr.futurestring: $futreString");
+      if(futreString!=null)
+        print("Tenemos Información");
+
+    }//scan_qr    
+    ```
