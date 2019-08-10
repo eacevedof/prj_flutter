@@ -15,7 +15,8 @@ class BotonesPage  extends StatelessWidget {
           SingleChildScrollView(
             child: Column(
               children: <Widget>[
-                _get_titulos_wg()
+                _get_titulos_wg(),
+                _get_botones_redondeados(),
               ],
             ),
           ),
@@ -155,5 +156,64 @@ class BotonesPage  extends StatelessWidget {
     );
 
   }// _get_bottom_navbar
+
+  Widget _get_botones_redondeados(){
+    //se podría hacer con rows de 2 columnas pero tambien con un Table
+    //Los TableRow deben de tener la misma cant de elementos
+    return Table(
+      children: [
+        TableRow(
+          children: [
+            _get_boton_redondeado_wg(),
+            _get_boton_redondeado_wg(),
+          ],
+        ),
+        TableRow(
+          children: [
+            _get_boton_redondeado_wg(),
+            _get_boton_redondeado_wg(),
+          ],
+        ),
+        TableRow(
+          children: [
+            _get_boton_redondeado_wg(),
+            _get_boton_redondeado_wg(),
+          ],
+        ),   
+        TableRow(
+          children: [
+            _get_boton_redondeado_wg(),
+            _get_boton_redondeado_wg(),
+          ],
+        ),               
+      ],
+    );
+  }// _get_botones_redondeados
+
+  Widget _get_boton_redondeado_wg(){
+
+    return Container(
+      height: 180.0,
+      margin: EdgeInsets.all(15.0),
+      decoration: BoxDecoration(
+        color: Color.fromRGBO(62, 66, 107, 0.7),
+        borderRadius: BorderRadius.circular(20.0),
+      ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: <Widget>[
+          SizedBox(height: 5.0,),
+          CircleAvatar(
+            backgroundColor: Colors.pinkAccent,
+            radius: 35.0,
+            child: Icon(Icons.swap_calls,color:Colors.white,size: 30,)
+          ),
+          Text("cosas", style: TextStyle(color: Colors.pinkAccent),),
+          SizedBox(height: 5.0,)
+        ],
+      ),
+    );
+    
+  }//_get_boton_redondeado_wg
 
 }// class BotonesPage
