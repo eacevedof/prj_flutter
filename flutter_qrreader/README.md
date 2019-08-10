@@ -104,6 +104,7 @@
       - Limpiar la maq virtual (wipe data)
       - Reiniciar vscode
       - Volver a ejecutar
+    - Generador qr: https://www.qrcode.es/es/generador-qr-code/
     ```dart
     //home_page.dart
         //boton azul en el medio que ejecuta el scanner de QR
