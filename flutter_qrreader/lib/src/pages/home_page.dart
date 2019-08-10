@@ -17,8 +17,32 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
   
     return Scaffold(      
+      appBar: AppBar(
+        title: Text("QR Scanner"),
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.delete_forever),
+            onPressed: (){
+              //borrara todos los regs
+            },
+          )
+        ],
+      ),
+
       body: _get_page_wg(iCurrPage),
       bottomNavigationBar: _get_bottom_navbar(),
+
+      //boton azul en el medio
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.filter_center_focus),
+        onPressed: (){
+
+        },
+        //esto se relaciona con main.dart y la propiedad theme
+        backgroundColor: Theme.of(context).primaryColor,
+      ),
+
     );
 
   }//build
@@ -46,7 +70,7 @@ class _HomePageState extends State<HomePage> {
           title: Text("Direcciones"),
         ),
       ],//los botones
-        
+
     );
 
   }//_get_bottom_navbar

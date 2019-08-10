@@ -58,3 +58,40 @@
         
     }// HomePage
     ```
+- 9.6. FloatingActionButton y tema de la aplicación
+    ```dart
+    //main.dart
+    //tema centralizado
+    theme: ThemeData(
+        primaryColor: Colors.orange
+    )    
+
+    //home_page.dart
+    return Scaffold(      
+      appBar: AppBar(
+        title: Text("QR Scanner"),
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.delete_forever),
+            onPressed: (){
+              //borrara todos los regs
+            },
+          )
+        ],
+      ),
+
+      body: _get_page_wg(iCurrPage),
+      bottomNavigationBar: _get_bottom_navbar(),
+
+      //boton naranja en el medio
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.filter_center_focus),
+        onPressed: (){
+
+        },
+        //esto se relaciona con main.dart y la propiedad theme
+        backgroundColor: Theme.of(context).primaryColor,
+      ),  
+    )  
+    ```
