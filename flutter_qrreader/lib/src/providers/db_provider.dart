@@ -88,4 +88,12 @@ class DbProvider{
     return list;
   }
 
+  //actualizar registros
+  Future<int> updateScan(ScanModel oScanModel) async {
+    final db = await database;
+    //devuelve la cantidad de registros actualizados
+    final res = await db.update("scans", oScanModel.toJson(),where: "id = ?",whereArgs: [oScanModel.id]);
+    return res;
+  }
+
 }//DbProvider

@@ -236,6 +236,7 @@
 - 9.12. SQFLite - Obtener registros
   - metodos de lectura por id y por *
   ```dart
+  //db_provider.dart
   //obtener datos
   Future<ScanModel> getScanId(int id) async {
     final db = await database;
@@ -265,5 +266,16 @@
                               : [];
     return list;
   }  
+  ```
+- 9.13. SQFLite - Actualizar registros
+  ```dart
+  //db_provider.dart
+  //actualizar registros
+  Future<int> updateScan(ScanModel oScanModel) async {
+    final db = await database;
+    //devuelve la cantidad de registros actualizados
+    final res = await db.update("scans", oScanModel.toJson(),where: "id = ?",whereArgs: [oScanModel.id]);
+    return res;
+  }
   ```
 
