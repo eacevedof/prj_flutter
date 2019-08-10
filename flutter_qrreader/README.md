@@ -189,3 +189,48 @@
     }
   }//DbProvider
   ```
+- 9.10. SQFLite - CREATE Table y Database
+  ```dart
+  //db_provider.dart
+  initDB() async {
+    Directory pathDbFolder = await getApplicationDocumentsDirectory();
+  
+    final pathFile = join(pathDbFolder.path, "scandb.db");
+  
+    return await openDatabase(
+      pathFile, version: 1, onOpen: (db){}, 
+      onCreate:(Database db, int version) async {
+        String sql = """
+        CREATE TABLE scans (
+          id INTEGER PRIMARY KEY,
+          tipo TEXT, 
+          valor TEXT
+        )
+        """;
+        await db.execute(sql);
+      }
+    );
+
+  }//initDB  
+  ```
+- 9.11 SQFLite - Crear registros
+  ```dart
+  //db_provider.dart
+    //crear registros
+  nuevoScanRaw(ScanModel oScanModel) async {
+    final db = await database;
+    String sql = """
+    INSERT INTO scans (id, tipo, valor)
+    VALUES (${oScanModel.id},'${oScanModel.tipo}','${oScanModel.valor}')
+    """;
+    final res = await db.rawInsert(sql);
+    return res;
+  }
+
+  nuevoScan(ScanModel oScanModel) async {
+    final db = await database;
+    final res = db.insert("scans", oScanModel.toJson());
+    return res;
+  }
+  ```
+
