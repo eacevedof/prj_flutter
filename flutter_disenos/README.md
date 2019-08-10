@@ -90,5 +90,28 @@
         );
     }  //_get_textos_wg      
     ```
-    - 
+- 8.11. Diseño con scroll - parte 3
+    ```dart
+    Widget _get_pagina2_wg() {
+        return Container(
+        width: double.infinity,
+        height: double.infinity,
+        color: Color.fromRGBO(108,192,218,0.5),//0.5 semi-transparente
+        child: Center(
+            child: RaisedButton(
+            shape: StadiumBorder(),
+            color: Colors.blue,
+            textColor: Colors.white,
+            child: Padding(
+                padding: EdgeInsets.symmetric(horizontal: 40.0, vertical: 20.0),
+                child: Text("Bienvenidos", style: TextStyle(fontSize: 20.0),),
+            ),
+            onPressed: () {
+
+            }
+            )
+        )
+        );
+    }// _get_pagina2_wg
+    ```
 
