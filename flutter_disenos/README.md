@@ -39,4 +39,15 @@
     - SafeArea para evitar que el nodge se coma información
     - Fin diseño 1
 - 8.9. Diseño con scroll - parte 1
-    - 
+    - Se define assets
+    ```dart
+    //scroll_page.dart
+    return Scaffold(
+      body: PageView(
+        //esto permite hacer scroll de arriba hacia abajo, por defecto 
+        //el desplazamiento es horizontal
+        scrollDirection: Axis.vertical,
+    ...
+    ```
+    
+
