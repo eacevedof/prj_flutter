@@ -168,4 +168,24 @@
     };
   }//class ScanModel  
   ```
-- 9.10 
+- 9.9. Inicio de configuración de SQFLite
+  - Instalación de: https://pub.dev/packages/sqflite
+  - Instalación de pathprovider: https://pub.dev/packages/path_provider
+    - Detecta donde está el archivo de sqlite
+  - creacion de db_provider.dart
+    - Clase singleton que devuelve una conexión a la bd en modo asincrono
+  ```dart
+  class DbProvider{
+    static Database _objDb;
+    static final DbProvider objDbProv = DbProvider._();
+    DbProvider._();
+    Future<Database> get database async {
+      if(_objDb != null) return _objDb;
+      _objDb = await initDB();
+      return _objDb;
+    }//database
+    initDB() async {
+      return;
+    }
+  }//DbProvider
+  ```
