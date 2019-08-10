@@ -52,16 +52,16 @@ class _HomePageState extends State<HomePage> {
     //geo:40.64717223609042,-73.96886244257814
     print("scan_qr");
     String futreString = "";
-    try {
-      //con el await esperamos un string de lo contrario esperariamos un Future
-      futreString = await new QRCodeReader().scan();
-    }catch(e){
-      futreString = e.toString();
-    }
+    // try {
+    //   //con el await esperamos un string de lo contrario esperariamos un Future
+    //   futreString = await new QRCodeReader().scan();
+    // }catch(e){
+    //   futreString = e.toString();
+    // }
 
-    print("scan_qr.futurestring: $futreString");
-    if(futreString!=null)
-      print("Tenemos Información");
+    // print("scan_qr.futurestring: $futreString");
+    // if(futreString!=null)
+    //   print("Tenemos Información");
 
   }//scan_qr
 
