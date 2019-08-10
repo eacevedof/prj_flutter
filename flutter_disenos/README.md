@@ -322,4 +322,41 @@
         );
     }//_get_boton_redondeado_wg
     ```
+- 8.16 No video
+- 8.17. Diseño compuesto - Blur y argumentos
+    - BackdropFilter (aplicar filtros visuales)
+    - Los filtros consumen recursos y puede que no sea tan fluida la animación en teléfonos antiguos
+    - filter: ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0),
+    ```dart
+    Widget _get_boton_redondeado_wg(Color color, IconData icono, String texto){
+        return BackdropFilter(
+            //el blur consume muchos recursos
+            filter: ImageFilter.blur(sigmaX: 0.2, sigmaY: 0.2),
+            child: Container(
+                height: 180.0,
+                margin: EdgeInsets.all(15.0),
+                decoration: BoxDecoration(
+                    color: Color.fromRGBO(62, 66, 107, 0.7),
+                    borderRadius: BorderRadius.circular(20.0),
+                ),
+
+                child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: <Widget>[
+                        SizedBox(height: 5.0,),
+                        CircleAvatar(
+                        backgroundColor: color,
+                        radius: 35.0,
+                        child: Icon(icono,color:Colors.white,size: 30,)
+                        ),
+                        Text(texto, style: TextStyle(color: color),),
+                        SizedBox(height: 5.0,)
+                    ],
+                ),
+            ),
+        );
+    }//_get_boton_redondeado_wg
+
+    //FIN 8
+    ```
 

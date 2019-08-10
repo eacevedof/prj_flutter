@@ -1,5 +1,7 @@
 //botones_page.dart
 import 'dart:math';
+import 'dart:ui' as prefix0;
+import 'dart:ui';
 
 import 'package:flutter/material.dart';
 
@@ -24,31 +26,6 @@ class BotonesPage  extends StatelessWidget {
       ),
       
       bottomNavigationBar: _get_bottom_navbar(context),
-
-      // bottomNavigationBar: BottomNavigationBar(
-      //   //color iconos
-      //   fixedColor: Colors.pink,
-
-      //   items: <BottomNavigationBarItem>[
-        
-      //     BottomNavigationBarItem(
-      //       icon: Icon(Icons.calendar_today),
-      //       title: Container(),
-      //     ),        
-
-      //     BottomNavigationBarItem(
-      //       icon: Icon(Icons.pie_chart_outlined),
-      //       title: Container(),
-      //     ),
-
-      //     BottomNavigationBarItem(
-      //       icon: Icon(Icons.supervised_user_circle),
-      //       title: Container(),
-      //     ),      
-
-      //   ],
-      // ),
-
     );
 
   }// build
@@ -164,56 +141,62 @@ class BotonesPage  extends StatelessWidget {
       children: [
         TableRow(
           children: [
-            _get_boton_redondeado_wg(),
-            _get_boton_redondeado_wg(),
+            _get_boton_redondeado_wg(Colors.blue, Icons.border_all, "General"),
+            _get_boton_redondeado_wg(Colors.purpleAccent, Icons.directions_bus, "Bus"),
           ],
         ),
         TableRow(
           children: [
-            _get_boton_redondeado_wg(),
-            _get_boton_redondeado_wg(),
+            _get_boton_redondeado_wg(Colors.pink, Icons.shop, "Buy"),
+            _get_boton_redondeado_wg(Colors.orange, Icons.insert_drive_file, "File"),
           ],
         ),
         TableRow(
           children: [
-            _get_boton_redondeado_wg(),
-            _get_boton_redondeado_wg(),
+            _get_boton_redondeado_wg(Colors.blueAccent, Icons.movie_filter, "Entertaiment"),
+            _get_boton_redondeado_wg(Colors.green, Icons.cloud, "Groceries"),
           ],
         ),   
         TableRow(
           children: [
-            _get_boton_redondeado_wg(),
-            _get_boton_redondeado_wg(),
+            _get_boton_redondeado_wg(Colors.red, Icons.collections, "Fotos"),
+            _get_boton_redondeado_wg(Colors.teal, Icons.help_outline, "Help"),
           ],
         ),               
       ],
     );
   }// _get_botones_redondeados
 
-  Widget _get_boton_redondeado_wg(){
+  Widget _get_boton_redondeado_wg(Color color, IconData icono, String texto){
+    
+    return BackdropFilter(
+      //el blur consume muchos recursos
+      filter: ImageFilter.blur(sigmaX: 0.2, sigmaY: 0.2),
+      child: Container(
+        height: 180.0,
+        margin: EdgeInsets.all(15.0),
+        decoration: BoxDecoration(
+          color: Color.fromRGBO(62, 66, 107, 0.7),
+          borderRadius: BorderRadius.circular(20.0),
+        ),
 
-    return Container(
-      height: 180.0,
-      margin: EdgeInsets.all(15.0),
-      decoration: BoxDecoration(
-        color: Color.fromRGBO(62, 66, 107, 0.7),
-        borderRadius: BorderRadius.circular(20.0),
-      ),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: <Widget>[
-          SizedBox(height: 5.0,),
-          CircleAvatar(
-            backgroundColor: Colors.pinkAccent,
-            radius: 35.0,
-            child: Icon(Icons.swap_calls,color:Colors.white,size: 30,)
-          ),
-          Text("cosas", style: TextStyle(color: Colors.pinkAccent),),
-          SizedBox(height: 5.0,)
-        ],
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: <Widget>[
+            SizedBox(height: 5.0,),
+            CircleAvatar(
+              backgroundColor: color,
+              radius: 35.0,
+              child: Icon(icono,color:Colors.white,size: 30,)
+            ),
+            Text(texto, style: TextStyle(color: color),),
+            SizedBox(height: 5.0,)
+          ],
+        ),
+
       ),
     );
-    
+
   }//_get_boton_redondeado_wg
 
 }// class BotonesPage
