@@ -1,11 +1,13 @@
 //home_page.dart
 import 'package:flutter/material.dart';
-import 'package:flutter_qrreader/src/models/scan_model.dart';
-import 'package:flutter_qrreader/src/pages/direcciones_page.dart';
-import 'package:flutter_qrreader/src/providers/db_provider.dart';
-import 'package:qrcode_reader/qrcode_reader.dart';
 
+import 'package:flutter_qrreader/src/bloc/scans_bloc.dart';
+import 'package:flutter_qrreader/src/models/scan_model.dart';
+
+import 'package:flutter_qrreader/src/pages/direcciones_page.dart';
 import 'mapas_page.dart';
+
+import 'package:qrcode_reader/qrcode_reader.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -14,6 +16,9 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
 
+  //como el provider se usa en el bloc, se quita esa importación ya que no
+  //deberiamos usarlo aqui
+  final scansBloc = new ScansBloc();
   int iCurrPage = 0;  
 
   @override
@@ -24,10 +29,9 @@ class _HomePageState extends State<HomePage> {
         title: Text("QR Scanner"),
         actions: <Widget>[
           IconButton(
+            //icono papelera
             icon: Icon(Icons.delete_forever),
-            onPressed: (){
-              //borrara todos los regs
-            },
+            onPressed: scansBloc.borrarScanAll,
           )
         ],
       ),
@@ -57,7 +61,10 @@ class _HomePageState extends State<HomePage> {
 
     if( futureString != null){
       final oScanModel = ScanModel(valor:futureString);
-      DbProvider.oDb.nuevoScan(oScanModel);
+      //esto funciona pero no notifica al stream que ha habido cambios y por ende
+      //que se refresquen las pantallas que estan escuchando
+      //DbProvider.oDb.nuevoScan(oScanModel);
+      scansBloc.agregarScan(oScanModel);
     }
 
     // try {

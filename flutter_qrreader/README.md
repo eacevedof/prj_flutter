@@ -430,6 +430,59 @@
     obtenerScans();
   }  
   ```
+- 9.19. Actualizando los widgets mediante streams
+  - Actualiza el listado y borra todos los elementos
+  - Queda pendiente el loader del principio
+  ```dart
+  //home_page.dart
+  class _HomePageState extends State<HomePage> {
+
+  //como el provider se usa en el bloc, se quita esa importación ya que no
+  //deberiamos usarlo aqui
+  final scansBloc = new ScansBloc();
+  ...
+    appBar: AppBar(
+    title: Text("QR Scanner"),
+    actions: <Widget>[
+      IconButton(
+        //icono papelera
+        icon: Icon(Icons.delete_forever),
+        onPressed: scansBloc.borrarScanAll,
+      )
+  ...
+    if( futureString != null){
+      final oScanModel = ScanModel(valor:futureString);
+      //esto funciona pero no notifica al stream que ha habido cambios y por ende
+      //que se refresquen las pantallas que estan escuchando
+      //DbProvider.oDb.nuevoScan(oScanModel);
+      scansBloc.agregarScan(oScanModel);
+    }
+  
+  //mapas_page.dart
+  class MapasPage extends StatelessWidget {
+
+  final scansBloc = new ScansBloc();
+
+  @override
+  Widget build(BuildContext context) {
+    //ya no necesito un futurebuilder sino un streambuilder
+    //return FutureBuilder<List<ScanModel>>(
+    return StreamBuilder<List<ScanModel>>(
+      //no debemos usar el dbprovider ya que ahora se gestiona por el stream
+      //future: DbProvider.oDb.getScanAll(),
+      stream: scansBloc.scansStream,
+      builder: (BuildContext context, AsyncSnapshot<List<ScanModel>> snapshot) {
+        ...
+        return ListView.builder(
+          ...    
+          //ya no necesito un futurebuilder sino un streambuilder
+          //return FutureBuilder<List<ScanModel>>(
+          return StreamBuilder<List<ScanModel>>(
+            //no debemos usar el dbprovider ya que ahora se gestiona por el stream
+            //future: DbProvider.oDb.getScanAll(),
+            stream: scansBloc.scansStream,
+  ...
+  ```
 
 
 

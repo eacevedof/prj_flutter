@@ -1,12 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_qrreader/src/bloc/scans_bloc.dart';
 import 'package:flutter_qrreader/src/providers/db_provider.dart';
 
 class MapasPage extends StatelessWidget {
 
+  final scansBloc = new ScansBloc();
+
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder<List<ScanModel>>(
-      future: DbProvider.oDb.getScanAll(),
+
+    //ya no necesito un futurebuilder sino un streambuilder
+    //return FutureBuilder<List<ScanModel>>(
+    return StreamBuilder<List<ScanModel>>(
+      //no debemos usar el dbprovider ya que ahora se gestiona por el stream
+      //future: DbProvider.oDb.getScanAll(),
+      stream: scansBloc.scansStream,
+      
       builder: (BuildContext context, AsyncSnapshot<List<ScanModel>> snapshot) {
         if(!snapshot.hasData){
           return Center(child: CircularProgressIndicator(),);
@@ -27,7 +36,8 @@ class MapasPage extends StatelessWidget {
             onDismissed: (direction) =>
               //esto devuelve un future y se podría poner el await 
               // no hace falta llamar a refresh ^^
-              DbProvider.oDb.deleteScan(scans[i].id),
+              //DbProvider.oDb.deleteScan(scans[i].id), con stream ya no se usa
+              scansBloc.borrarScan(scans[i].id),
             //esto es el item en forma de "row" o mejor dicho, "tarjeta row"
             child: ListTile(
               leading: Icon(Icons.cloud_queue, color: Theme.of(context).primaryColor),
