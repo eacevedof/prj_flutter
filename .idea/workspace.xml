@@ -4,9 +4,6 @@
     <list default="true" id="7639eb1f-db75-4293-b69a-c959ab17df9a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/flutter_qrreader/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_qrreader/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flutter_qrreader/lib/src/models/scan_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_qrreader/lib/src/models/scan_model.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flutter_qrreader/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_qrreader/pubspec.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flutter_qrreader/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_qrreader/pubspec.yaml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -30,8 +27,8 @@
     </navigator>
     <panes>
       <pane id="ProjectPane" />
-      <pane id="PackagesPane" />
       <pane id="AndroidView" />
+      <pane id="PackagesPane" />
       <pane id="Scope" />
     </panes>
   </component>
