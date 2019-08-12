@@ -45,7 +45,7 @@ class _HomePageState extends State<HomePage> {
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.filter_center_focus),
-        onPressed: scan_qr,
+        onPressed: () => scan_qr(context),
         //esto se relaciona con main.dart y la propiedad theme
         backgroundColor: Theme.of(context).primaryColor,
       ),
@@ -54,7 +54,7 @@ class _HomePageState extends State<HomePage> {
 
   }//build
 
-  void scan_qr() async {
+  void scan_qr(BuildContext context) async {
     //lee el qr y lo transorma en el sitio web
     //theframework.es
     //geo:40.64717223609042,-73.96886244257814
@@ -74,11 +74,11 @@ class _HomePageState extends State<HomePage> {
       //solo para IOS:
       if (Platform.isIOS){
         Future.delayed(Duration(microseconds: 750),(){
-          u.abrir_scan(oScanModel);
+          u.abrir_scan(context,oScanModel);
         });
       }
       else 
-        u.abrir_scan(oScanModel);
+        u.abrir_scan(context,oScanModel);
     }
 
     // try {

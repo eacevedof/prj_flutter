@@ -1,8 +1,9 @@
 //utils.dart
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_qrreader/src/models/scan_model.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-abrir_scan(ScanModel oScanModel) async {
+abrir_scan(BuildContext context, ScanModel oScanModel) async {
 
   if(oScanModel.tipo == "http")
   {
@@ -15,7 +16,7 @@ abrir_scan(ScanModel oScanModel) async {
   }
   else
   {
-    print("geo");
+    Navigator.pushNamed(context, "mapa", arguments: oScanModel);
   }
 
 }

@@ -524,7 +524,26 @@
     u.abrir_scan(scans[i]);
   },
   ```
--
+- 9.21. Página para desplegar un mapa
+  - Navegacion a otra pantalla
+  - Creacion de mapa_page.dart
+  ```dart 
+  //utils.dart
+  //se cambia la función y ahora recibe el context de modo que se pueda navegar
+  {
+    Navigator.pushNamed(context, "mapa", arguments: oScanModel);
+  }
+
+  //home_page.dart
+  onPressed: () => scan_qr(context),
+
+  //mapa_page.dart
+  final ScanModel oScan = ModalRoute.of(context).settings.arguments;
+
+  body: Center(
+    child: Text(oScan.valor),
+  )
+  ```
 
 
 
