@@ -483,6 +483,47 @@
             stream: scansBloc.scansStream,
   ...
   ```
+- 9.20. Package url_launcher
+  - Instalar url_launcher 5.0.2
+  - https://pub.dev/packages/url_launcher
+  ```dart
+  //utils.dart
+  import 'package:flutter_qrreader/src/models/scan_model.dart';
+  import 'package:url_launcher/url_launcher.dart';
 
+  abrir_scan(ScanModel oScanModel) async {
+
+    if(oScanModel.tipo == "http")
+    {
+      if (await canLaunch(oScanModel.valor)){
+        await launch(oScanModel.valor);
+      }
+      else{
+        throw "could not launch ${ oScanModel.valor }";
+      }
+    }
+    else
+    {
+      print("geo");
+    }
+  }
+
+  //home_page.dart
+  //solo para IOS:
+  if (Platform.isIOS){
+    Future.delayed(Duration(microseconds: 750),(){
+      u.abrir_scan(oScanModel);
+    });
+  }
+  else 
+    u.abrir_scan(oScanModel);
+
+  //mapas_page.dart
+  //on tap tarjeta go scan.valor (url)
+  onTap: (){
+    u.abrir_scan(scans[i]);
+  },
+
+  ```
 
 

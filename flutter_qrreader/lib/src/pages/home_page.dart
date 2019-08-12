@@ -5,9 +5,11 @@ import 'package:flutter_qrreader/src/bloc/scans_bloc.dart';
 import 'package:flutter_qrreader/src/models/scan_model.dart';
 
 import 'package:flutter_qrreader/src/pages/direcciones_page.dart';
+import 'package:flutter_qrreader/src/utils/utils.dart' as u;
 import 'mapas_page.dart';
 
 import 'package:qrcode_reader/qrcode_reader.dart';
+import 'dart:io';
 
 class HomePage extends StatefulWidget {
   @override
@@ -65,6 +67,18 @@ class _HomePageState extends State<HomePage> {
       //que se refresquen las pantallas que estan escuchando
       //DbProvider.oDb.nuevoScan(oScanModel);
       scansBloc.agregarScan(oScanModel);
+
+      final oScanModel2 = ScanModel(valor:"geo:40.64717223609042,-73.96886244257814");
+      scansBloc.agregarScan(oScanModel2);
+
+      //solo para IOS:
+      if (Platform.isIOS){
+        Future.delayed(Duration(microseconds: 750),(){
+          u.abrir_scan(oScanModel);
+        });
+      }
+      else 
+        u.abrir_scan(oScanModel);
     }
 
     // try {

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_qrreader/src/bloc/scans_bloc.dart';
 import 'package:flutter_qrreader/src/providers/db_provider.dart';
+import 'package:flutter_qrreader/src/utils/utils.dart' as u;
 
 class MapasPage extends StatelessWidget {
 
@@ -44,6 +45,9 @@ class MapasPage extends StatelessWidget {
               title: Text(scans[i].valor),
               subtitle: Text("ID: ${scans[i].id}"),
               trailing: Icon(Icons.keyboard_arrow_right, color: Colors.grey),
+              onTap: (){
+                u.abrir_scan(scans[i]);
+              },
             ),
           ),
         );
