@@ -544,6 +544,10 @@
     child: Text(oScan.valor),
   )
   ```
+- 9.22. Mapbox - Generar Token para crear un mapa
+  - https://account.mapbox.com/
+  - https://pub.dev/packages/flutter_map (flutter_map 0.7.0+2)
+  - temp token: pk.eyJ1IjoiaW9lZHUiLCJhIjoiY2p6YTdwMWdnMDBubTNnbzVvcHBpNHpocSJ9.RG-89XIV8LGViG-XaB5Jdg
 
 
 

@@ -2,9 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7639eb1f-db75-4293-b69a-c959ab17df9a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flutter_qrreader/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_qrreader/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flutter_qrreader/lib/src/pages/home_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_qrreader/lib/src/pages/home_page.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/flutter_qrreader/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_qrreader/pubspec.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/flutter_qrreader/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_qrreader/pubspec.yaml" afterDir="false" />
     </list>
@@ -18,10 +15,10 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectFrameBounds" extendedState="7">
-    <option name="x" value="2007" />
-    <option name="y" value="113" />
-    <option name="width" value="1934" />
-    <option name="height" value="1037" />
+    <option name="x" value="2508" />
+    <option name="y" value="141" />
+    <option name="width" value="2418" />
+    <option name="height" value="1297" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
