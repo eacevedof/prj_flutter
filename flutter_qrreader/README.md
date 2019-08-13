@@ -602,5 +602,29 @@
         "id": "mapbox.streets"
         //streets, dark, light, outdoors, satellite  
   ```
+- 9.25. Crear marcadores
+  - MarkerLayerOptions
+  ```dart
+  //mapa_page.dart
+  _get_marked_layer_options(ScanModel oScan){
+    return MarkerLayerOptions(
+      markers: <Marker>[
+        Marker(
+          width: 100.0,
+          height: 100.0,
+          point: oScan.getLatLng(),
+          builder: (context) => Container(
+            //color: Colors.red, fondo del marcador
+            child: Icon(
+              Icons.location_on,
+              size: 70.0,
+              color:Theme.of(context).primaryColor
+            ),
+          ),//builder
+        ),
+      ],
+    );
+  }//_get_marked_layer_options  
+  ```
 
 

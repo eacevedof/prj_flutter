@@ -68,7 +68,7 @@ class _HomePageState extends State<HomePage> {
       //DbProvider.oDb.nuevoScan(oScanModel);
       scansBloc.agregarScan(oScanModel);
 
-      final oScanModel2 = ScanModel(valor:"geo:40.64717223609042,-73.96886244257814");
+      final oScanModel2 = ScanModel(valor:"geo:40.4167278,-3.7033387");
       scansBloc.agregarScan(oScanModel2);
 
       //solo para IOS:

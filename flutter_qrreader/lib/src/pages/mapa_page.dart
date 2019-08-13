@@ -35,8 +35,8 @@ class MapaPage extends StatelessWidget {
       ),
       //capas de información que se quiere poner
       layers: [
-        _get_mapbox_map() //primer layer mapa 
-        //segundo layer marcadores
+        _get_mapbox_map(), //primer layer mapa 
+        _get_marked_layer_options(oScan),//segundo layer marcadores
       ],
     );
   }//_crear_fluttermap
@@ -54,5 +54,26 @@ class MapaPage extends StatelessWidget {
       }
     );
   }//_get_mapbox_map
+
+  _get_marked_layer_options(ScanModel oScan){
+    return MarkerLayerOptions(
+      markers: <Marker>[
+        Marker(
+          width: 100.0,
+          height: 100.0,
+          point: oScan.getLatLng(),
+          builder: (context) => Container(
+            //color: Colors.red, fondo del marcador
+            child: Icon(
+              Icons.location_on,
+              size: 70.0,
+              color:Theme.of(context).primaryColor
+            ),
+          ),//builder
+        ),
+      ],
+    );
+  }//_get_marked_layer_options
+
 
 }//class MapaPage
