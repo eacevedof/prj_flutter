@@ -644,6 +644,34 @@
       options: MapOptions(
           center: oScan.getLatLng(),
   ```
-  
+- 9.27. Cambiar tipo de mapa de forma dinámica
+  ```dart
+  //por esta variable necesito un statefulwidget
+  String strtipomapa = "streets";
+    
+  //mapa_page.dart
+  Widget _get_float_button(BuildContext context){
+    return FloatingActionButton(
+      child: Icon(Icons.repeat),
+      backgroundColor: Theme.of(context).primaryColor,
+      onPressed: (){
+        if(strtipomapa == "streets")
+          strtipomapa = "dark";
+        else if (strtipomapa == "dark")
+          strtipomapa = "light";
+        else if (strtipomapa == "light")
+          strtipomapa = "outdoors";
+        else if (strtipomapa == "outdoors")
+          strtipomapa = "satellite";
+        else 
+          strtipomapa = "streets";
+
+        setState(() {
+          
+        });
+      },
+    );
+  }//_get_float_button
+  ```
 
 

@@ -4,9 +4,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:flutter_qrreader/src/models/scan_model.dart';
 
-class MapaPage extends StatelessWidget {
+class MapaPage extends StatefulWidget {
 
+  @override
+  _MapaPageState createState() => _MapaPageState();
+}
+
+class _MapaPageState extends State<MapaPage> {
   final MapController map = new MapController();
+
+  //por esta variable necesito un statefulwidget
+  String strtipomapa = "streets";
 
   @override
   Widget build(BuildContext context) {
@@ -27,10 +35,11 @@ class MapaPage extends StatelessWidget {
       ),
 
       body:_crear_fluttermap(oScan),
+
+      floatingActionButton: _get_float_button(context),
     );//scaffold
 
-  }//build
-
+  }
   Widget _crear_fluttermap(ScanModel oScan){
     return FlutterMap(
       mapController: map,
@@ -44,8 +53,7 @@ class MapaPage extends StatelessWidget {
         _get_marked_layer_options(oScan),//segundo layer marcadores
       ],
     );
-  }//_crear_fluttermap
-
+  }
   _get_mapbox_map(){
     return TileLayerOptions(
       urlTemplate: "https://api.tiles.mapbox.com/v4/"
@@ -54,12 +62,11 @@ class MapaPage extends StatelessWidget {
                     "{id}/{z}/{x}/{y}@2x.png?access_token={accessToken}",
       additionalOptions: {
         "accessToken":"pk.eyJ1IjoiaW9lZHUiLCJhIjoiY2p6YTdwMWdnMDBubTNnbzVvcHBpNHpocSJ9.RG-89XIV8LGViG-XaB5Jdg",
-        "id": "mapbox.streets"
+        "id": "mapbox.$strtipomapa"
         //streets, dark, light, outdoors, satellite
       }
     );
-  }//_get_mapbox_map
-
+  }
   _get_marked_layer_options(ScanModel oScan){
     return MarkerLayerOptions(
       markers: <Marker>[
@@ -78,7 +85,27 @@ class MapaPage extends StatelessWidget {
         ),
       ],
     );
-  }//_get_marked_layer_options
+  }
+  Widget _get_float_button(BuildContext context){
+    return FloatingActionButton(
+      child: Icon(Icons.repeat),
+      backgroundColor: Theme.of(context).primaryColor,
+      onPressed: (){
+        if(strtipomapa == "streets")
+          strtipomapa = "dark";
+        else if (strtipomapa == "dark")
+          strtipomapa = "light";
+        else if (strtipomapa == "light")
+          strtipomapa = "outdoors";
+        else if (strtipomapa == "outdoors")
+          strtipomapa = "satellite";
+        else 
+          strtipomapa = "streets";
 
-
+        setState(() {
+          
+        });
+      },
+    );
+  }//_get_float_button
 }//class MapaPage
