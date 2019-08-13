@@ -31,7 +31,7 @@ class MapaPage extends StatelessWidget {
     return FlutterMap(
       options: MapOptions(
           center: oScan.getLatLng(),
-          zoom: 10,
+          zoom: 15,
       ),
       //capas de información que se quiere poner
       layers: [
@@ -50,6 +50,7 @@ class MapaPage extends StatelessWidget {
       additionalOptions: {
         "accessToken":"pk.eyJ1IjoiaW9lZHUiLCJhIjoiY2p6YTdwMWdnMDBubTNnbzVvcHBpNHpocSJ9.RG-89XIV8LGViG-XaB5Jdg",
         "id": "mapbox.streets"
+        //streets, dark, light, outdoors, satellite
       }
     );
   }//_get_mapbox_map

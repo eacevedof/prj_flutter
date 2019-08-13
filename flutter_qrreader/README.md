@@ -596,5 +596,11 @@
     );
   }//_get_mapbox_map
   ```
+- 9.24. Bonus Tipos de mapas
+  - Otras vistas que admite el mapa
+  ```dart
+        "id": "mapbox.streets"
+        //streets, dark, light, outdoors, satellite  
+  ```
 
 
