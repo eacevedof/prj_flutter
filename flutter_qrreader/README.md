@@ -548,6 +548,53 @@
   - https://account.mapbox.com/
   - https://pub.dev/packages/flutter_map (flutter_map 0.7.0+2)
   - temp token: pk.eyJ1IjoiaW9lZHUiLCJhIjoiY2p6YTdwMWdnMDBubTNnbzVvcHBpNHpocSJ9.RG-89XIV8LGViG-XaB5Jdg
+- 9.23. Crear un mapa en Flutter
+  - https://docs.mapbox.com/api/search/#forward-geocoding
+  - import "package:latlong/latlong.dart";
 
+  ```dart
+  //scan_model.dart
+  LatLng getLatLng(){
+    final lalo = valor.substring(4).split(",");
+    final lat = double.parse(lalo[0]);
+    final lng = double.parse(lalo[1]);
+
+    return LatLng(lat, lng);
+  }
+
+  //mapa_page.dart
+  ...
+     body:_crear_fluttermap(oScan),
+    );//scaffold
+
+  }//build
+
+  Widget _crear_fluttermap(ScanModel oScan){
+    return FlutterMap(
+      options: MapOptions(
+          center: oScan.getLatLng(),
+          zoom: 10,
+      ),
+      //capas de información que se quiere poner
+      layers: [
+        _get_mapbox_map() //primer layer mapa 
+        //segundo layer marcadores
+      ],
+    );
+  }//_crear_fluttermap
+
+  _get_mapbox_map(){
+    return TileLayerOptions(
+      urlTemplate: "https://api.tiles.mapbox.com/v4/"
+                    //2x: doble de resolucion
+                    //z: zoom
+                    "{id}/{z}/{x}/{y}@2x.png?access_token={accessToken}",
+      additionalOptions: {
+        "accessToken":"pk.eyJ1IjoiaW9lZHUiLCJhIjoiY2p6YTdwMWdnMDBubTNnbzVvcHBpNHpocSJ9.RG-89XIV8LGViG-XaB5Jdg",
+        "id": "mapbox.streets"
+      }
+    );
+  }//_get_mapbox_map
+  ```
 
 
