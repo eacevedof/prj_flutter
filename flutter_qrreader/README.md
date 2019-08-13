@@ -626,5 +626,24 @@
     );
   }//_get_marked_layer_options  
   ```
+- 9.26. Mover a un punto el mapa
+  ```dart
+  //mapa_page.dart
+  final MapController map = new MapController();
+  ...
+  IconButton(
+    icon: Icon(Icons.my_location),
+    onPressed: (){
+      map.move(oScan.getLatLng(),15);
+    },
+  )
+  ...
+  Widget _crear_fluttermap(ScanModel oScan){
+    return FlutterMap(
+      mapController: map,
+      options: MapOptions(
+          center: oScan.getLatLng(),
+  ```
+  
 
 
