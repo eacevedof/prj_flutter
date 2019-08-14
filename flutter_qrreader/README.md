@@ -673,5 +673,43 @@
     );
   }//_get_float_button
   ```
+- 9.28. Uso de mixins para los streams
+  - corrección del loading infinito al principio
+  - refrescar mixins
+  ```dart
+  //mapas_page.dart
+  //ejecuta el stream controller y corrige el loader infinito
+  scansBloc.obtenerScans();
+
+  //nuevo archivo:
+  //validators_bloc
+  class Validators {
+    //StreamTransformer<lista de entrada (scans), lista de salida transformada (sink)>
+    final validarGeo = StreamTransformer<List<ScanModel>, List<ScanModel>>.fromHandlers(
+      
+      handleData: (scans, sink){
+        final geoScans = scans.where((s)=>s.tipo == "geo").toList();
+        sink.add(geoScans);
+      }//handleData
+
+    );//fromHandlers
+
+    final validarHttp = StreamTransformer<List<ScanModel>, List<ScanModel>>.fromHandlers(
+        
+        handleData: (scans, sink){
+          final geoScans = scans.where((s)=>s.tipo == "http").toList();
+          sink.add(geoScans);
+        }//handleData
+
+      );//fromHandlers
+  }//class Validators
+
+  //scans_bloc.dart
+  //mixins
+  class ScansBloc with Validators {
+    ...
+    Stream<List<ScanModel>> get scansStream => _oStrmController.stream.transform(validarGeo); //validarGeo:StreamTransformer
+    Stream<List<ScanModel>> get scansStreamHttp => _oStrmController.stream.transform(validarHttp);
+  ```
 
 

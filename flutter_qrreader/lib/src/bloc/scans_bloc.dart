@@ -1,9 +1,11 @@
 //@file:scan_bloc.dart
 import 'dart:async';
+import 'package:flutter_qrreader/src/bloc/validators_bloc.dart';
 import 'package:flutter_qrreader/src/models/scan_model.dart';
 import 'package:flutter_qrreader/src/providers/db_provider.dart';
 
-class ScansBloc {
+//mixins
+class ScansBloc with Validators {
 
   static final ScansBloc _singleton = new ScansBloc._internal();
 
@@ -12,12 +14,13 @@ class ScansBloc {
   }//factory ScansBloc
 
   ScansBloc._internal(){   
-
+    obtenerScans();
   }//._internal
 
   final _oStrmController = StreamController<List<ScanModel>>.broadcast();
 
-  Stream<List<ScanModel>> get scansStream => _oStrmController.stream;
+  Stream<List<ScanModel>> get scansStream => _oStrmController.stream.transform(validarGeo);
+  Stream<List<ScanModel>> get scansStreamHttp => _oStrmController.stream.transform(validarHttp);
 
   dispose(){
     _oStrmController?.close();

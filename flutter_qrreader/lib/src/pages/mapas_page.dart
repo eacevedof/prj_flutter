@@ -10,6 +10,9 @@ class MapasPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
+    //ejecuta el stream controller y corrige el loader infinito
+    scansBloc.obtenerScans();
+
     //ya no necesito un futurebuilder sino un streambuilder
     //return FutureBuilder<List<ScanModel>>(
     return StreamBuilder<List<ScanModel>>(
