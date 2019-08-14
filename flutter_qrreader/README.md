@@ -711,5 +711,18 @@
     Stream<List<ScanModel>> get scansStream => _oStrmController.stream.transform(validarGeo); //validarGeo:StreamTransformer
     Stream<List<ScanModel>> get scansStreamHttp => _oStrmController.stream.transform(validarHttp);
   ```
+  - 9.29. Página de direcciones
+    - Se copia el codigo de mapas_page a direcciones_page
+    - Se adapta el código
+    - Se cambian los iconos para direcciones
+    ```dart
+    @override
+    Widget build(BuildContext context) {
+      //ejecuta el stream controller y corrige el loader infinito
+      scansBloc.obtenerScans();
+      return StreamBuilder<List<ScanModel>>(
+        //el stream debe ser Http
+        stream: scansBloc.scansStreamHttp,
+    ```
 
 
