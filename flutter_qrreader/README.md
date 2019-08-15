@@ -777,6 +777,12 @@
     - Token, aplicaciones seleccionadas por el usuario
     - Es equivalente a una cookie
     - El objetivo es como persistir los datos en el dispositivo
+- 10.2. Temas puntuales de la sección (html)
+    - Aprender cómo guardar en el storage
+    - Aprender a leer del storage
+    - Cómo leer información del storage antes de que la aplicación se ejecute
+    - Implementar un singleton para aumentar la eficiencia del mismo.
+    - Esta sección es corta, pero es vital para cualquier aplicación que necesite guardar información en el storage nativo sin usar SQLite.
 
 
 
