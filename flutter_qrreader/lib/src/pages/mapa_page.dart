@@ -68,6 +68,7 @@ class _MapaPageState extends State<MapaPage> {
     );
   }
   _get_marked_layer_options(ScanModel oScan){
+
     return MarkerLayerOptions(
       markers: <Marker>[
         Marker(
@@ -85,7 +86,9 @@ class _MapaPageState extends State<MapaPage> {
         ),
       ],
     );
-  }
+
+  }// _get_marked_layer_options
+
   Widget _get_float_button(BuildContext context){
     return FloatingActionButton(
       child: Icon(Icons.repeat),
@@ -108,4 +111,5 @@ class _MapaPageState extends State<MapaPage> {
       },
     );
   }//_get_float_button
+  
 }//class MapaPage

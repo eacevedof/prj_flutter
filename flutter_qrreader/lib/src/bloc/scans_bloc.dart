@@ -5,6 +5,7 @@ import 'package:flutter_qrreader/src/models/scan_model.dart';
 import 'package:flutter_qrreader/src/providers/db_provider.dart';
 
 //mixins
+//Bloc: Business Logic Component
 class ScansBloc with Validators {
 
   static final ScansBloc _singleton = new ScansBloc._internal();

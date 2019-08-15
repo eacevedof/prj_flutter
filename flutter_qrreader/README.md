@@ -724,5 +724,50 @@
         //el stream debe ser Http
         stream: scansBloc.scansStreamHttp,
     ```
+- 9.30. Prueba de la aplicación funcionando en un dispositivo
+    - Me da error si el dominio no tiene http
+    - He metido un fix y ahora no me da error
+    ```dart
+    //home_page.dart
+    void scan_qr_async(BuildContext context) async {
+      //lee el qr y lo transorma en el sitio web
+      //theframework.es
+      //geo:40.64717223609042,-73.96886244257814
+      print("scan_qr_async");
+      String futureString;
 
+      try {
+        //con el await esperamos un string de lo contrario esperariamos un Future
+        futureString = await new QRCodeReader().scan();
+      }catch(e){
+        futureString = e.toString();
+      }    
+
+      if( futureString != null){
+        if(!(futureString.contains("http://") && futureString.contains("geo")))
+          futureString = "http://"+futureString;
+        final oScanModel = ScanModel(valor:futureString);
+        
+        //esto funciona pero no notifica al stream que ha habido cambios y por ende
+        //que se refresquen las pantallas que estan escuchando
+        //DbProvider.oDb.nuevoScan(oScanModel);
+        scansBloc.agregarScan(oScanModel);
+
+        //final oScanModel2 = ScanModel(valor:"geo:40.4167278,-3.7033387");
+        //scansBloc.agregarScan(oScanModel2);
+
+        //solo para IOS:
+        if (Platform.isIOS){
+          Future.delayed(Duration(microseconds: 750),(){
+            u.abrir_scan(context,oScanModel);
+          });
+        }
+        else 
+          u.abrir_scan(context,oScanModel);
+      }
+      else{
+        print("no se pudo ");
+      }
+    ...
+    ```
 

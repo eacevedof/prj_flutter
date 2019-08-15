@@ -45,7 +45,7 @@ class _HomePageState extends State<HomePage> {
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.filter_center_focus),
-        onPressed: () => scan_qr(context),
+        onPressed: () => scan_qr_async(context),
         //esto se relaciona con main.dart y la propiedad theme
         backgroundColor: Theme.of(context).primaryColor,
       ),
@@ -54,22 +54,32 @@ class _HomePageState extends State<HomePage> {
 
   }//build
 
-  void scan_qr(BuildContext context) async {
+  void scan_qr_async(BuildContext context) async {
     //lee el qr y lo transorma en el sitio web
     //theframework.es
     //geo:40.64717223609042,-73.96886244257814
-    print("scan_qr");
-    String futureString = "http://theframework.es";
+    print("scan_qr_async");
+    String futureString;
+
+    try {
+      //con el await esperamos un string de lo contrario esperariamos un Future
+      futureString = await new QRCodeReader().scan();
+    }catch(e){
+      futureString = e.toString();
+    }    
 
     if( futureString != null){
+      if(!(futureString.contains("http://") && futureString.contains("geo")))
+        futureString = "http://"+futureString;
       final oScanModel = ScanModel(valor:futureString);
+      
       //esto funciona pero no notifica al stream que ha habido cambios y por ende
       //que se refresquen las pantallas que estan escuchando
       //DbProvider.oDb.nuevoScan(oScanModel);
       scansBloc.agregarScan(oScanModel);
 
-      final oScanModel2 = ScanModel(valor:"geo:40.4167278,-3.7033387");
-      scansBloc.agregarScan(oScanModel2);
+      //final oScanModel2 = ScanModel(valor:"geo:40.4167278,-3.7033387");
+      //scansBloc.agregarScan(oScanModel2);
 
       //solo para IOS:
       if (Platform.isIOS){
@@ -80,19 +90,11 @@ class _HomePageState extends State<HomePage> {
       else 
         u.abrir_scan(context,oScanModel);
     }
+    else{
+      print("no se pudo ");
+    }
 
-    // try {
-    //   //con el await esperamos un string de lo contrario esperariamos un Future
-    //   futureString = await new QRCodeReader().scan();
-    // }catch(e){
-    //   futureString = e.toString();
-    // }
-
-    // print("scan_qr.futureString: $futreString");
-    // if(futureString!=null)
-    //   print("Tenemos Información");
-
-  }//scan_qr
+  }//scan_qr_async
 
   Widget _get_bottom_navbar(){
 

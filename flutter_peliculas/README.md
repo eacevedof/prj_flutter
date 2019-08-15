@@ -304,6 +304,7 @@
         - snapshot: Información referente al estado del Stream y la información que sale del Stream
             - estado del stream: cargando, error, etc.
     - Se implementará parcialmente el patrón **Bloc**
+		- The Business Logic Component 
 - 7.17 Creando un Stream de películas
     ```dart
     //peliculas_provider.dart
