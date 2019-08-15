@@ -157,3 +157,22 @@
 
     }// get_menu_wg  
     ```
+- 10.6. Crear un widget independiente para el drawer
+    - Se centraliza la funcion get_menu_wg en un widget
+    - Se crea nuevo widget: menu_widget.dart
+    - Este widget devuelve un Drawer
+    - Se asigna a la propiedad drawer de cada "_page.dart" de modo que en la navegación dibuje la "hamburguesa"
+    ```dart
+    import 'package:flutter/material.dart';
+    import 'package:flutter_preferencias_usuario/src/pages/home_page.dart';
+    import 'package:flutter_preferencias_usuario/src/pages/settings_page.dart';
+
+    class MenuWidget extends StatelessWidget {
+    
+    @override
+    Widget build(BuildContext context) {
+        return Drawer(
+        //listview permite hacer scroll
+        ...
+    }//build
+    ```
