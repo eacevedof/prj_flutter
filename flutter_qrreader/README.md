@@ -771,3 +771,12 @@
     ...
     ```
 ## QR Reader Capitulo 10
+- 10.1. Introducción a la sección
+    - Se grabarán las preferencias del usuario
+    - Los datos deben ser minimos y de preferencia no estructurados
+    - Token, aplicaciones seleccionadas por el usuario
+    - Es equivalente a una cookie
+    - El objetivo es como persistir los datos en el dispositivo
+
+
+
