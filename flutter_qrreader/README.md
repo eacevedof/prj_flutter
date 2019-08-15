@@ -783,6 +783,13 @@
     - Cómo leer información del storage antes de que la aplicación se ejecute
     - Implementar un singleton para aumentar la eficiencia del mismo.
     - Esta sección es corta, pero es vital para cualquier aplicación que necesite guardar información en el storage nativo sin usar SQLite.
+- 10.3. Demostración de la aplicación - Preferencias de Usuario
+    - Widget drawer
+    - Cada vez que se modifica un valor se va guardando la información
+    - Si termino a la app y regreso los datos se conservan
+    - Se manejaran valores por defecto
+    - Se verá como guardar los distintos tipos: Boolean, Entero, etc.
+
 
 
 
