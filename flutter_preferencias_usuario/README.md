@@ -21,3 +21,67 @@
     - Se manejaran valores por defecto
     - Se verá como guardar los distintos tipos: Boolean, Entero, etc.
 - 10.4. Inicio de proyecto - Preferencias de Usuario
+    - Otra forma de trabajar con las rutas
+    - home_page.dart
+    - settings_page.dart
+    ```dart
+    //main.dart
+    @override
+    Widget build(BuildContext context) {
+
+        return MaterialApp(
+            title: 'Preferencias',
+            //initialRoute: "home",
+            //otra forma de enrutar
+            initialRoute: HomePage.routeName,
+            routes: {
+                HomePage.routeName     : (BuildContext context) => HomePage(),
+                SettingsPage.routeName : (BuildContext context) => SettingsPage(),
+            },
+        );
+
+    }//build
+
+    //home_page.dart
+    //propiedad estática
+    static final String routeName = "home";
+    
+    @override
+    Widget build(BuildContext context) {
+        return Scaffold(
+            appBar: AppBar(
+                title: Text("Preferencias de Usuario"),
+            ),
+
+            body: Column(
+                children: <Widget>[
+                Text("Color secundario:"),
+                Divider(),
+                Text("Género:"),
+                Divider(),
+                Text("Nombre de usuario:"),
+                Divider(),
+                ],
+            ),
+        );
+    }//build
+
+    //settings_page.dart
+    //propiedad estática
+    static final String routeName = "settings";
+
+    @override
+    Widget build(BuildContext context) {
+        
+        return Scaffold(
+        appBar: AppBar(
+            title: Text("Ajustes"),
+        ),
+
+        body: Center(
+            child: Text("Ajustes Page"),
+            )
+        );
+
+    }//build    
+    ```
