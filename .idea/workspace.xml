@@ -3,8 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="7639eb1f-db75-4293-b69a-c959ab17df9a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flutter_qrreader/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_qrreader/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flutter_qrreader/lib/src/pages/home_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_qrreader/lib/src/pages/home_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_preferencias_usuario/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_preferencias_usuario/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_preferencias_usuario/lib/src/pages/home_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_preferencias_usuario/lib/src/pages/home_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_preferencias_usuario/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_preferencias_usuario/pubspec.yaml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -62,7 +63,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="838" extended-state="7" />
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <layout>
       <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
       <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.6577181" />
