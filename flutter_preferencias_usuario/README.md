@@ -20,3 +20,4 @@
     - Si termino a la app y regreso los datos se conservan
     - Se manejaran valores por defecto
     - Se verá como guardar los distintos tipos: Boolean, Entero, etc.
+- 10.4. Inicio de proyecto - Preferencias de Usuario
