@@ -770,4 +770,4 @@
       }
     ...
     ```
-
+## QR Reader Capitulo 10
