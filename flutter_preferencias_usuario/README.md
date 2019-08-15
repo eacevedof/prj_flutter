@@ -176,3 +176,63 @@
         ...
     }//build
     ```
+- 10.7. Diseño de la página de los ajustes
+    - Si deseo cargar en el TextField un valor por defecto no lo puedo hacer directamente
+    - Tengo que crear un controller TextEditingController
+    - Esto no es posible `<input value="valor por defecto">` utilizando una variable string
+    - En la propiedad controller: _oTextContrl, del TextField se asigna el controlador que gestionará el valor
+    - Creo que para componentes complejos, como una caja de texto, se necesita un gestor (controlador) ya que tiene que tener en cuenta distiontos tipos de entrada
+    ```dart
+    //control "check horizontal"
+    SwitchListTile(
+      value: true,
+      title: Text("color secundario"),
+      onChanged: (isTrue){
+        setState(() {
+          _colorSecundario = isTrue;
+        });
+      },
+    ),
+
+    Divider(),
+
+    RadioListTile(
+      value: 1, 
+      title: Text("Masculino"),
+      groupValue: _genero, //variable que agrupa los radios
+      onChanged: (iValue){
+        setState(() {
+          _genero = iValue; 
+        });
+      },
+    ),
+
+    RadioListTile(
+      value: 2, 
+      title: Text("Femenino"),
+      groupValue: _genero, //variable que agrupa los radios
+      onChanged: (iValue){
+        setState(() {
+          _genero = iValue; 
+        });
+      },
+    ),
+
+    Divider(),
+
+    Container(
+      padding: EdgeInsets.symmetric(horizontal: 20.0),
+      child: TextField(
+        controller: _oTextContrl,
+        decoration: InputDecoration(
+          labelText: "Nombre",
+          helperText: "Nombre de la persona usando el teléfono"
+        ),
+        onChanged: (sChanged){
+          setState(() {
+            _nombre = sChanged; 
+          });
+        },
+      ),
+    ),    
+    ```
