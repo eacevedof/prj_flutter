@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_preferencias_usuario/src/widgets/menu_widget.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class SettingsPage extends StatefulWidget {
   
@@ -21,10 +22,29 @@ class _SettingsPageState extends State<SettingsPage> {
   TextEditingController _oTextContrl;// = new TextEditingController(text: _nombre); esto no va, se usa initState
 
   @override
+  //no podemos hacer initState como async
   void initState() {
     super.initState();
+    _get_selected_radio();
     _oTextContrl = new TextEditingController(text: _nombre);
+
   }//initState
+
+  _get_selected_radio() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    _genero = prefs.getInt("genero");
+    setState(() {
+      
+    });
+  }
+
+  _set_selected_radio(int iValue) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+
+    prefs.setInt("genero", iValue);
+    _genero = iValue;
+    setState(() {});       
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -62,22 +82,14 @@ class _SettingsPageState extends State<SettingsPage> {
             value: 1, 
             title: Text("Masculino"),
             groupValue: _genero, //variable que agrupa los radios
-            onChanged: (iValue){
-              setState(() {
-                _genero = iValue; 
-              });
-            },
+            onChanged: _set_selected_radio,
           ),
 
           RadioListTile(
             value: 2, 
             title: Text("Femenino"),
             groupValue: _genero, //variable que agrupa los radios
-            onChanged: (iValue){
-              setState(() {
-                _genero = iValue; 
-              });
-            },
+            onChanged: _set_selected_radio,
           ),
 
           Divider(),

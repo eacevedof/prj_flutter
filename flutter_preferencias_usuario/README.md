@@ -236,3 +236,34 @@
       ),
     ),    
     ```
+- 10.8. Shared Preferences
+  - [share_preferences 0.5.2](https://pub.dev/packages/shared_preferences#-installing-tab-)
+  - Donde se guardará:
+    - En ios NSUserDefaults
+    - En Android: SharedPreferences
+  - Queda pendiente la gestion de escritura en preferencias sin tener que crear un método para cada "control" de entrada ni utilizar un streambuilder o un futurebuilder
+  ```dart
+  //no podemos hacer initState como async
+  void initState() {
+    super.initState();
+    _get_selected_radio();
+    _oTextContrl = new TextEditingController(text: _nombre);
+
+  }//initState
+
+  _get_selected_radio() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    _genero = prefs.getInt("genero");
+    setState(() {
+      
+    });
+  }
+
+  _set_selected_radio(int iValue) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+
+    prefs.setInt("genero", iValue);
+    _genero = iValue;
+    setState(() {});       
+  }  
+  ```
