@@ -242,6 +242,7 @@
     - En ios NSUserDefaults
     - En Android: SharedPreferences
   - Queda pendiente la gestion de escritura en preferencias sin tener que crear un método para cada "control" de entrada ni utilizar un streambuilder o un futurebuilder
+  - En principio la app ya cumple su cometido. Guardar en prefs.
   ```dart
   //no podemos hacer initState como async
   void initState() {
