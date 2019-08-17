@@ -319,3 +319,49 @@
           Divider(),
           Text("Género: ${prefs.genero}"),    
   ```
+- 10.10. Clase para manejar las preferencias del usuario
+  - Se configuran los otros atributos de preferencias y se pintan los valores en home_page
+  ```dart
+  //settings_page.dart
+  //se quita "cargarPef()" (_get_selected_radio()) ya no es necesario
+  //control "check horizontal"
+  SwitchListTile(
+    value: _colorSecundario,
+    title: Text("color secundario"),
+    onChanged: (isTrue){
+      setState(() {
+        //si comento todo esto no se actualiza la pantalla
+        _colorSecundario = isTrue;//modif en pantalla
+        prefs.colorsecundario = isTrue;//modif en el storate
+      });
+    },
+  ),
+
+  Container(
+    padding: EdgeInsets.symmetric(horizontal: 20.0),
+    child: TextField(
+      controller: _oTextContrl,
+      decoration: InputDecoration(
+        labelText: "Nombre",
+        helperText: "Nombre de la persona usando el teléfono"
+      ),
+      //cada tecla se presiona dispara este evento
+      onChanged: (sChanged){
+        prefs.nombre = sChanged;
+      },
+    ),
+  ),
+
+  //home_page.dart
+  body: Column(
+    mainAxisAlignment: MainAxisAlignment.center,
+    children: <Widget>[
+      Text("Color secundario: ${prefs.colorsecundario}"),
+      Divider(),
+      Text("Género: ${prefs.genero}"),
+      Divider(),
+      Text("Nombre de usuario: ${prefs.nombre}"),
+      Divider(),
+    ],  
+
+  ```

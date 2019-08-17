@@ -1,8 +1,8 @@
 //file:settings_page.dart
 
 import 'package:flutter/material.dart';
+import 'package:flutter_preferencias_usuario/src/shared_pref/preferencias_usuario.dart';
 import 'package:flutter_preferencias_usuario/src/widgets/menu_widget.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class SettingsPage extends StatefulWidget {
   
@@ -15,33 +15,24 @@ class SettingsPage extends StatefulWidget {
 
 class _SettingsPageState extends State<SettingsPage> {
 
-  bool _colorSecundario = true;
-  int _genero = 1;
-  String _nombre = "Pedro";
+  bool _colorSecundario;
+  int _genero;
 
   TextEditingController _oTextContrl;// = new TextEditingController(text: _nombre); esto no va, se usa initState
+  final prefs = new PreferenciasUsuario();
 
   @override
   //no podemos hacer initState como async
   void initState() {
     super.initState();
-    _get_selected_radio();
-    _oTextContrl = new TextEditingController(text: _nombre);
-
+    _genero = prefs.genero;
+    _colorSecundario = prefs.colorsecundario;
+    _oTextContrl = new TextEditingController(text: prefs.nombre);
   }//initState
 
-  _get_selected_radio() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    _genero = prefs.getInt("genero");
-    setState(() {
-      
-    });
-  }
-
-  _set_selected_radio(int iValue) async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-
-    prefs.setInt("genero", iValue);
+  _set_selected_radio(int iValue){
+    //guarda el nuevo género
+    prefs.genero = iValue;
     _genero = iValue;
     setState(() {});       
   }
@@ -52,6 +43,7 @@ class _SettingsPageState extends State<SettingsPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text("Ajustes"),
+        backgroundColor: (prefs.colorsecundario) ? Colors.teal : Colors.blue,
       ),
  
       drawer: MenuWidget(),
@@ -67,11 +59,13 @@ class _SettingsPageState extends State<SettingsPage> {
 
           //control "check horizontal"
           SwitchListTile(
-            value: true,
+            value: _colorSecundario,
             title: Text("color secundario"),
             onChanged: (isTrue){
               setState(() {
-                _colorSecundario = isTrue;
+                //si comento todo esto no se actualiza la pantalla
+                _colorSecundario = isTrue;//modif en pantalla
+                prefs.colorsecundario = isTrue;//modif en el storate
               });
             },
           ),
@@ -102,10 +96,9 @@ class _SettingsPageState extends State<SettingsPage> {
                 labelText: "Nombre",
                 helperText: "Nombre de la persona usando el teléfono"
               ),
+              //cada tecla se presiona dispara este evento
               onChanged: (sChanged){
-                setState(() {
-                  _nombre = sChanged; 
-                });
+                prefs.nombre = sChanged;
               },
             ),
           ),

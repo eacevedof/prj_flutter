@@ -14,11 +14,11 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     
     final prefs = new PreferenciasUsuario();
-    //prefs.initPrefs(); //no vale porque es async
 
     return Scaffold(
       appBar: AppBar(
         title: Text("Preferencias de Usuario"),
+        backgroundColor: (prefs.colorsecundario) ? Colors.teal : Colors.blue,
       ),
 
       //genera el icono de hamburguesa 
@@ -27,11 +27,11 @@ class HomePage extends StatelessWidget {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          Text("Color secundario:"),
+          Text("Color secundario: ${prefs.colorsecundario}"),
           Divider(),
           Text("Género: ${prefs.genero}"),
           Divider(),
-          Text("Nombre de usuario:"),
+          Text("Nombre de usuario: ${prefs.nombre}"),
           Divider(),
         ],
       ),
