@@ -3,8 +3,14 @@
 #### flutter_formvalidation
 
 - 11.1. Introducción a la sección
-    - 
+    - Crearemos un form login
+    - campo usuario, contraseña
+    - transformacion de streams
+    - validacion de contraseña incorrecta
+    - Login atractivo
+    - Más adelante usarémos el widget form para validar el form que es más sencilla
 - 11.3. Demostración de la aplicación que haremos en esta sección
+
 - 11.3.1 01-Demostracion de la aplicacion que haremos en esta seccion.mp4
 - 11.4. Inicio de proyecto - FormulariosBloc
     - 
