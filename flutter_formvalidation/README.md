@@ -180,8 +180,33 @@
     }//_get_loginform_wg    
     ```
 - 11.7. LoginBloc - Controlar los campos del formulario
-    - 
+    - Implementando el patrón BLoC
+    - Se crea clase gestora de streams de email y password
     ```dart
+    //login_bloc.dart
+    class LoginBloc {
+
+      //broadcast(): permite que varios objetos escuchen e interactuen con el stream
+      final _emailCtrl = StreamController<String>.broadcast();
+      final _passCtrl = StreamController<String>.broadcast();
+
+      //escuchadores
+      //recuperar los datos del stream
+      //hay que definir lo que saldrá del stream: Stream<String> 
+      Stream<String> get emailStream => _emailCtrl.stream;
+      Stream<String> get passStream => _passCtrl.stream;
+
+      //insertar valores al stream
+      //son funciones que reciben un string: Function(String)
+      Function(String) get changeEmail => _emailCtrl.sink.add;
+      Function(String) get changePass => _passCtrl.sink.add;  
+
+      dispose(){
+        _emailCtrl?.close();
+        _passCtrl?.close();
+      }
+
+    }//class LoginBloc    
     ```
 - 11.8. InheritedWidget
     - 
