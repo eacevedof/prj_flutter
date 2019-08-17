@@ -182,6 +182,7 @@
 - 11.7. LoginBloc - Controlar los campos del formulario
     - Implementando el patrón BLoC
     - Se crea clase gestora de streams de email y password
+    - En la siguiente lección se vera como gestionar información global según Flutter.
     ```dart
     //login_bloc.dart
     class LoginBloc {
