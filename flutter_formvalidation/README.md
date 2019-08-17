@@ -10,6 +10,9 @@
     - Login atractivo
     - Más adelante usarémos el widget form para validar el form que es más sencilla
 - 11.3. Demostración de la aplicación que haremos en esta sección
+    - No es una sección sencilla
+    - Se recomienda haber visto los otros videos anteriores sobre BLoC
+    
 
 - 11.3.1 01-Demostracion de la aplicacion que haremos en esta seccion.mp4
 - 11.4. Inicio de proyecto - FormulariosBloc
