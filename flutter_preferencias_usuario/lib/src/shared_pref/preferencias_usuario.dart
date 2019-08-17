@@ -34,4 +34,7 @@ class PreferenciasUsuario {
   get colorsecundario {return _prefs.getBool("colorsecundario") ?? false;}
   set colorsecundario (bool isSecundario) {_prefs.setBool("colorsecundario",isSecundario);}
 
+  get ultima_pagina {return _prefs.getString("ultima_pagina") ?? "home";}
+  set ultima_pagina (String sValue) {_prefs.setString("ultima_pagina",sValue);}
+
 }//class PreferenciasUsuario

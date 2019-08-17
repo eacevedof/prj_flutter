@@ -25,6 +25,7 @@ class _SettingsPageState extends State<SettingsPage> {
   //no podemos hacer initState como async
   void initState() {
     super.initState();
+    prefs.ultima_pagina = SettingsPage.routeName;
     _genero = prefs.genero;
     _colorSecundario = prefs.colorsecundario;
     _oTextContrl = new TextEditingController(text: prefs.nombre);

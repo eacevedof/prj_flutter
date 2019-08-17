@@ -365,3 +365,23 @@
     ],  
 
   ```
+- 10.11. Última página abierta
+  - Se crea un atributo ultima_pagina en PrefenciasUsuario
+  - Ya guarda la última pantalla, para esto se asigna a prefs la última ruta
+  ```dart
+  //preferencias_usuario.dart
+  get ultima_pagina {return _prefs.getString("ultima_pagina") ?? "home";}
+  set ultima_pagina (String sValue) {_prefs.setString("ultima_pagina",sValue);}
+
+  //settings_page.dart
+  @override
+  //no podemos hacer initState como async
+  void initState() {
+    super.initState();
+    prefs.ultima_pagina = SettingsPage.routeName;
+  //home_page.dart
+  Widget build(BuildContext context) {
+    
+    final prefs = new PreferenciasUsuario();
+    prefs.ultima_pagina = HomePage.routeName;  
+  ```

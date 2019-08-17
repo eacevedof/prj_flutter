@@ -13,6 +13,8 @@ void main() async {
  
 class MyApp extends StatelessWidget {
 
+  final prefs = new PreferenciasUsuario();
+
   @override
   Widget build(BuildContext context) {
 
@@ -20,7 +22,7 @@ class MyApp extends StatelessWidget {
       title: 'Preferencias',
       //initialRoute: "home",
       //otra forma de enrutar
-      initialRoute: HomePage.routeName,
+      initialRoute: prefs.ultima_pagina,
       routes: {
          HomePage.routeName     : (BuildContext context) => HomePage(),
          SettingsPage.routeName : (BuildContext context) => SettingsPage(),
