@@ -16,8 +16,10 @@
     - Mientras escribimos se va validando
     - Si la contraseña cumple con 6 chars ya habilita el botón
 - 11.4. Inicio de proyecto - FormulariosBloc
-    - 
+    - vscode: mateapp
     ```dart
+    //home_page.dart
+    //login_page.dart
     ```
 - 11.5. Diseño del fondo de pantalla del login
     - 
