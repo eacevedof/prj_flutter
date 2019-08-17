@@ -12,9 +12,9 @@
 - 11.3. Demostración de la aplicación que haremos en esta sección
     - No es una sección sencilla
     - Se recomienda haber visto los otros videos anteriores sobre BLoC
-    
-
 - 11.3.1 01-Demostracion de la aplicacion que haremos en esta seccion.mp4
+    - Mientras escribimos se va validando
+    - Si la contraseña cumple con 6 chars ya habilita el botón
 - 11.4. Inicio de proyecto - FormulariosBloc
     - 
     ```dart
