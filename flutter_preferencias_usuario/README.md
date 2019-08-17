@@ -268,3 +268,54 @@
     setState(() {});       
   }  
   ```
+- 10.9. Clase para manejar las preferencias del usuario
+  - Se crea clase singleton para leer las preferencias de modo global
+  - La intención es guardar la última pagina que el usuario visitó
+  - Con el patrón singleton tendremos solo una instancia de prefs 
+  ```dart
+  //preferencias_usuario.dart
+  class PreferenciasUsuario {
+    
+    static final PreferenciasUsuario _oSelf = new PreferenciasUsuario._internal();
+
+    factory PreferenciasUsuario(){
+      return _oSelf;
+    }//PreferenciasUsuario
+
+    PreferenciasUsuario._internal(){;}
+
+    SharedPreferences _prefs;
+
+    initPrefs() async {
+      this._prefs = await SharedPreferences.getInstance();
+    }
+
+    bool _colorSecundario;
+    int _genero;
+    String _nombre;
+
+    get genero {return _prefs.getInt("genero")??1;}
+    set genero (int iValue) {_prefs.setInt("genero",iValue);}
+
+  }//class PreferenciasUsuario
+
+  //main.dart
+  void main() async {
+    //cargo las preferencias
+    final prefs = new PreferenciasUsuario();
+    //devuelve un future
+    await prefs.initPrefs();
+    runApp(MyApp());
+  }
+
+  //home.dart
+  Widget build(BuildContext context) {  
+    final prefs = new PreferenciasUsuario();
+    ...
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          Text("Color secundario:"),
+          Divider(),
+          Text("Género: ${prefs.genero}"),    
+  ```
