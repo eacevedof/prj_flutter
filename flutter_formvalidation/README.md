@@ -210,8 +210,50 @@
     }//class LoginBloc    
     ```
 - 11.8. InheritedWidget
-    - 
+    - Hasta ahora lo haciamos con el patrón singleton
+    - Flutter recomienda el uso de InheretedWidget
+    - Es algo como Redux
+    - El context sería como el DOM
+    - El MaterialApp es el nodo principal (nivel superior) del "DOM"
     ```dart
+    //provider.dart
+    //Widget con gestor de streaming
+    class Provider extends InheritedWidget {
+      //instancia única del gestor de streaming
+      final loginBloc = LoginBloc();
+
+      //constructor
+      Provider({Key key, Widget child}) : super(key: key, child:child);
+
+      @override
+      //en el 99% de los casos debe devolver true
+      bool updateShouldNotify(InheritedWidget oldWidget) => true;
+
+      //va a buscar en el DOM (context) y devolverá la instancia de este "LoginBloc"
+      static LoginBloc of (BuildContext context){
+        //va a buscar un Provider en el DOM, una vez que lo encuentre devuelve el loginBloc (que es el gestor de streaming)
+        return (context.ancestorInheritedElementForWidgetOfExactType(Provider) as Provider).loginBloc;
+      }
+    }//class Provider
+
+    //main.dart
+    Widget build(BuildContext context) {
+      //devuelve un widget gestor de streaming de tipo: InheritedWidget
+      return Provider(
+
+        child: MaterialApp(
+          //deshabilitar franja de banner
+          debugShowCheckedModeBanner: false,
+          title: 'Material App',
+          initialRoute: "login",
+          routes: {
+            "login" : (BuildContext context) => LoginPage(),
+            "home"  : (BuildContext context) => HomePage(),
+          },
+        ),
+
+      );//Provider
+    }//build    
     ```
 - 11.9. Conectar los inputs con los Streams
     - 

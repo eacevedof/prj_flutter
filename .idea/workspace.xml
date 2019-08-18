@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7639eb1f-db75-4293-b69a-c959ab17df9a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/flutter_preferencias_usuario/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_preferencias_usuario/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flutter_preferencias_usuario/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_preferencias_usuario/lib/main.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flutter_preferencias_usuario/lib/src/pages/home_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_preferencias_usuario/lib/src/pages/home_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flutter_preferencias_usuario/lib/src/pages/settings_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_preferencias_usuario/lib/src/pages/settings_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flutter_preferencias_usuario/lib/src/shared_pref/preferencias_usuario.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_preferencias_usuario/lib/src/shared_pref/preferencias_usuario.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_formvalidation/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_formvalidation/README.md" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
