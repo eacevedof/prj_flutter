@@ -21,6 +21,10 @@ class MyApp extends StatelessWidget {
           "login" : (BuildContext context) => LoginPage(),
           "home"  : (BuildContext context) => HomePage(),
         },
+        theme: ThemeData(
+          //el color de los label y las lineas limite de las cajas de texto
+          primaryColor: Colors.purple,
+        )
       ),
 
     );//Provider

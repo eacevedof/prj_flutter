@@ -232,7 +232,7 @@
       //va a buscar en el DOM (context) y devolverá la instancia de este "LoginBloc"
       static LoginBloc of (BuildContext context){
         //va a buscar un Provider en el DOM, una vez que lo encuentre devuelve el loginBloc (que es el gestor de streaming)
-        return (context.ancestorInheritedElementForWidgetOfExactType(Provider) as Provider).loginBloc;
+        return (context.inheritFromWidgetOfExactType(Provider) as Provider).loginBloc;
       }
     }//class Provider
 
@@ -256,8 +256,71 @@
     }//build    
     ```
 - 11.9. Conectar los inputs con los Streams
-    - 
+    - Se conectará los LoginBloc atributos con los inputs
+    - Con el provider se publica en lo más alto (es decir, a nivel global) los streams
+    - vscode: strBuilder
+    - Para escuchar los cambios ahora necesitamos el Widget Streambuilder en este widget, se configura el stream correspondiente
+    - Con esta técnica podemos redibujar el widget sin la necesidad de setState
+    - De momento estamos escuchando el stream y no el valor. Más adelante se verá.
     ```dart
+    //provider.dart
+    export "package:flutter_formvalidation/src/bloc/login_bloc.dart";   
+
+    //login_page.dart
+    Widget _get_loginform_wg(BuildContext context){
+      final bloc = Provider.of(context);
+    ...    
+    Widget _get_email_wg(LoginBloc bloc){
+      
+      return StreamBuilder(
+        stream: bloc.emailStream ,
+        builder: (BuildContext context, AsyncSnapshot snapshot){
+          return Container(
+            padding: EdgeInsets.symmetric(horizontal: 20.0),
+            child: TextField(
+              keyboardType: TextInputType.emailAddress,
+              decoration: InputDecoration(
+                icon: Icon(Icons.alternate_email,color: Colors.deepPurple),
+                hintText: "ejemplo@correo.com",
+                labelText: "Un correo electronico",
+                counterText: snapshot.data,
+              ),
+              onChanged: bloc.changeEmail, //el primer argumento se pasará al primer argumento de changeEmail
+            ),
+
+          );
+        },
+      );
+
+    }//_get_email_wg
+
+    Widget _get_password_wg(LoginBloc bloc){
+
+      return StreamBuilder(
+        stream: bloc.passStream ,
+        builder: (BuildContext context, AsyncSnapshot snapshot){
+          return Container(
+            padding: EdgeInsets.symmetric(horizontal: 20.0),
+            child: TextField(
+              obscureText: true,
+              decoration: InputDecoration(
+                icon: Icon(Icons.lock_outline,color: Colors.deepPurple),
+                labelText: "Contraseña",
+                counterText: snapshot.data,
+              ),
+              onChanged: bloc.changePass,
+            ),
+          );
+        },
+      );
+    
+    }//_get_password_wg    
+
+    //main.dart
+    theme: ThemeData(
+      //el color de los label y las lineas limite de las cajas de texto
+      primaryColor: Colors.purple,
+    )    
     ```
 - 11.10. StreamTransformer y Validaciones
     - 
