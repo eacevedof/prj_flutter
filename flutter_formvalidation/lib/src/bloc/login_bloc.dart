@@ -1,8 +1,10 @@
 //file:login_bloc.dart
 
 import 'dart:async';
+import 'package:flutter_formvalidation/src/bloc/validators.dart';
 
-class LoginBloc {
+//mixin
+class LoginBloc with Validators {
 
   //broadcast(): permite que varios objetos escuchen e interactuen con el stream
   final _emailCtrl = StreamController<String>.broadcast();
@@ -11,8 +13,8 @@ class LoginBloc {
   //escuchadores
   //recuperar los datos del stream
   //hay que definir lo que saldrá del stream: Stream<String> 
-  Stream<String> get emailStream => _emailCtrl.stream;
-  Stream<String> get passStream => _passCtrl.stream;
+  Stream<String> get emailStream => _emailCtrl.stream.transform(validarEmail);
+  Stream<String> get passStream => _passCtrl.stream.transform(validarPass);
 
   //insertar valores al stream
   //son funciones que reciben un string: Function(String)

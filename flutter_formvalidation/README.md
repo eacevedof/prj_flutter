@@ -323,8 +323,76 @@
     )    
     ```
 - 11.10. StreamTransformer y Validaciones
-    - 
+    - En el onchange del input se asigna el stream que gestionará los cambios sobre este.  El valor recibido se escribirá con .add en el stream.
+    - Antes de retornar lo que hay en el stream (.stream) se validará el texto y se agregará esa validación al stream
+    - En el builder de los inputs se recibirán los datos del stream en la variable **snapshot**
     ```dart
+    //validators.dart
+    //streamTransformer público
+    final validarPass = StreamTransformer<String,String>.fromHandlers(
+      handleData: (password, sink){
+        if (password.length>= 6){
+          //es válido y q continue el pass
+          sink.add(password);
+        }
+        else{
+          sink.addError("más de 6 caracteres por favor");
+        }
+      }
+    );
+    
+    final validarEmail = StreamTransformer<String,String>.fromHandlers(
+      handleData: (email, sink){
+        Pattern pattern = r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
+        RegExp regExp = new RegExp(pattern);
+        if(regExp.hasMatch(email)){
+          sink.add(email);
+        }
+        else
+        {
+          sink.addError("email incorrecto");
+        }
+      }
+    );  
+
+    //login_bloc.dart
+    Stream<String> get emailStream => _emailCtrl.stream.transform(validarEmail);
+    Stream<String> get passStream => _passCtrl.stream.transform(validarPass);
+
+    //login_page.dart
+    Widget _get_email_wg(LoginBloc bloc){
+      return StreamBuilder(
+        stream: bloc.emailStream ,
+        builder: (BuildContext context, AsyncSnapshot snapshot){
+          return Container(
+            padding: EdgeInsets.symmetric(horizontal: 20.0),
+            child: TextField(
+              keyboardType: TextInputType.emailAddress,
+              decoration: InputDecoration(
+                icon: Icon(Icons.alternate_email,color: Colors.deepPurple),
+                hintText: "ejemplo@correo.com",
+                labelText: "Un correo electronico",
+                counterText: snapshot.data,
+                errorText: snapshot.error,
+              ),
+              onChanged: bloc.changeEmail, //el primer argumento se pasará al primer argumento de changeEmail
+            ),    
+    
+    Widget _get_password_wg(LoginBloc bloc){
+      return StreamBuilder(
+        stream: bloc.passStream ,
+        builder: (BuildContext context, AsyncSnapshot snapshot){
+          return Container(
+            padding: EdgeInsets.symmetric(horizontal: 20.0),
+            child: TextField(
+              obscureText: true,
+              decoration: InputDecoration(
+                icon: Icon(Icons.lock_outline,color: Colors.deepPurple),
+                labelText: "Contraseña",
+                counterText: snapshot.data,
+                //errorText: "no es un dato válido"  //si hay texto se pone rojo si es null se queda en su color
+                errorText: snapshot.error,    
+
     ```
 - 11.11. Combinar Streams
     - 

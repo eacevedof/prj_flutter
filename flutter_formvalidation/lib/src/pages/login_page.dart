@@ -31,6 +31,7 @@ class LoginPage extends StatelessWidget {
               hintText: "ejemplo@correo.com",
               labelText: "Un correo electronico",
               counterText: snapshot.data,
+              errorText: snapshot.error,
             ),
             onChanged: bloc.changeEmail, //el primer argumento se pasará al primer argumento de changeEmail
           ),
@@ -54,6 +55,8 @@ class LoginPage extends StatelessWidget {
               icon: Icon(Icons.lock_outline,color: Colors.deepPurple),
               labelText: "Contraseña",
               counterText: snapshot.data,
+              //errorText: "no es un dato válido"  //si hay texto se pone rojo si es null se queda en su color
+              errorText: snapshot.error,
             ),
             onChanged: bloc.changePass,
           ),
