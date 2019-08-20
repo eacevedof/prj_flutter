@@ -448,6 +448,7 @@
     ```
 - 11.12. Obtener el último valor emitido por un stream
     - No interesa el valor propio de la caja de texto sino el último valor emitido por los streams
+    - Si se hace un hot-reload se pierde el dato del stream
     ```dart
     //login_bloc.dart
     //obtener el último valor ingresado a los streams
