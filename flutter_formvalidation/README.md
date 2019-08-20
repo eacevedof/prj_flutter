@@ -456,6 +456,10 @@
     String get password => _passCtrl.value;    
     
     //login_page.dart
+    ...
+          //null desactiva el botón
+          onPressed: snapshot.hasData ? () => _login(bloc, context) :null,
+    ...
     _login(LoginBloc bloc, BuildContext context){
       
       print("============");
