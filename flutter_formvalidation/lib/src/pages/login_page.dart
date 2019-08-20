@@ -86,7 +86,7 @@ class LoginPage extends StatelessWidget {
           color: Colors.deepPurple,
           textColor: Colors.white,
           //null desactiva el botón
-          onPressed: snapshot.hasData ? () {} :null,
+          onPressed: snapshot.hasData ? () => _login(bloc, context) :null,
         );
       },
     );
@@ -196,5 +196,14 @@ class LoginPage extends StatelessWidget {
     );
 
   }//_get_fondo_wg 
+
+  _login(LoginBloc bloc, BuildContext context){
+    
+    print("============");
+    print("Email: ${bloc.email}");
+    print("Passwrod: ${bloc.password}");
+    //Navigator.pushNamed(context,"home"); //mantinene la flecha de retorno
+    Navigator.pushReplacementNamed(context,"home");
+  }
 
 }//class LoginPage

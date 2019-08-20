@@ -447,8 +447,42 @@
     }//_get_raisedbutton_wg    
     ```
 - 11.12. Obtener el último valor emitido por un stream
-    - 
+    - No interesa el valor propio de la caja de texto sino el último valor emitido por los streams
     ```dart
+    //login_bloc.dart
+    //obtener el último valor ingresado a los streams
+    String get email => _emailCtrl.value;
+    String get password => _passCtrl.value;    
+    
+    //login_page.dart
+    _login(LoginBloc bloc, BuildContext context){
+      
+      print("============");
+      print("Email: ${bloc.email}");
+      print("Passwrod: ${bloc.password}");
+      //Navigator.pushNamed(context,"home"); //mantinene la flecha de retorno
+      Navigator.pushReplacementNamed(context,"home");
+    }    
+
+    //home_page.dart
+    Widget build(BuildContext context) {
+      final bloc = Provider.of(context);
+
+      return Scaffold(
+        appBar: AppBar(
+          title: Text("Home Page"),
+        ),
+        body: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Text("email: ${bloc.email}"),
+            Divider(),
+            Text("password: ${bloc.password}"),
+          ]
+        ),
+      );
+    }//build    
     ```
 - 11.13. Mantener la data de los streams después de un hot reload
     - 
