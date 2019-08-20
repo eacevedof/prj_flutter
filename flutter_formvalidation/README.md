@@ -395,8 +395,28 @@
 
     ```
 - 11.11. Combinar Streams
-    - 
+    - rxdart
+    - https://pub.dev/packages/rxdart#-installing-tab-
+    - https://rxmarbles.com/#combineLatest  ^^
+    - combineLatestStream<T,R> es como un concatenador de datos
+    - Los combineLatest no trabajan con StreamControllers en su lugar
+    usan BehaviorSubject
     ```dart
+    //pubspec.yaml
+    rxdart: ^0.22.1+1
+
+    //login_bloc.dart
+    //se cambia los controllers por behaviours y streams por observables
+    final _emailCtrl = BehaviorSubject<String>();
+    final _passCtrl = BehaviorSubject<String>();
+
+    //(e,p) es el resultado del email y password. Si hay datos en ambos streams deseo retornar un true en caso contrario regresaria null
+    Stream<bool> get formValidStream => Observable.combineLatest2(emailStream, passStream, (e,p)=>true);
+
+    //insertar valores al stream
+    //son funciones que reciben un string: Function(String)
+    Function(String) get changeEmail => _emailCtrl.sink.add;
+    Function(String) get changePass => _passCtrl.sink.add;
     ```
 - 11.12. Obtener el último valor emitido por un stream
     - 
