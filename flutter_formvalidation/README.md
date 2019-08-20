@@ -417,6 +417,34 @@
     //son funciones que reciben un string: Function(String)
     Function(String) get changeEmail => _emailCtrl.sink.add;
     Function(String) get changePass => _passCtrl.sink.add;
+
+    //login_page.dart (boton)
+    Widget _get_raisedbutton_wg(BuildContext context, LoginBloc bloc){
+      //formValidStream
+      //snapshot.hasData
+      //true ? algo si true:
+      return StreamBuilder(
+        stream: bloc.formValidStream,
+        builder: (BuildContext context, AsyncSnapshot snapshot){
+          return RaisedButton(
+            child: Container(
+              padding: EdgeInsets.symmetric(horizontal: 80.0, vertical: 15.0),
+              child: Text("Ingresar"),
+
+            ),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(5.0)
+            ),
+            elevation: 0.0,
+            color: Colors.deepPurple,
+            textColor: Colors.white,
+            //null desactiva el botón
+            onPressed: snapshot.hasData ? () {} :null,
+          );
+        },
+      );
+
+    }//_get_raisedbutton_wg    
     ```
 - 11.12. Obtener el último valor emitido por un stream
     - 
