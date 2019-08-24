@@ -531,9 +531,7 @@
   - Las imágenes se subirán a [cloudinary.com](https://cloudinary.com/)
   - creo cuenta en cloudinary.com
 - 4. Inicio de proyecto - CRUD
-  - 
-  ```dart
-  ```
+  - Es la continuación del proyecto de login (sección 11)
 - 5. Diseño de la pantalla de detalle de producto
   - 
   ```dart
