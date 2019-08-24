@@ -526,9 +526,10 @@
   - Leeremos el mimetype
   - Adjuntaremos desde la galería de imágenes
 - 3. Demostración de la aplicación - CRUD
-  - 
-  ```dart
-  ```
+  - Ejemplo de una ejecución de subida a firebase
+  - Se llenará un formulario
+  - Las imágenes se subirán a [cloudinary.com](https://cloudinary.com/)
+  - creo cuenta en cloudinary.com
 - 4. Inicio de proyecto - CRUD
   - 
   ```dart
