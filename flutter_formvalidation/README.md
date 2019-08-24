@@ -490,8 +490,28 @@
     }//build    
     ```
 - 11.13. Mantener la data de los streams después de un hot reload
-    - 
+    - La información se pierde cuando se refresca la pantalla porque cada vez que se recarga, se devuelve el **Provider** (que es un **InheritedWidget**) que al no ser un singleton se carga con los valores por defecto. Es decir la propiedad loginBloc se limpia.
+    - La solución no pasa por hacer del 
     ```dart
-    //
-    
+    //provider.dart
+    class Provider extends InheritedWidget {
+
+      static Provider _instancia;
+
+      factory Provider({Key key, Widget child}){
+        if(_instancia == null){
+          _instancia = new Provider._internal(key: key, child: child);
+        }
+        return _instancia;
+      }
+
+      //constructor interno que evita que se cree una instancia desde afuera
+      Provider._internal({Key key, Widget child})
+          : super(key:key, child:child);
+      
+      //instancia única
+      final loginBloc = LoginBloc();
+
+      //constructor, no procede, ahora es singleton
+      //Provider({Key key, Widget child}) : super(key: key, child:child); 
     ```
