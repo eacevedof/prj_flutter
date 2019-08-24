@@ -542,6 +542,7 @@
 
   //producto_page.dart
   //botones galeria y foto
+  Form()
   TextFormField()
   keyboardType: TextInputType.numberWithOptions(decimal: true), //teclado numerico decimal
 
