@@ -517,7 +517,7 @@
     ```
 
 ## 12. CRUD hacia servicios REST, uso de cámara y galería de imágenes
-- 1. Introducción a la sección
+- 12.1. Introducción a la sección
   - Se trabajara con Firebase
   - Se usará el REST API para hacer el CRUD
   - Trabajaremos con la cámara 
@@ -525,78 +525,91 @@
   - Subiremos ficheros
   - Leeremos el mimetype
   - Adjuntaremos desde la galería de imágenes
-- 3. Demostración de la aplicación - CRUD
+- 12.3. Demostración de la aplicación - CRUD
   - Ejemplo de una ejecución de subida a firebase
   - Se llenará un formulario
   - Las imágenes se subirán a [cloudinary.com](https://cloudinary.com/)
   - creo cuenta en cloudinary.com
-- 4. Inicio de proyecto - CRUD
+- 12.4. Inicio de proyecto - CRUD
   - Es la continuación del proyecto de login (sección 11)
-- 5. Diseño de la pantalla de detalle de producto
+- 12.5. Diseño de la pantalla de detalle de producto
+  - Se crea formulario con campos Producto y precio
+  - Botón guardar
+  - No hace nada de momento. Solo es diseño
+  ```dart
+  //main.dart
+  //nueva ruta producto
+
+  //producto_page.dart
+  //botones galeria y foto
+  TextFormField()
+  keyboardType: TextInputType.numberWithOptions(decimal: true), //teclado numerico decimal
+
+  //home_page.dart
+  //floating button que navega a la pantalla producto
+  onPressed: () => Navigator.pushNamed(context, "producto"),
+  ```
+- 12.6. Validación de formularios - FormWidget
   - 
   ```dart
   ```
-- 6. Validación de formularios - FormWidget
+- 12.7. Modelo para manejar los productos
   - 
   ```dart
   ```
-- 7. Modelo para manejar los productos
+- 12.8. Conectar nuestro formulario con el modelo de producto
   - 
   ```dart
   ```
-- 8. Conectar nuestro formulario con el modelo de producto
+- 12.9. Preparar nuestra base de datos - Firebase
   - 
   ```dart
   ```
-- 9. Preparar nuestra base de datos - Firebase
+- 12.10. Provider de productos
   - 
   ```dart
   ```
-- 10. Provider de productos
+- 12.11. Cargar productos de Firebase
   - 
   ```dart
   ```
-- 11. Cargar productos de Firebase
+- 12.12. Mostrar el listado de los productos
   - 
   ```dart
   ```
-- 12. Mostrar el listado de los productos
+- 12.13. Eliminar registros de Firebase
   - 
   ```dart
   ```
-- 13. Eliminar registros de Firebase
+- 12.14. Editar un producto
   - 
   ```dart
   ```
-- 14. Editar un producto
+- 12.15. Bloquear botón y mostrar Snackbar
   - 
   ```dart
   ```
-- 15. Bloquear botón y mostrar Snackbar
+- 12.16. Seleccionar y mostrar una fotografía
   - 
   ```dart
   ```
-- 16. Seleccionar y mostrar una fotografía
+- 12.17. Tomar una fotografía y mostrarla en pantalla
   - 
   ```dart
   ```
-- 17. Tomar una fotografía y mostrarla en pantalla
+- 12.18. Backend - Subir fotografías
   - 
   ```dart
   ```
-- 18. Backend - Subir fotografías
+- 12.19. Subir fotografía desde Flutter
   - 
   ```dart
   ```
-- 19. Subir fotografía desde Flutter
+- 12.20. Pruebas de carga de fotografías y actualizar registros en Firebase
   - 
   ```dart
   ```
-- 20. Pruebas de carga de fotografías y actualizar registros en Firebase
-  - 
-  ```dart
-  ```
-- 21. Mostrar imágenes cargadas
+- 12.21. Mostrar imágenes cargadas
   - 
   ```dart
   ```
