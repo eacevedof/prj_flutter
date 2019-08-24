@@ -515,3 +515,5 @@
       //constructor, no procede, ahora es singleton
       //Provider({Key key, Widget child}) : super(key: key, child:child); 
     ```
+
+## 12. CRUD hacia servicios REST, uso de cámara y galería de imágenes
