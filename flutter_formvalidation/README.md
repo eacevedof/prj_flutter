@@ -518,9 +518,13 @@
 
 ## 12. CRUD hacia servicios REST, uso de cámara y galería de imágenes
 - 1. Introducción a la sección
-  - 
-  ```dart
-  ```
+  - Se trabajara con Firebase
+  - Se usará el REST API para hacer el CRUD
+  - Trabajaremos con la cámara 
+  - Usaremos la galería de fotos del teléfono
+  - Subiremos ficheros
+  - Leeremos el mimetype
+  - Adjuntaremos desde la galería de imágenes
 - 3. Demostración de la aplicación - CRUD
   - 
   ```dart
