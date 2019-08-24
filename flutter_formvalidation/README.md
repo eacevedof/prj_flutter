@@ -517,3 +517,83 @@
     ```
 
 ## 12. CRUD hacia servicios REST, uso de cámara y galería de imágenes
+- 1. Introducción a la sección
+  - 
+  ```dart
+  ```
+- 3. Demostración de la aplicación - CRUD
+  - 
+  ```dart
+  ```
+- 4. Inicio de proyecto - CRUD
+  - 
+  ```dart
+  ```
+- 5. Diseño de la pantalla de detalle de producto
+  - 
+  ```dart
+  ```
+- 6. Validación de formularios - FormWidget
+  - 
+  ```dart
+  ```
+- 7. Modelo para manejar los productos
+  - 
+  ```dart
+  ```
+- 8. Conectar nuestro formulario con el modelo de producto
+  - 
+  ```dart
+  ```
+- 9. Preparar nuestra base de datos - Firebase
+  - 
+  ```dart
+  ```
+- 10. Provider de productos
+  - 
+  ```dart
+  ```
+- 11. Cargar productos de Firebase
+  - 
+  ```dart
+  ```
+- 12. Mostrar el listado de los productos
+  - 
+  ```dart
+  ```
+- 13. Eliminar registros de Firebase
+  - 
+  ```dart
+  ```
+- 14. Editar un producto
+  - 
+  ```dart
+  ```
+- 15. Bloquear botón y mostrar Snackbar
+  - 
+  ```dart
+  ```
+- 16. Seleccionar y mostrar una fotografía
+  - 
+  ```dart
+  ```
+- 17. Tomar una fotografía y mostrarla en pantalla
+  - 
+  ```dart
+  ```
+- 18. Backend - Subir fotografías
+  - 
+  ```dart
+  ```
+- 19. Subir fotografía desde Flutter
+  - 
+  ```dart
+  ```
+- 20. Pruebas de carga de fotografías y actualizar registros en Firebase
+  - 
+  ```dart
+  ```
+- 21. Mostrar imágenes cargadas
+  - 
+  ```dart
+  ```

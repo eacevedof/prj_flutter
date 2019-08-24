@@ -26,7 +26,7 @@
 - [9. QRScanner - SQLite](https://github.com/eacevedof/prj_flutter/tree/master/flutter_qrreader#qr-reader-capitulo-9)
 - [10. Preferencias de usuario](https://github.com/eacevedof/prj_flutter/tree/master/flutter_preferencias_usuario#qr-reader-capitulo-10)
 - [11. Validación de formularios - Patrón Bloc](https://github.com/eacevedof/prj_flutter/tree/master/flutter_formvalidation#11-validaci%C3%B3n-de-formularios---patr%C3%B3n-bloc)
-- [12. CRUD hacia servicios REST, uso de cámara y galería de imágenes]()
+- [12. CRUD hacia servicios REST, uso de cámara y galería de imágenes](https://github.com/eacevedof/prj_flutter/tree/master/flutter_formvalidation#12-crud-hacia-servicios-rest-uso-de-c%C3%A1mara-y-galer%C3%ADa-de-im%C3%A1genes)
 - [13. Login y manejo de Tokens]()
 - [14. Detalles finales de la aplicación de productos]()
 - [15. Despliegue en Google PlayStore y Apple AppStore]()
