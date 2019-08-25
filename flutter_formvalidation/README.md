@@ -555,7 +555,7 @@
   - para trabajar con el form se debe usar un statefulwidget
   ```dart
   //se crea utils.dart
-  
+
   //producto_page.dart
   //definiendo así la variable se informa a Flutter que 
   //esta representa a la config del formulario
@@ -573,8 +573,39 @@
   }//_submit
   ```
 - 12.7. Modelo para manejar los productos
-  - 
+  - Generador de modelos: [https://app.quicktype.io/](https://app.quicktype.io/)
   ```dart
+  //file: product_model.dart
+  //generador: https://app.quicktype.io/
+  import 'dart:convert';
+
+  //recibe un json en string y devuelve una instancia del modelo
+  ProductoModel productoModelFromJson(String str) => ProductoModel.fromJson(json.decode(str));
+
+  //recibe un modelo y devuelve un json
+  String productoModelToJson(ProductoModel data) => json.encode(data.toJson());
+
+  class ProductoModel {
+
+      String id;
+      ...
+
+      ProductoModel({
+          this.id,
+          ...
+      });
+
+      factory ProductoModel.fromJson(Map<String, dynamic> json) => new ProductoModel(
+          id         : json["id"],
+          ...
+      );
+
+      Map<String, dynamic> toJson() => {
+          "id"         : id,
+          ...
+      };
+
+  }//class ProductoModel
   ```
 - 12.8. Conectar nuestro formulario con el modelo de producto
   - 
