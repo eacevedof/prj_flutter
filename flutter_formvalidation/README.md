@@ -662,8 +662,31 @@
   - nodo de productos: [https://fir-flutter-db876.firebaseio.com/productos.json](https://fir-flutter-db876.firebaseio.com/productos.json)
   - documentacion fbase: [https://firebase.google.com/docs/reference/rest/database](https://firebase.google.com/docs/reference/rest/database)
 - 12.10. Provider de productos
-  - 
   ```dart
+  //pubspec.yaml
+    cupertino_icons: ^0.1.2
+    rxdart: ^0.22.1+1
+    http: //instala la última version 
+    //nos permite hacer peticiones http
+
+  //productos_provider.dart
+  class ProductosProvider{
+    final String _url = "https://fir-flutter-db876.firebaseio.com";
+
+    Future<bool> getasync_producto( ProductoModel producto) async {
+      final url = "$_url/productos.json";
+      final resp = await http.post(url,body:productoModelToJson(producto));
+      final decodedData = json.decode(resp.body);
+      print(decodedData);
+    }//getasync_producto
+
+  }//class ProductosProvider  
+
+  //product_page.dart
+  ...
+    formkey.currentState.save();
+    productoprov.getasync_producto(producto);
+  ...
   ```
 - 12.11. Cargar productos de Firebase
   - 

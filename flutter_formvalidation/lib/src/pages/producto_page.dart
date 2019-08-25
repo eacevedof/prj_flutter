@@ -1,6 +1,7 @@
 //file: producto_page.dart
 import 'package:flutter/material.dart';
 import 'package:flutter_formvalidation/src/models/producto_model.dart';
+import 'package:flutter_formvalidation/src/providers/productos_provider.dart';
 import 'package:flutter_formvalidation/src/utils/utils.dart' as u;
 
 class ProductoPage extends StatefulWidget {
@@ -16,6 +17,7 @@ class _ProductoPageState extends State<ProductoPage> {
   //definiendo así la variable se informa a Flutter que 
   //esta representa a la config del formulario
   final formkey = GlobalKey<FormState>();
+  final productoprov = new ProductosProvider();
 
   ProductoModel producto = new ProductoModel();
 
@@ -133,6 +135,8 @@ class _ProductoPageState extends State<ProductoPage> {
     print("titulo:"+producto.titulo);
     print("valor:"+producto.valor.toString());
     print("disponible:"+producto.disponible.toString());
+    
+    productoprov.getasync_producto(producto);
 
   }//_submit
 
