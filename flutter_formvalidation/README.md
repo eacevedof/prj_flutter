@@ -662,6 +662,7 @@
   - nodo de productos: [https://fir-flutter-db876.firebaseio.com/productos.json](https://fir-flutter-db876.firebaseio.com/productos.json)
   - documentacion fbase: [https://firebase.google.com/docs/reference/rest/database](https://firebase.google.com/docs/reference/rest/database)
 - 12.10. Provider de productos
+  - Ya hace insert en Firebase
   ```dart
   //pubspec.yaml
     cupertino_icons: ^0.1.2
