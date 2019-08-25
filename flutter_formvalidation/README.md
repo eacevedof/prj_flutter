@@ -551,8 +551,25 @@
   onPressed: () => Navigator.pushNamed(context, "producto"),
   ```
 - 12.6. Validación de formularios - FormWidget
-  - 
+  - atributo validator de TextFormField
+  - para trabajar con el form se debe usar un statefulwidget
   ```dart
+  //producto_page.dart
+  //definiendo así la variable se informa a Flutter que 
+  //esta representa a la config del formulario
+  final formkey = GlobalKey<FormState>();
+
+  ...
+        child: Form(
+        key: formkey,//el id del formulario
+
+  //aqui necesito tomar una referencia al formulario
+  //en otros casos hemos usado un controlador pero Form no tiene esa posibilidad
+  void _submit(){
+    bool isValid = formkey.currentState.validate();
+    if(!isValid) return;
+    print("todo ok");
+  }//_submit
   ```
 - 12.7. Modelo para manejar los productos
   - 

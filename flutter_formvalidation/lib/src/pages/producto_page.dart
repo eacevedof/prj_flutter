@@ -1,5 +1,6 @@
 //file: producto_page.dart
 import 'package:flutter/material.dart';
+import 'package:flutter_formvalidation/src/utils/utils.dart' as u;
 
 class ProductoPage extends StatefulWidget {
 
@@ -10,6 +11,10 @@ class ProductoPage extends StatefulWidget {
 }
 
 class _ProductoPageState extends State<ProductoPage> {
+
+  //definiendo así la variable se informa a Flutter que 
+  //esta representa a la config del formulario
+  final formkey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -38,6 +43,7 @@ class _ProductoPageState extends State<ProductoPage> {
           padding: EdgeInsets.all(15.0),
           //es un contenedor con validación
           child: Form(
+            key: formkey,//el id del formulario
             child: Column(
               children: <Widget>[
                 _get_field_nombre_wg(),
@@ -60,6 +66,15 @@ class _ProductoPageState extends State<ProductoPage> {
       decoration: InputDecoration(
         labelText: "Producto",
       ),
+      validator: (strvalue){
+        //si no hay errores tiene que devolver null
+        if(strvalue.length<3){
+          //error:
+          return "Ingrese el nombre del producto";
+        }
+        //todo ha ido bien
+        return null;
+      },
     );
   }//_get_field_nombre_wg
 
@@ -69,10 +84,21 @@ class _ProductoPageState extends State<ProductoPage> {
       decoration: InputDecoration(
         labelText: "Precio",
       ),
+
+      validator: (strvalue){
+        if(u.is_numeric(strvalue)){
+          return null;
+        }
+        else{
+          return "solo numeros";
+        }
+      },
+
     );
   }//_get_field_precio_wg
 
   Widget _get_button_wg(){
+
     return RaisedButton.icon(
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(20.0),
@@ -81,10 +107,17 @@ class _ProductoPageState extends State<ProductoPage> {
       textColor: Colors.white,  //color
       label: Text("Guardar"),   //innerhtml
       icon: Icon(Icons.save),   //span
-      onPressed: (){
-
-      },
+      onPressed: _submit,
     );
+
   }//_get_button_wg
+
+  //aqui necesito tomar una referencia al formulario
+  //en otros casos hemos usado un controlador pero Form no tiene esa posibilidad
+  void _submit(){
+    bool isValid = formkey.currentState.validate();
+    if(!isValid) return;
+    print("todo ok");
+  }//_submit
 
 }//class _ProductoPageState
