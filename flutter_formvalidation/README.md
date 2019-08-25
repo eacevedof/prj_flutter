@@ -608,8 +608,53 @@
   }//class ProductoModel
   ```
 - 12.8. Conectar nuestro formulario con el modelo de producto
-  - 
+  - `onSaved: (value) => producto.titulo = value,`
   ```dart
+  //producto_page.dart
+      children: <Widget>[
+      _get_field_nombre_wg(),
+      _get_field_precio_wg(),
+      _get_is_disponible_wg(),
+      _get_button_wg(),
+    ],
+
+    return TextFormField(
+      initialValue: producto.titulo,
+      textCapitalization: TextCapitalization.sentences,
+      decoration: InputDecoration(
+        labelText: "Producto",
+      ),
+      //se ejecuta despues de haber validado el campo
+      onSaved: (value) => producto.titulo = value,
+      validator: (strvalue){    
+
+  //aqui necesito tomar una referencia al formulario
+  //en otros casos hemos usado un controlador pero Form no tiene esa posibilidad
+  void _submit(){
+    bool isValid = formkey.currentState.validate();
+    if(!isValid) return;
+
+    //guarda el estado de lo que hay en los inputs de modo que
+    //el modelo se actualiza con estos datos
+    formkey.currentState.save();
+    print("todo ok");
+    print("titulo:"+producto.titulo);
+    print("valor:"+producto.valor.toString());
+    print("disponible:"+producto.disponible.toString());
+
+  }//_submit
+
+  Widget _get_is_disponible_wg(){
+    //check horizontal
+    return SwitchListTile(
+      value: producto.disponible,
+      title: Text("Disponible"),
+      activeColor: Colors.deepPurple,
+      onChanged: (value) => setState((){
+        producto.disponible = value;
+      }),
+    );
+  }//_get_is_disponible_wg   
   ```
 - 12.9. Preparar nuestra base de datos - Firebase
   - 
