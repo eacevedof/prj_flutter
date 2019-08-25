@@ -554,11 +554,12 @@
   - atributo validator de TextFormField
   - para trabajar con el form se debe usar un statefulwidget
   ```dart
+  //se crea utils.dart
+  
   //producto_page.dart
   //definiendo así la variable se informa a Flutter que 
   //esta representa a la config del formulario
   final formkey = GlobalKey<FormState>();
-
   ...
         child: Form(
         key: formkey,//el id del formulario
