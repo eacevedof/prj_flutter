@@ -657,9 +657,10 @@
   }//_get_is_disponible_wg   
   ```
 - 12.9. Preparar nuestra base de datos - Firebase
-  - 
-  ```dart
-  ```
+  - url de la bd realtime: [https://console.firebase.google.com/project/fir-flutter-db876/database/fir-flutter-db876/data](https://console.firebase.google.com/project/fir-flutter-db876/database/fir-flutter-db876/data)
+  - configurar reglas: [https://console.firebase.google.com/project/fir-flutter-db876/database/fir-flutter-db876/rules](https://console.firebase.google.com/project/fir-flutter-db876/database/fir-flutter-db876/rules)
+  - nodo de productos: [https://fir-flutter-db876.firebaseio.com/productos.json](https://fir-flutter-db876.firebaseio.com/productos.json)
+  - documentacion fbase: [https://firebase.google.com/docs/reference/rest/database](https://firebase.google.com/docs/reference/rest/database)
 - 12.10. Provider de productos
   - 
   ```dart
