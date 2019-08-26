@@ -17,7 +17,9 @@ class _ProductoPageState extends State<ProductoPage> {
   //definiendo así la variable se informa a Flutter que 
   //esta representa a la config del formulario
   final formkey = GlobalKey<FormState>();
+  final scaffoldkey = GlobalKey<ScaffoldState>();
   final productoprov = new ProductosProvider();
+  bool _guardando = false;
 
   //tengo que saber si es nuevo o ya existía, viene con algún argumento
   ProductoModel producto = new ProductoModel();
@@ -31,6 +33,7 @@ class _ProductoPageState extends State<ProductoPage> {
     }
 
     return Scaffold(
+      key: scaffoldkey,
       appBar: AppBar(
         title: Text("Producto"),
         actions: <Widget>[
@@ -123,7 +126,7 @@ class _ProductoPageState extends State<ProductoPage> {
       textColor: Colors.white,  //color
       label: Text("Guardar"),   //innerhtml
       icon: Icon(Icons.save),   //span
-      onPressed: _submit,
+      onPressed: (_guardando) ? null:_submit,
     );
 
   }//_get_button_wg
@@ -137,10 +140,10 @@ class _ProductoPageState extends State<ProductoPage> {
     //guarda el estado de lo que hay en los inputs de modo que
     //el modelo se actualiza con estos datos
     formkey.currentState.save();
-    print("todo ok");
-    print("titulo:"+producto.titulo);
-    print("valor:"+producto.valor.toString());
-    print("disponible:"+producto.disponible.toString());
+
+    setState(() {
+      _guardando = true;
+    });
     
     if(producto.id == null){
       productoprov.getasync_producto(producto);
@@ -148,6 +151,11 @@ class _ProductoPageState extends State<ProductoPage> {
     else{
       productoprov.getasync_productoup(producto);
     }
+
+    //setState(() { _guardando = false; });
+    _get_snackbar_wg("registro guardado");
+    //hace un redirect al listado
+    Navigator.pop(context);
   }//_submit
 
   Widget _get_is_disponible_wg(){
@@ -161,5 +169,18 @@ class _ProductoPageState extends State<ProductoPage> {
       }),
     );
   }//_get_is_disponible_wg
+
+  //el snackbar es como un alert pero en el pie
+  void _get_snackbar_wg(String message){
+    //se necesita la referencia al scaffoldstate
+    final snackbar = SnackBar(
+      content: Text(message),
+      duration: Duration(microseconds: 1500),
+    );
+
+    //esto muestra el snackbar en la pantalla del formulario
+    scaffoldkey.currentState.showSnackBar(snackbar);
+
+  }//_get_snackbar_wg
 
 }//class _ProductoPageState

@@ -849,8 +849,55 @@
   };  
   ```
 - 12.15. Bloquear botón y mostrar Snackbar
-  - 
+  - El scaffold y el snackbar se comunican por la key del scaffold
+  - la key es `final scaffoldkey = GlobalKey<ScaffoldState>();`
+  - bloquear el botón: `onPressed: (_guardando) ? null:_submit,`
   ```dart
+  //producto_page.dart
+  return Scaffold(
+      key: scaffoldkey,
+      appBar: AppBar(
+
+  //aqui necesito tomar una referencia al formulario
+  //en otros casos hemos usado un controlador pero Form no tiene esa posibilidad
+  void _submit(){
+    bool isValid = formkey.currentState.validate();
+    if(!isValid) return;
+
+    //guarda el estado de lo que hay en los inputs de modo que
+    //el modelo se actualiza con estos datos
+    formkey.currentState.save();
+
+    setState(() {
+      _guardando = true;
+    });
+    
+    if(producto.id == null){
+      productoprov.getasync_producto(producto);
+    }
+    else{
+      productoprov.getasync_productoup(producto);
+    }
+
+    //setState(() { _guardando = false; });
+    _get_snackbar_wg("registro guardado");
+    //hace un redirect al listado
+    Navigator.pop(context);
+  }//_submit
+
+  //el snackbar es como un alert pero en el pie
+  void _get_snackbar_wg(String message){
+    //se necesita la referencia al scaffoldstate
+    final snackbar = SnackBar(
+      content: Text(message),
+      duration: Duration(microseconds: 1500),
+    );
+
+    //esto muestra el snackbar en la pantalla del formulario
+    scaffoldkey.currentState.showSnackBar(snackbar);
+
+  }//_get_snackbar_wg
+
   ```
 - 12.16. Seleccionar y mostrar una fotografía
   - 
