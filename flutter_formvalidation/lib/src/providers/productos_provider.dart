@@ -16,4 +16,23 @@ class ProductosProvider{
     print(decodedData);
   }//getasync_producto
 
+  Future<List<ProductoModel>> getasync_list() async {
+    final url = "$_url/productos.json";
+    final resp = await http.get(url);
+    final Map<String, dynamic> decodedData = json.decode(resp.body);
+    final List<ProductoModel> productos = new List();
+
+    if(decodedData == null ) return [];
+    
+    decodedData.forEach((id,prod){
+      final oProd = ProductoModel.fromJson(prod);
+      oProd.id = id;
+      productos.add(oProd);
+    });
+
+    print(productos);
+    return productos;
+    
+  }//getasync_list
+
 }//class ProductosProvider

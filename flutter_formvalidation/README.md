@@ -690,8 +690,56 @@
   ...
   ```
 - 12.11. Cargar productos de Firebase
-  - 
+  - Mostrar el listado
   ```dart
+  //productos_provider
+  Future<List<ProductoModel>> getasync_list() async {
+    final url = "$_url/productos.json";
+    final resp = await http.get(url);
+    final Map<String, dynamic> decodedData = json.decode(resp.body);
+    final List<ProductoModel> productos = new List();
+
+    if(decodedData == null ) return [];
+    
+    decodedData.forEach((id,prod){
+      final oProd = ProductoModel.fromJson(prod);
+      oProd.id = id;
+      productos.add(oProd);
+    });
+
+    print(productos);
+    return productos;
+    
+  }//getasync_list  
+
+  //home_page.dart
+  final prodProv = new ProductosProvider();
+
+  @override
+  Widget build(BuildContext context) {
+    final bloc = Provider.of(context);    
+
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Home Page"),
+      ),
+      body: _get_listado_wg(),
+  ...
+  Widget _get_listado_wg(){
+    return FutureBuilder(
+      future: prodProv.getasync_list(),
+      builder: (BuildContext context, AsyncSnapshot<List<ProductoModel>> snapshot) {
+        if(snapshot.hasData){
+          return Container();
+        }
+        else{
+          return Center(
+            child:CircularProgressIndicator(),
+          );
+        }
+      },
+    );
+  }//_get_listado_wg
   ```
 - 12.12. Mostrar el listado de los productos
   - 
