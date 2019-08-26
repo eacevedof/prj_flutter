@@ -742,8 +742,48 @@
   }//_get_listado_wg
   ```
 - 12.12. Mostrar el listado de los productos
-  - 
+  - Para trabajar con el borrado desde el listado hay que usar **Dismissible**
   ```dart
+  //home_producto.dart
+  Widget _get_item_wg(BuildContext context, ProductoModel oProd){
+    //dismissible (descartable) permite el borrado
+    return Dismissible(
+      key: UniqueKey(),
+      background: Container(
+        color: Colors.red,
+      ),
+      //cuando se ejecuta el dismissible (desaparece de pantalla) lanza este evento
+      onDismissed: (direccion){
+        //todo borrar producto
+      },
+      //Tile=teja
+      child: ListTile(
+        title: Text("${oProd.titulo} - ${oProd.valor}"),
+        subtitle: Text(oProd.id),
+        onTap: () => Navigator.pushNamed(context,"producto"),
+      ),
+    );
+  }//_get_item_wg
+
+  Widget _get_listado_wg(BuildContext context){
+    return FutureBuilder(
+      future: prodProv.getasync_list(),
+      builder: (BuildContext context, AsyncSnapshot<List<ProductoModel>> snapshot) {
+        if(snapshot.hasData){
+          final productos = snapshot.data;
+          return ListView.builder(
+            itemCount: productos.length,
+            itemBuilder: (context,i) => _get_item_wg(context,productos[i]),
+          );
+        }
+        else{
+          return Center(
+            child:CircularProgressIndicator(),
+          );
+        }
+      },
+    );
+  }//_get_listado_wg  
   ```
 - 12.13. Eliminar registros de Firebase
   - 

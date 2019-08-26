@@ -16,7 +16,7 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         title: Text("Home Page"),
       ),
-      body: _get_listado_wg(),
+      body: _get_listado_wg(context),
 
       floatingActionButton: _get_boton_wg(context),
 
@@ -34,12 +34,35 @@ class HomePage extends StatelessWidget {
 
   }//_get_boton_wg
 
-  Widget _get_listado_wg(){
+  Widget _get_item_wg(BuildContext context, ProductoModel oProd){
+    //dismissible permite el borrado
+    return Dismissible(
+      key: UniqueKey(),
+      background: Container(
+        color: Colors.red,
+      ),
+      //cuando se ejecuta el dismissible (desaparece de pantalla) lanza este evento
+      onDismissed: (direccion){
+        //todo borrar producto
+      },
+      child: ListTile(
+        title: Text("${oProd.titulo} - ${oProd.valor}"),
+        subtitle: Text(oProd.id),
+        onTap: () => Navigator.pushNamed(context,"producto"),
+      ),
+    );
+  }//_get_item_wg
+
+  Widget _get_listado_wg(BuildContext context){
     return FutureBuilder(
       future: prodProv.getasync_list(),
       builder: (BuildContext context, AsyncSnapshot<List<ProductoModel>> snapshot) {
         if(snapshot.hasData){
-          return Container();
+          final productos = snapshot.data;
+          return ListView.builder(
+            itemCount: productos.length,
+            itemBuilder: (context,i) => _get_item_wg(context,productos[i]),
+          );
         }
         else{
           return Center(
