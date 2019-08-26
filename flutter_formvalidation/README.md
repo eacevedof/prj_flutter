@@ -786,8 +786,27 @@
   }//_get_listado_wg  
   ```
 - 12.13. Eliminar registros de Firebase
-  - 
+  - prodProv.getasync_deleted(oProd.id)
   ```dart
+  //home_page.dart
+  Widget _get_item_wg(BuildContext context, ProductoModel oProd){
+    //dismissible permite el borrado
+    return Dismissible(
+      key: UniqueKey(),
+      background: Container(
+        color: Colors.red,
+      ),
+      //cuando se ejecuta el dismissible (desaparece de pantalla) lanza este evento
+      onDismissed: (direccion){
+        prodProv.getasync_deleted(oProd.id);
+      },
+      child: ListTile(
+        title: Text("${oProd.titulo} - ${oProd.valor}"),
+        subtitle: Text(oProd.id),
+        onTap: () => Navigator.pushNamed(context,"producto"),
+      ),
+    );
+  }//_get_item_wg
   ```
 - 12.14. Editar un producto
   - 
