@@ -43,7 +43,7 @@ class HomePage extends StatelessWidget {
       ),
       //cuando se ejecuta el dismissible (desaparece de pantalla) lanza este evento
       onDismissed: (direccion){
-        //todo borrar producto
+        prodProv.getasync_deleted(oProd.id);
       },
       child: ListTile(
         title: Text("${oProd.titulo} - ${oProd.valor}"),

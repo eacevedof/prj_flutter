@@ -30,9 +30,15 @@ class ProductosProvider{
       productos.add(oProd);
     });
 
-    print(productos);
+    //print(productos);
     return productos;
-    
   }//getasync_list
+
+  Future<int> getasync_deleted(String id) async {
+    final url = "$_url/productos/$id.json";
+    final resp = await http.delete(url);
+    print(resp.body);
+    return 1;
+  }
 
 }//class ProductosProvider
