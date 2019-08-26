@@ -19,10 +19,16 @@ class _ProductoPageState extends State<ProductoPage> {
   final formkey = GlobalKey<FormState>();
   final productoprov = new ProductosProvider();
 
+  //tengo que saber si es nuevo o ya existía, viene con algún argumento
   ProductoModel producto = new ProductoModel();
 
   @override
   Widget build(BuildContext context) {
+    //aqui viene el dato de la otra pantalla
+    final ProductoModel prodData = ModalRoute.of(context).settings.arguments;
+    if(prodData!=null){
+      producto = prodData;
+    }
 
     return Scaffold(
       appBar: AppBar(
@@ -136,8 +142,12 @@ class _ProductoPageState extends State<ProductoPage> {
     print("valor:"+producto.valor.toString());
     print("disponible:"+producto.disponible.toString());
     
-    productoprov.getasync_producto(producto);
-
+    if(producto.id == null){
+      productoprov.getasync_producto(producto);
+    }
+    else{
+      productoprov.getasync_productoup(producto);
+    }
   }//_submit
 
   Widget _get_is_disponible_wg(){

@@ -33,7 +33,8 @@ class ProductoModel {
     );
 
     Map<String, dynamic> toJson() => {
-        "id"         : id,
+        //"id"         : id, lo excluyo para que no se duplique la información
+        //es decir, se crearía un nodo: id
         "titulo"     : titulo,
         "valor"      : valor,
         "disponible" : disponible,

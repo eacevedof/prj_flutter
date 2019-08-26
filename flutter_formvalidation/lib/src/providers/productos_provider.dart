@@ -14,7 +14,16 @@ class ProductosProvider{
     final resp = await http.post(url,body:productoModelToJson(producto));
     final decodedData = json.decode(resp.body);
     print(decodedData);
+    return true;
   }//getasync_producto
+
+  Future<bool> getasync_productoup( ProductoModel producto) async {
+    final url = "$_url/productos/${producto.id}.json";
+    final resp = await http.put(url,body:productoModelToJson(producto));
+    final decodedData = json.decode(resp.body);
+    print(decodedData);
+    return true;
+  }//getasync_productoup
 
   Future<List<ProductoModel>> getasync_list() async {
     final url = "$_url/productos.json";
@@ -39,6 +48,6 @@ class ProductosProvider{
     final resp = await http.delete(url);
     print(resp.body);
     return 1;
-  }
+  }//getasync_deleted
 
 }//class ProductosProvider

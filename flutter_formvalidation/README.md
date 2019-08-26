@@ -809,8 +809,44 @@
   }//_get_item_wg
   ```
 - 12.14. Editar un producto
-  - 
+  - Habria que hacer refactor de los metodos
   ```dart
+  //home_page.dart
+  onTap: () => Navigator.pushNamed(context,"producto", arguments:oProd),
+
+  //producto_page.dart
+    //aqui viene el dato de la otra pantalla
+    final ProductoModel prodData = ModalRoute.of(context).settings.arguments;
+    if(prodData!=null){
+      producto = prodData;
+    }
+  ...
+    if(producto.id == null){
+      productoprov.getasync_producto(producto);
+    }
+    else{
+      productoprov.getasync_productoup(producto);
+    }
+  }//_submit
+
+  //productos_provider.dart
+  Future<bool> getasync_productoup( ProductoModel producto) async {
+    final url = "$_url/productos/${producto.id}.json";
+    final resp = await http.put(url,body:productoModelToJson(producto));
+    final decodedData = json.decode(resp.body);
+    print(decodedData);
+    return true;
+  }//getasync_productoup  
+
+  //producto_model
+  Map<String, dynamic> toJson() => {
+        //"id"         : id, lo excluyo para que no se duplique la información
+        //es decir, se crearía un nodo: id
+        "titulo"     : titulo,
+        "valor"      : valor,
+        "disponible" : disponible,
+        "fotoUrl"    : fotoUrl,
+  };  
   ```
 - 12.15. Bloquear botón y mostrar Snackbar
   - 
