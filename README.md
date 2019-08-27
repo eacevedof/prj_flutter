@@ -32,3 +32,8 @@
 - [15. Despliegue en Google PlayStore y Apple AppStore]()
 - [16. Bonus - Push notifications]()
 - [17. Despedida del curso]()
+
+## Errores:
+- He tenido este error:
+    - the selected avd is currently running in the emulator
+    - Solución: eliminar **C:\Users\<usuario>\.android\avd\nexus-5x-api22-lollipop-motog2.avd\hardware-qemu.ini.lock**

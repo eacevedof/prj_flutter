@@ -1,8 +1,11 @@
 //file: producto_page.dart
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_formvalidation/src/models/producto_model.dart';
 import 'package:flutter_formvalidation/src/providers/productos_provider.dart';
 import 'package:flutter_formvalidation/src/utils/utils.dart' as u;
+import 'package:image_picker/image_picker.dart';
 
 class ProductoPage extends StatefulWidget {
 
@@ -20,6 +23,7 @@ class _ProductoPageState extends State<ProductoPage> {
   final scaffoldkey = GlobalKey<ScaffoldState>();
   final productoprov = new ProductosProvider();
   bool _guardando = false;
+  File foto;
 
   //tengo que saber si es nuevo o ya existía, viene con algún argumento
   ProductoModel producto = new ProductoModel();
@@ -39,15 +43,13 @@ class _ProductoPageState extends State<ProductoPage> {
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.photo_size_select_actual),
-            onPressed: (){
-
-            },
+            //onPressed: _seleccionar_foto,
+            onPressed: (){},
           ),
           IconButton(
             icon: Icon(Icons.camera_alt),
-            onPressed: (){
-
-            },
+            //onPressed: _tomar_foto,
+            onPressed: (){},
           ),          
         ],
       ),
@@ -60,6 +62,7 @@ class _ProductoPageState extends State<ProductoPage> {
             key: formkey,//el id del formulario
             child: Column(
               children: <Widget>[
+                _mostrar_foto(),
                 _get_field_nombre_wg(),
                 _get_field_precio_wg(),
                 _get_is_disponible_wg(),
@@ -183,4 +186,37 @@ class _ProductoPageState extends State<ProductoPage> {
 
   }//_get_snackbar_wg
 
+  Widget _mostrar_foto(){
+
+    if(producto.fotoUrl != null){
+      //tengo q arreglar esto
+      return Container();
+    }
+    else{
+      return Image(
+        image: AssetImage("assets/no-image.png"),
+        height: 300.0,
+        fit: BoxFit.cover
+      );
+    }
+
+  }
+
+  void _seleccionar_foto() async {
+    foto = await ImagePicker.pickImage(
+      source: ImageSource.gallery,
+    );
+    //cancela o no selecciona
+    if(foto == null){
+      //limpieza
+    }
+
+    setState(() {
+      
+    });
+  }
+
+  void _tomar_foto(){
+    
+  }
 }//class _ProductoPageState

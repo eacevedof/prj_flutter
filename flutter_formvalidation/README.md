@@ -900,8 +900,24 @@
 
   ```
 - 12.16. Seleccionar y mostrar una fotografía
-  - 
+  - [image_picker: ^0.6.1+4](https://pub.dev/packages/image_picker)
+  - carpeta **assets**
+  - `flutter_formvalidation\android\app\build.gradle`
+  - Por norma general la versión minima para usar camara es la 21
+  - `/android/app/build.gradle minSdkVersion=21`
+  - Ios: `flutter_formvalidation\ios\Runner\Info.plist`
   ```dart
+  //flutter_formvalidation\ios\Runner\Info.plist
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Necesito acceso al carrete</string>
+
+	<key>NSCameraUsageDescription</key>
+	<string>Necesito acceso a la camara</string>
+
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Quiero escucharte</string>
+
+
   ```
 - 12.17. Tomar una fotografía y mostrarla en pantalla
   - 
