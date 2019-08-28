@@ -1001,10 +1001,33 @@
     setState(() {});   
   }//_procesar_imagen_async  
   ```
-- 12.18. Backend - Subir fotografías
-  - 
-  ```dart
+- 12.18. Backend - Subir fotografías config cloudinary.com
+  - Firebase cuenta con **Storage** para guardar imágenes pero no cuentan con un endpoint.  Para esto fbs usa funtions que están en node por lo tanto
+  usarémos otro recurso.
+  - [https://cloudinary.com/console](https://cloudinary.com/console)
+  ```js
+  //plan gratuito
+  25 Monthly Credits
+  1 Credit =
+  1,000 Transformations OR
+  1 GB Storage OR
+  1 GB Bandwidth
+  Change to:
+  Plus Plan ($99 / Month)             225 Monthly Credits
+  Advanced Plan ($249 / Month)        600 Monthly Credits
+  Advanced Extra Plan ($549 / Month)  1,350 Monthly Credits  
   ```
+  - [https://cloudinary.com/documentation/image_upload_api_reference](https://cloudinary.com/documentation/image_upload_api_reference)
+  - [https://api.cloudinary.com/v1_1/<cloud_name>/<resource_type>/upload
+](https://api.cloudinary.com/v1_1/<cloud_name>/<resource_type>/upload
+)
+  - **cloudname** ioedu
+  - **resource_type** image
+  - [https://cloudinary.com/console/settings/upload](https://cloudinary.com/console/settings/upload)
+    - Para habilitar unsigned uploading
+    - Una vez habilitado hay que configurar el endpoint así:
+      - Post: [https://api.cloudinary.com/v1_1/ioedu/image/upload?upload_preset=yhzktxo0](https://api.cloudinary.com/v1_1/ioedu/image/upload?upload_preset=yhzktxo0)
+      - ![https://trello-attachments.s3.amazonaws.com/5d658aa359dad4174c7cc48e/600x507/efe9d4fe0ee6db20fb20201cfe27abb1/image.png](https://trello-attachments.s3.amazonaws.com/5d658aa359dad4174c7cc48e/600x507/efe9d4fe0ee6db20fb20201cfe27abb1/image.png)
 - 12.19. Subir fotografía desde Flutter
   - 
   ```dart
