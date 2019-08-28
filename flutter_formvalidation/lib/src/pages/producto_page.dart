@@ -48,7 +48,7 @@ class _ProductoPageState extends State<ProductoPage> {
           ),
           IconButton(
             icon: Icon(Icons.camera_alt),
-            onPressed: _tomar_foto,
+            onPressed: _tomar_foto_async,
             //onPressed: (){},
           ),          
         ],
@@ -205,21 +205,24 @@ class _ProductoPageState extends State<ProductoPage> {
 
   }//_get_foto_wg
 
-  seleccionar_foto_async() async {
+  seleccionar_foto_async()  {
+    _procesar_imagen_async(ImageSource.gallery);
+  }
+
+  _tomar_foto_async()  {
+    _procesar_imagen_async(ImageSource.camera);
+  }
+
+  _procesar_imagen_async(ImageSource origen) async{
     foto = await ImagePicker.pickImage(
-      source: ImageSource.gallery,
+      source: origen,
     );
     //cancela o no selecciona
     if(foto != null){
       //limpieza
     }
 
-    setState(() {
-      
-    });
-  }
+    setState(() {});   
+  }//_procesar_imagen_async
 
-  _tomar_foto(){
-    
-  }
 }//class _ProductoPageState

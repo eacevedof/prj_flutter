@@ -978,8 +978,28 @@
   }
   ```
 - 12.17. Tomar una fotografía y mostrarla en pantalla
-  - 
+  - Los métodos: seleccionar_foto_async y _tomar_foto_async originalmente son async pero si quito ese operador sigue funcionando. Por que??
   ```dart
+  //producto_page.dart
+  seleccionar_foto_async()  {
+    _procesar_imagen_async(ImageSource.gallery);
+  }
+
+  _tomar_foto_async()  {
+    _procesar_imagen_async(ImageSource.camera);
+  }
+
+  _procesar_imagen_async(ImageSource origen) async{
+    foto = await ImagePicker.pickImage(
+      source: origen,
+    );
+    //cancela o no selecciona
+    if(foto != null){
+      //limpieza
+    }
+
+    setState(() {});   
+  }//_procesar_imagen_async  
   ```
 - 12.18. Backend - Subir fotografías
   - 
