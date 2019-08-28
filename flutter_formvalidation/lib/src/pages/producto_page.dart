@@ -43,13 +43,13 @@ class _ProductoPageState extends State<ProductoPage> {
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.photo_size_select_actual),
-            //onPressed: _seleccionar_foto,
-            onPressed: (){},
+            onPressed: seleccionar_foto_async,
+            //onPressed: (){},
           ),
           IconButton(
             icon: Icon(Icons.camera_alt),
-            //onPressed: _tomar_foto,
-            onPressed: (){},
+            onPressed: _tomar_foto,
+            //onPressed: (){},
           ),          
         ],
       ),
@@ -62,7 +62,7 @@ class _ProductoPageState extends State<ProductoPage> {
             key: formkey,//el id del formulario
             child: Column(
               children: <Widget>[
-                _mostrar_foto(),
+                _get_foto_wg(),
                 _get_field_nombre_wg(),
                 _get_field_precio_wg(),
                 _get_is_disponible_wg(),
@@ -186,28 +186,31 @@ class _ProductoPageState extends State<ProductoPage> {
 
   }//_get_snackbar_wg
 
-  Widget _mostrar_foto(){
-
+  //espacio para mostrar la fotografia
+  Widget _get_foto_wg(){
+    print(producto.fotoUrl);
     if(producto.fotoUrl != null){
       //tengo q arreglar esto
       return Container();
     }
     else{
+      print("no existe imagen");
       return Image(
-        image: AssetImage("assets/no-image.png"),
+        //si no existe la 
+        image: AssetImage(foto?.path ?? "assets/no-image.png"),
         height: 300.0,
         fit: BoxFit.cover
       );
     }
 
-  }
+  }//_get_foto_wg
 
-  void _seleccionar_foto() async {
+  seleccionar_foto_async() async {
     foto = await ImagePicker.pickImage(
       source: ImageSource.gallery,
     );
     //cancela o no selecciona
-    if(foto == null){
+    if(foto != null){
       //limpieza
     }
 
@@ -216,7 +219,7 @@ class _ProductoPageState extends State<ProductoPage> {
     });
   }
 
-  void _tomar_foto(){
+  _tomar_foto(){
     
   }
 }//class _ProductoPageState

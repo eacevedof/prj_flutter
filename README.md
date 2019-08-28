@@ -37,3 +37,7 @@
 - He tenido este error:
     - the selected avd is currently running in the emulator
     - Solución: eliminar **C:\Users\<usuario>\.android\avd\nexus-5x-api22-lollipop-motog2.avd\hardware-qemu.ini.lock**
+- Excepción en esta linea:
+    - image: AssetImage("assets/no-image.png")
+    - Solución: comprobar que la imágen con ese nombre existe
+    - Hay que hacer un hot restart para que se copien nuevamente los ficheros, eso a veces provoca que se cuelgue la maquina virtual

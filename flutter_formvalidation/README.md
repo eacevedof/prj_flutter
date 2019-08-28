@@ -917,7 +917,65 @@
 	<key>NSMicrophoneUsageDescription</key>
 	<string>Quiero escucharte</string>
 
+  //producto_page.dart
+  ...
+  File foto;
+  ...
+      return Scaffold(
+      key: scaffoldkey,
+      appBar: AppBar(
+        title: Text("Producto"),
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.photo_size_select_actual),
+            onPressed: seleccionar_foto_async,
+            //onPressed: (){},
+          ),
+          IconButton(
+            icon: Icon(Icons.camera_alt),
+            onPressed: _tomar_foto,
+            //onPressed: (){},
+          ),          
+        ],
+      ),
+  ...
 
+  //espacio para mostrar la fotografia
+  Widget _get_foto_wg(){
+    print(producto.fotoUrl);
+    if(producto.fotoUrl != null){
+      //tengo q arreglar esto
+      return Container();
+    }
+    else{
+      print("no existe imagen");
+      return Image(
+        //si no existe la 
+        image: AssetImage(foto?.path ?? "assets/no-image.png"),
+        height: 300.0,
+        fit: BoxFit.cover
+      );
+    }
+
+  }//_get_foto_wg
+
+  seleccionar_foto_async() async {
+    foto = await ImagePicker.pickImage(
+      source: ImageSource.gallery,
+    );
+    //cancela o no selecciona
+    if(foto != null){
+      //limpieza
+    }
+
+    setState(() {
+      
+    });
+  }
+
+  _tomar_foto(){
+    
+  }
   ```
 - 12.17. Tomar una fotografía y mostrarla en pantalla
   - 
