@@ -1081,6 +1081,67 @@
   }
   ```
 - 12.21. Mostrar imágenes cargadas
-  - 
   ```dart
+  //home_page.dart
+  Widget _get_item_wg(BuildContext context, ProductoModel oProd){
+    //dismissible permite el borrado
+    return Dismissible(
+      key: UniqueKey(),
+      background: Container(
+        color: Colors.red,
+      ),
+
+      //cuando se ejecuta el dismissible (desaparece de pantalla) lanza este evento
+      onDismissed: (direccion){
+        prodProv.getasync_deleted(oProd.id);
+      },
+
+      child: Card(
+        child: Column(
+          children: <Widget>[
+            (oProd.fotoUrl == null) 
+            ? Image(image: AssetImage("assets/no-image.png"))
+            : FadeInImage(
+                image: NetworkImage(oProd.fotoUrl),
+                placeholder: AssetImage("assets/jar-loading.gif"),
+                height: 300.0,
+                width: double.infinity,
+                fit: BoxFit.cover
+            ),
+            
+            ListTile(
+              title: Text("${oProd.titulo} - ${oProd.valor}"),
+              subtitle: Text(oProd.id),
+              onTap: () => Navigator.pushNamed(context,"producto", arguments:oProd),
+            ),    
+          ],
+        ),
+      ),
+    );
+
+  }//_get_item_wg
+
+  //producto_page.dart
+  //espacio para mostrar la fotografia
+  Widget _get_foto_wg(){
+    print("_get_foto_wg producto.fotoUrl:"+producto.fotoUrl.toString());
+    if(producto.fotoUrl != null){
+      print("producto_page._get_foto_wg: existe la imagen??");
+      //tengo q arreglar esto
+      return FadeInImage(
+        image: NetworkImage(producto.fotoUrl),
+        placeholder: AssetImage("assets/jar-loading.gif"),
+        height: 300.0,
+        fit: BoxFit.contain,
+      );
+    }
+  ....
+  _procesar_imagen_async(ImageSource origen) async{
+    foto = await ImagePicker.pickImage(
+      source: origen,
+    );
+    //cancela o no selecciona
+    if(foto != null){
+      producto.fotoUrl = null;
+    }
   ```

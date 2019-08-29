@@ -196,7 +196,12 @@ class _ProductoPageState extends State<ProductoPage> {
     if(producto.fotoUrl != null){
       print("producto_page._get_foto_wg: existe la imagen??");
       //tengo q arreglar esto
-      return Container();
+      return FadeInImage(
+        image: NetworkImage(producto.fotoUrl),
+        placeholder: AssetImage("assets/jar-loading.gif"),
+        height: 300.0,
+        fit: BoxFit.contain,
+      );
     }
     else{
       print("producto_page._get_foto_wg: no existe imagen");
@@ -224,7 +229,7 @@ class _ProductoPageState extends State<ProductoPage> {
     );
     //cancela o no selecciona
     if(foto != null){
-      //limpieza
+      producto.fotoUrl = null;
     }
 
     setState(() {});   

@@ -41,16 +41,35 @@ class HomePage extends StatelessWidget {
       background: Container(
         color: Colors.red,
       ),
+
       //cuando se ejecuta el dismissible (desaparece de pantalla) lanza este evento
       onDismissed: (direccion){
         prodProv.getasync_deleted(oProd.id);
       },
-      child: ListTile(
-        title: Text("${oProd.titulo} - ${oProd.valor}"),
-        subtitle: Text(oProd.id),
-        onTap: () => Navigator.pushNamed(context,"producto", arguments:oProd),
+
+      child: Card(
+        child: Column(
+          children: <Widget>[
+            (oProd.fotoUrl == null) 
+            ? Image(image: AssetImage("assets/no-image.png"))
+            : FadeInImage(
+                image: NetworkImage(oProd.fotoUrl),
+                placeholder: AssetImage("assets/jar-loading.gif"),
+                height: 300.0,
+                width: double.infinity,
+                fit: BoxFit.cover
+            ),
+            
+            ListTile(
+              title: Text("${oProd.titulo} - ${oProd.valor}"),
+              subtitle: Text(oProd.id),
+              onTap: () => Navigator.pushNamed(context,"producto", arguments:oProd),
+            ),    
+          ],
+        ),
       ),
     );
+
   }//_get_item_wg
 
   Widget _get_listado_wg(BuildContext context){
