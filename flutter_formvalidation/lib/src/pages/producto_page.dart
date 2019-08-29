@@ -136,7 +136,7 @@ class _ProductoPageState extends State<ProductoPage> {
 
   //aqui necesito tomar una referencia al formulario
   //en otros casos hemos usado un controlador pero Form no tiene esa posibilidad
-  void _submit(){
+  void _submit() async {
     bool isValid = formkey.currentState.validate();
     if(!isValid) return;
 
@@ -147,6 +147,10 @@ class _ProductoPageState extends State<ProductoPage> {
     setState(() {
       _guardando = true;
     });
+
+    if(foto != null){
+      producto.fotoUrl = await productoprov.subir_imagen_async(foto);
+    }
     
     if(producto.id == null){
       productoprov.getasync_producto(producto);
@@ -188,13 +192,14 @@ class _ProductoPageState extends State<ProductoPage> {
 
   //espacio para mostrar la fotografia
   Widget _get_foto_wg(){
-    print(producto.fotoUrl);
+    print("_get_foto_wg producto.fotoUrl:"+producto.fotoUrl.toString());
     if(producto.fotoUrl != null){
+      print("producto_page._get_foto_wg: existe la imagen??");
       //tengo q arreglar esto
       return Container();
     }
     else{
-      print("no existe imagen");
+      print("producto_page._get_foto_wg: no existe imagen");
       return Image(
         //si no existe la 
         image: AssetImage(foto?.path ?? "assets/no-image.png"),

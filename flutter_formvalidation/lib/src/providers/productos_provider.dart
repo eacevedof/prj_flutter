@@ -55,7 +55,7 @@ class ProductosProvider{
 
   Future<String> subir_imagen_async(File oImagen) async {
 
-    final oUri = Uri.parse("https://res.cloudinary.com/ioedu/image/upload/v1567024567/gcskzx9b1ttm98xgl5g6.png");
+    final oUri = Uri.parse("https://api.cloudinary.com/v1_1/ioedu/image/upload?upload_preset=yhzktxo0");
     final arMimeType = mime(oImagen.path).split("/");
     print(arMimeType.toString());
     final oImageUploadReq = http.MultipartRequest("POST",oUri);

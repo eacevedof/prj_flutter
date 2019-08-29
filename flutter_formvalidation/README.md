@@ -1034,7 +1034,7 @@
   //products_provider.dart
   Future<String> subir_imagen_async(File oImagen) async {
 
-    final oUri = Uri.parse("https://res.cloudinary.com/ioedu/image/upload/v1567024567/gcskzx9b1ttm98xgl5g6.png");
+    final oUri = Uri.parse("https://api.cloudinary.com/v1_1/ioedu/image/upload?upload_preset=yhzktxo0");
     final arMimeType = mime(oImagen.path).split("/");
     print(arMimeType.toString());
     final oImageUploadReq = http.MultipartRequest("POST",oUri);
@@ -1061,8 +1061,24 @@
   }//subir_imagen_async
   ```
 - 12.20. Pruebas de carga de fotografías y actualizar registros en Firebase
-  - 
+  - _submit pasa a ser asincrono
   ```dart
+  //producto_provider
+  void _submit() async {
+    bool isValid = formkey.currentState.validate();
+    if(!isValid) return;
+
+    //guarda el estado de lo que hay en los inputs de modo que
+    //el modelo se actualiza con estos datos
+    formkey.currentState.save();
+
+    setState(() {
+      _guardando = true;
+    });
+
+    if(foto != null){
+      producto.fotoUrl = await productoprov.subir_imagen_async(foto);
+  }
   ```
 - 12.21. Mostrar imágenes cargadas
   - 
