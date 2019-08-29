@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7639eb1f-db75-4293-b69a-c959ab17df9a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flutter_formvalidation/assets/16.2 jar-loading.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flutter_formvalidation/assets/16.3 no-image.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flutter_formvalidation/lib/src/pages/producto_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_formvalidation/lib/src/pages/producto_page.dart" afterDir="false" />
-    </list>
+    <list default="true" id="7639eb1f-db75-4293-b69a-c959ab17df9a" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

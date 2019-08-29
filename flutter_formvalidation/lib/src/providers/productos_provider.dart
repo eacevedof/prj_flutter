@@ -1,9 +1,12 @@
 //file: productos_provider.dart
 
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:flutter_formvalidation/src/models/producto_model.dart';
 import 'package:http/http.dart' as http;
+import 'package:mime_type/mime_type.dart';
+import 'package:http_parser/http_parser.dart';
 
 class ProductosProvider{
 
@@ -49,5 +52,33 @@ class ProductosProvider{
     print(resp.body);
     return 1;
   }//getasync_deleted
+
+  Future<String> subir_imagen_async(File oImagen) async {
+
+    final oUri = Uri.parse("https://res.cloudinary.com/ioedu/image/upload/v1567024567/gcskzx9b1ttm98xgl5g6.png");
+    final arMimeType = mime(oImagen.path).split("/");
+    print(arMimeType.toString());
+    final oImageUploadReq = http.MultipartRequest("POST",oUri);
+    final oFile = await http.MultipartFile.fromPath(
+      "file",
+      oImagen.path,
+      contentType: MediaType(arMimeType[0], arMimeType[1])
+    );
+    
+    oImageUploadReq.files.add(oFile);
+    final oStreamResp = await oImageUploadReq.send();
+    final oResponse = await http.Response.fromStream(oStreamResp);
+
+    if(oResponse.statusCode != 200 && oResponse.statusCode != 201){
+      print("Algo salio mal");
+      print(oResponse.body);
+      return null;
+    }
+
+    final respData = json.decode(oResponse.body);
+    print(respData);
+    return respData["secure_url"];//devuelve la url https://imagen..
+
+  }//subir_imagen_async
 
 }//class ProductosProvider

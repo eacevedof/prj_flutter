@@ -845,7 +845,7 @@
         "titulo"     : titulo,
         "valor"      : valor,
         "disponible" : disponible,
-        "fotoUrl"    : fotoUrl,
+        "fotoUri"    : fotoUri,
   };  
   ```
 - 12.15. Bloquear botón y mostrar Snackbar
@@ -942,8 +942,8 @@
 
   //espacio para mostrar la fotografia
   Widget _get_foto_wg(){
-    print(producto.fotoUrl);
-    if(producto.fotoUrl != null){
+    print(producto.fotoUri);
+    if(producto.fotoUri != null){
       //tengo q arreglar esto
       return Container();
     }
@@ -1029,8 +1029,36 @@
       - Post: [https://api.cloudinary.com/v1_1/ioedu/image/upload?upload_preset=yhzktxo0](https://api.cloudinary.com/v1_1/ioedu/image/upload?upload_preset=yhzktxo0)
       - ![https://trello-attachments.s3.amazonaws.com/5d658aa359dad4174c7cc48e/600x507/efe9d4fe0ee6db20fb20201cfe27abb1/image.png](https://trello-attachments.s3.amazonaws.com/5d658aa359dad4174c7cc48e/600x507/efe9d4fe0ee6db20fb20201cfe27abb1/image.png)
 - 12.19. Subir fotografía desde Flutter
-  - 
+  - [mime_type: ^0.2.4](https://pub.dev/packages/mime_type#-installing-tab-)
   ```dart
+  //products_provider.dart
+  Future<String> subir_imagen_async(File oImagen) async {
+
+    final oUri = Uri.parse("https://res.cloudinary.com/ioedu/image/upload/v1567024567/gcskzx9b1ttm98xgl5g6.png");
+    final arMimeType = mime(oImagen.path).split("/");
+    print(arMimeType.toString());
+    final oImageUploadReq = http.MultipartRequest("POST",oUri);
+    final oFile = await http.MultipartFile.fromPath(
+      "file",
+      oImagen.path,
+      contentType: MediaType(arMimeType[0], arMimeType[1])
+    );
+    
+    oImageUploadReq.files.add(oFile);
+    final oStreamResp = await oImageUploadReq.send();
+    final oResponse = await http.Response.fromStream(oStreamResp);
+
+    if(oResponse.statusCode != 200 && oResponse.statusCode != 201){
+      print("Algo salio mal");
+      print(oResponse.body);
+      return null;
+    }
+
+    final respData = json.decode(oResponse.body);
+    print(respData);
+    return respData["secure_url"];//devuelve la url https://imagen..
+
+  }//subir_imagen_async
   ```
 - 12.20. Pruebas de carga de fotografías y actualizar registros en Firebase
   - 
