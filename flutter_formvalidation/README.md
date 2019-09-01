@@ -1148,6 +1148,8 @@
 ## 13. Login y manejo de Tokens
 - 13.1. Introducción a la sección
   - Continuación del login de la app anterior
+  - Haremos una petición a Fbase para que nos devuelva un json webtoken
+  - Con este token podremos hacer peticiones
 - 13.3. Inicio de proyecto - Login y manejo de tokens
   - 
   ```dart
