@@ -1145,3 +1145,38 @@
       producto.fotoUrl = null;
     }
   ```
+## 13. Login y manejo de Tokens
+- 13.1. Introducción a la sección
+  - Continuación del login de la app anterior
+- 13.3. Inicio de proyecto - Login y manejo de tokens
+  - 
+  ```dart
+  ```
+- 13.4. Pantalla para registrar usuarios
+  - 
+  ```dart
+  ```
+- 13.5. Usuario Provider - Petición para crear cuentas
+  - 
+  ```dart
+  ```
+- 13.6. Usuario Provider - Login - Verificar usuario y contraseña
+  - 
+  ```dart
+  ```
+- 13.7. Grabar Token en el storage del dispositivo
+  - 
+  ```dart
+  ```
+- 13.8. Mostrar alerta cuando el usuario es incorrecto
+  - 
+  ```dart
+  ```
+- 13.9. Usar token para validar peticiones en Firebase
+  - 
+  ```dart
+  ```
+  - 13.
+  - 
+  ```dart
+  ```            
