@@ -1150,6 +1150,14 @@
   - Continuación del login de la app anterior
   - Haremos una petición a Fbase para que nos devuelva un json webtoken
   - Con este token podremos hacer peticiones
+- 13.2. Temas puntuales de la sección
+  - Funcionamiento completo del login
+  - Registro de nuevos usuarios
+  - Firebase Auth Rest API
+  - Manejo de Tokens
+  - Alertas
+  - Habilitar autenticación en Firebase
+  - Aquí vamos a trabajar en hacer funcional nuestro login y que nuestros servicios utilicen el token que Firebase nos regresará 
 - 13.3. Inicio de proyecto - Login y manejo de tokens
   - 
   ```dart
