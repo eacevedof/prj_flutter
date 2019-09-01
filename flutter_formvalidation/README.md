@@ -1159,9 +1159,9 @@
   - Habilitar autenticación en Firebase
   - Aquí vamos a trabajar en hacer funcional nuestro login y que nuestros servicios utilicen el token que Firebase nos regresará 
 - 13.3. Inicio de proyecto - Login y manejo de tokens
-  - 
-  ```dart
-  ```
+  - Se necesita tener una bd en Fbase
+  - Se necesita al menos dos productos en la Bd
+  - Explica que lineas hay que reconfigurar en caso de usar el .zip dejado por Fernando
 - 13.4. Pantalla para registrar usuarios
   - 
   ```dart
