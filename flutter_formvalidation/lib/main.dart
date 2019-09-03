@@ -3,6 +3,7 @@ import 'package:flutter_formvalidation/src/bloc/provider.dart';
 import 'package:flutter_formvalidation/src/pages/home_page.dart';
 import 'package:flutter_formvalidation/src/pages/login_page.dart';
 import 'package:flutter_formvalidation/src/pages/producto_page.dart';
+import 'package:flutter_formvalidation/src/pages/register_page.dart';
  
 void main() => runApp(MyApp());
  
@@ -17,9 +18,10 @@ class MyApp extends StatelessWidget {
         //deshabilitar franja de banner
         debugShowCheckedModeBanner: false,
         title: "Flutter Imágenes",
-        initialRoute: "home",
+        initialRoute: "login",
         routes: {
           "login"     : (BuildContext context) => LoginPage(),
+          "registro"  : (BuildContext context) => RegisterPage(),          
           "home"      : (BuildContext context) => HomePage(),
           "producto"  : (BuildContext context) => ProductoPage(),
         },

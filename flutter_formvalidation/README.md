@@ -1163,8 +1163,46 @@
   - Se necesita al menos dos productos en la Bd
   - Explica que lineas hay que reconfigurar en caso de usar el .zip dejado por Fernando
 - 13.4. Pantalla para registrar usuarios
-  - 
+  - Ya se puede navegar entre las pantallas de login y registro
   ```dart
+  //login_page.dart
+  FlatButton(
+    child: Text("Crear una nueva cuenta"),
+    onPressed: () => Navigator.pushReplacementNamed(context, "registro"),
+  ),  
+  //register_page.dart
+  //copia de login_page.dart
+
+  //usuario_provider.dart
+  import 'dart:convert';
+  import 'package:http/http.dart' as http;
+
+  class UsuarioProvider {
+    //se obtiene de: https://console.firebase.google.com/project/fir-flutter-db876/settings/general/
+    final String _firebaseToken = "AIzaSyBs5xvUOzSE5aIInVBhG_DgFDRuG8Piq-4";
+
+    Future get_nuevo_usuario_async(String email, String password) async {
+      final authData = {
+        "email"             : email,
+        "password"          : password,
+        "returnSecureToken" : true,
+      };
+
+      final url = "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=$_firebaseToken";
+      final resp = await http.post(
+          url,
+          body: json.encode(authData)
+        );
+      
+      Map<String, dynamic> decodedResp = json.decode(resp.body);
+      print(decodedResp);
+
+    }//get_nuevo_usuario_async
+
+  }//class UsuarioProvider
+
+  //main.dart
+  "registro"  : (BuildContext context) => RegisterPage(),
   ```
 - 13.5. Usuario Provider - Petición para crear cuentas
   - 
