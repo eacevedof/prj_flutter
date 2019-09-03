@@ -1173,6 +1173,21 @@
   //register_page.dart
   //copia de login_page.dart
 
+  //main.dart
+  "registro"  : (BuildContext context) => RegisterPage(),
+  ```
+- 13.5. Usuario Provider - Petición para crear cuentas
+  - En firebase:
+    - Database > Reglas >
+    - se ven las reglas de acceso
+    - Authentication > Método de acceso > habilitar acceso por email
+    ![Firebase conf](https://trello-attachments.s3.amazonaws.com/5d658aa359dad4174c7cc48e/599x188/b47e3bcb5c979091523a65d9e4fc9643/image.png)
+  - [docs/reference/rest/auth#section-create-email-password](https://firebase.google.com/docs/reference/rest/auth#section-create-email-password)
+  - https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=[API_KEY]
+  - Usuario de pruebas:
+    - test@test.com
+    - 123456
+  ```dart
   //usuario_provider.dart
   import 'dart:convert';
   import 'package:http/http.dart' as http;
@@ -1200,14 +1215,10 @@
     }//get_nuevo_usuario_async
 
   }//class UsuarioProvider
-
-  //main.dart
-  "registro"  : (BuildContext context) => RegisterPage(),
   ```
-- 13.5. Usuario Provider - Petición para crear cuentas
-  - 
-  ```dart
-  ```
+  - Dió este error: `{error: {code: 400, message: OPERATION_NOT_ALLOWED, errors: [{message: OPERATION_NOT_ALLOWED, domain: global, reason: invalid}]}}`
+    - Solución: Habilitar permisos de acceso en: `https://console.firebase.google.com/project/fir-flutter-db876/authentication/providers`
+    - `Correo electrónico/contraseña`
 - 13.6. Usuario Provider - Login - Verificar usuario y contraseña
   - 
   ```dart

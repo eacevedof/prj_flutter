@@ -1,9 +1,12 @@
 //file:login_page.dart
 import 'package:flutter/material.dart';
 import 'package:flutter_formvalidation/src/bloc/provider.dart';
+import 'package:flutter_formvalidation/src/providers/usuario_provider.dart';
 
 class RegisterPage extends StatelessWidget {
   
+  final oUsuarioProvider = new UsuarioProvider();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -86,7 +89,7 @@ class RegisterPage extends StatelessWidget {
           color: Colors.deepPurple,
           textColor: Colors.white,
           //null desactiva el botón
-          onPressed: snapshot.hasData ? () => _login(bloc, context) :null,
+          onPressed: snapshot.hasData ? () => _register(bloc, context) :null,
         );
       },
     );
@@ -201,13 +204,9 @@ class RegisterPage extends StatelessWidget {
 
   }//_get_fondo_wg 
 
-  _login(LoginBloc bloc, BuildContext context){
-    
-    print("============");
-    print("Email: ${bloc.email}");
-    print("Passwrod: ${bloc.password}");
-    //Navigator.pushNamed(context,"home"); //mantinene la flecha de retorno
-    Navigator.pushReplacementNamed(context,"home");
+  _register(LoginBloc bloc, BuildContext context){
+    oUsuarioProvider.get_nuevo_usuario_async(bloc.email, bloc.password);
+    //Navigator.pushReplacementNamed(context,"home");
   }
 
 }//class RegisterPage
