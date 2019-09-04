@@ -4,6 +4,7 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter_formvalidation/src/models/producto_model.dart';
+import 'package:flutter_formvalidation/src/prefs_usuario/preferencias_usuario.dart';
 import 'package:http/http.dart' as http;
 import 'package:mime_type/mime_type.dart';
 import 'package:http_parser/http_parser.dart';
@@ -11,25 +12,29 @@ import 'package:http_parser/http_parser.dart';
 class ProductosProvider{
 
   final String _url = "https://fir-flutter-db876.firebaseio.com";
+  final _oUserPrefs = new PreferenciasUsuario();
 
+  //crearProducto
   Future<bool> getasync_producto( ProductoModel producto) async {
-    final url = "$_url/productos.json";
+    final url = "$_url/productos.json?auth=${_oUserPrefs.token}";
     final resp = await http.post(url,body:productoModelToJson(producto));
     final decodedData = json.decode(resp.body);
     print(decodedData);
     return true;
   }//getasync_producto
 
+  //editarProducto
   Future<bool> getasync_productoup( ProductoModel producto) async {
-    final url = "$_url/productos/${producto.id}.json";
+    final url = "$_url/productos/${producto.id}.json?auth=${_oUserPrefs.token}";
     final resp = await http.put(url,body:productoModelToJson(producto));
     final decodedData = json.decode(resp.body);
     print(decodedData);
     return true;
   }//getasync_productoup
 
+  //cargarProductos
   Future<List<ProductoModel>> getasync_list() async {
-    final url = "$_url/productos.json";
+    final url = "$_url/productos.json?auth=${_oUserPrefs.token}";
     final resp = await http.get(url);
     final Map<String, dynamic> decodedData = json.decode(resp.body);
     final List<ProductoModel> productos = new List();
@@ -46,13 +51,15 @@ class ProductosProvider{
     return productos;
   }//getasync_list
 
+  //eliminarProductos
   Future<int> getasync_deleted(String id) async {
-    final url = "$_url/productos/$id.json";
+    final url = "$_url/productos/$id.json?auth=${_oUserPrefs.token}";
     final resp = await http.delete(url);
     print(resp.body);
     return 1;
   }//getasync_deleted
 
+  //subirImagen
   Future<String> subir_imagen_async(File oImagen) async {
 
     final oUri = Uri.parse("https://api.cloudinary.com/v1_1/ioedu/image/upload?upload_preset=yhzktxo0");

@@ -1320,6 +1320,25 @@
   }//void alert(      
   ```
 - 13.9. Usar token para validar peticiones en Firebase
-  - 
+  - En firebase:
+    - https://console.firebase.google.com/project/fir-flutter-db876/database/fir-flutter-db876/rules
+    - En reglas, publicar
+  - como tarea estaria bien agregar una comprobacion en main.dart para saber si ya estoy autorizado o no e ir directamente a la pantalla home
+  - En la sección de preferencias de usuario esta el ejercicio resuelto.
   ```dart
+  //productos_provider.dart
+    final _oUserPrefs = new PreferenciasUsuario();
+  ...
+  //crearProducto
+  Future<bool> getasync_producto( ProductoModel producto) async {
+    final url = "$_url/productos.json?auth=${_oUserPrefs.token}";
+  
+  //editarProducto
+  Future<bool> getasync_productoup( ProductoModel producto) async {
+    final url = "$_url/productos/${producto.id}.json?auth=${_oUserPrefs.token}";    
+
+  //eliminarProductos
+  Future<int> getasync_deleted(String id) async {
+    final url = "$_url/productos/$id.json?auth=${_oUserPrefs.token}";
+  ...  
   ```       
