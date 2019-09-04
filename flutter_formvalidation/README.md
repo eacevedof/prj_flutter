@@ -1251,8 +1251,27 @@
   }  
   ```
 - 13.7. Grabar Token en el storage del dispositivo
-  - 
+  - https://gist.github.com/Klerith/8f6c75db4fb0696f6cdd5852b377b1e1
+  - **siempre que hay preferencias de usuario el main tiene que ser async**
   ```dart
+  ///pubspec.yaml
+  //preferencias_usuario (desde el link)
+
+  //usuario_provider.dart
+    if(decodedResp.containsKey("idToken")){
+      _prefs.token = decodedResp["idToken"];
+      return {"ok":true, "token":decodedResp["idToken"]};
+    }
+    return {"ok":false, "token":decodedResp["error"]["message"]};  
+
+  //main.dart
+  //paso main a async
+  void main() async {
+    final prefs = new PreferenciasUsuario();
+    //crea una instancia de shared_preferences en prefs._prefs
+    await prefs.initPrefs(); 
+    runApp(MyApp());
+  }
   ```
 - 13.8. Mostrar alerta cuando el usuario es incorrecto
   - 
@@ -1261,8 +1280,4 @@
 - 13.9. Usar token para validar peticiones en Firebase
   - 
   ```dart
-  ```
-  - 13.
-  - 
-  ```dart
-  ```            
+  ```       
