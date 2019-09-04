@@ -31,7 +31,7 @@ class UsuarioProvider {
       _prefs.token = decodedResp["idToken"];
       return {"ok":true, "token":decodedResp["idToken"]};
     }
-    return {"ok":false, "token":decodedResp["error"]["message"]};
+    return {"ok":false, "mensaje":decodedResp["error"]["message"]};
 
   }//get_nuevo_usuario_async
 
@@ -56,7 +56,7 @@ class UsuarioProvider {
       _prefs.token = decodedResp["idToken"];
       return {"ok":true, "token":decodedResp["idToken"]};
     }
-    return {"ok":false, "token":decodedResp["error"]["message"]};
+    return {"ok":false, "mensaje":decodedResp["error"]["message"]};
   }
 
 }//class UsuarioProvider

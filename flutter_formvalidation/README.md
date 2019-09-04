@@ -1274,8 +1274,50 @@
   }
   ```
 - 13.8. Mostrar alerta cuando el usuario es incorrecto
-  - 
+  - Crear **alert** en utils.dart
+  - En caso de error muestra un alert y si todo es ok se va a la home
   ```dart
+  //login_page.dart
+  _login(LoginBloc bloc, BuildContext context) async {
+    Map info = await oUsuarioProv.get_login_async(bloc.email, bloc.password);
+
+    if(info["ok"]){
+      Navigator.pushReplacementNamed(context,"home");
+    }
+    else{
+      alert(context,info["mensaje"]);
+    }
+  }
+  //register_page.dart
+  _register(LoginBloc bloc, BuildContext context) async {
+    Map info = await oUsuarioProvider.get_nuevo_usuario_async(bloc.email, bloc.password);
+
+    if(info["ok"]){
+      Navigator.pushReplacementNamed(context,"home");
+    }
+    else{
+      alert(context,info["mensaje"]);
+    }
+  }
+  //utils.dart
+  void alert(BuildContext context, String msg){
+    showDialog(
+      context: context,
+      builder: (context){
+        return AlertDialog(
+          title: Text("Warning !!"),
+          content: Text(msg),
+          actions: <Widget>[
+            FlatButton(
+              child: Text("Ok"),
+              //cerramos la alerta
+              onPressed: () => Navigator.of(context).pop()
+            )
+          ],
+        );
+      }
+    );
+  }//void alert(      
   ```
 - 13.9. Usar token para validar peticiones en Firebase
   - 

@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_formvalidation/src/bloc/provider.dart';
 import 'package:flutter_formvalidation/src/providers/usuario_provider.dart';
+import 'package:flutter_formvalidation/src/utils/utils.dart';
 
 class LoginPage extends StatelessWidget {
   
@@ -153,7 +154,7 @@ class LoginPage extends StatelessWidget {
     );
   }//_get_loginform_wg
 
-  Widget _get_fondo_wg(BuildContext context){
+  Widget _get_fondo_wg(BuildContext context) {
     final size = MediaQuery.of(context).size;
 
     final fondomorado = Container(
@@ -203,9 +204,15 @@ class LoginPage extends StatelessWidget {
 
   }//_get_fondo_wg 
 
-  _login(LoginBloc bloc, BuildContext context){
-    oUsuarioProv.get_login_async(bloc.email, bloc.password);
-    //Navigator.pushReplacementNamed(context,"home");
+  _login(LoginBloc bloc, BuildContext context) async {
+    Map info = await oUsuarioProv.get_login_async(bloc.email, bloc.password);
+
+    if(info["ok"]){
+      Navigator.pushReplacementNamed(context,"home");
+    }
+    else{
+      alert(context,info["mensaje"]);
+    }
   }
 
 }//class LoginPage
