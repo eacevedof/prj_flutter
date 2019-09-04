@@ -1182,7 +1182,8 @@
     - se ven las reglas de acceso
     - Authentication > Método de acceso > habilitar acceso por email
     ![Firebase conf](https://trello-attachments.s3.amazonaws.com/5d658aa359dad4174c7cc48e/599x188/b47e3bcb5c979091523a65d9e4fc9643/image.png)
-  - [docs/reference/rest/auth#section-create-email-password](https://firebase.google.com/docs/reference/rest/auth#section-create-email-password)
+  - [firebase.google.com/docs/reference/rest/auth#section-create-email-password](https://firebase.google.com/docs/reference/rest/auth#section-create-email-password)
+  - [firebase.google.com/docs/reference/rest/auth#section-sign-in-email-password](https://firebase.google.com/docs/reference/rest/auth#section-sign-in-email-password)
   - https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=[API_KEY]
   - Usuario de pruebas:
     - test@test.com
@@ -1220,8 +1221,34 @@
     - Solución: Habilitar permisos de acceso en: `https://console.firebase.google.com/project/fir-flutter-db876/authentication/providers`
     - `Correo electrónico/contraseña`
 - 13.6. Usuario Provider - Login - Verificar usuario y contraseña
-  - 
+  - Ya se trata el login en el provider
   ```dart
+  //login_page.dart
+  final oUsuarioProv = new UsuarioProvider();
+
+  //usuario_provider.dart
+  Future<Map<String, dynamic>> get_login_async(String email, String password) async{
+    final authData = {
+      "email"             : email,
+      "password"          : password,
+      "returnSecureToken" : true,
+    };
+
+    final url = "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=$_firebaseToken";
+    //print("get_nuevo_usuario_async url: "+url);
+    final resp = await http.post(
+        url,
+        body: json.encode(authData)
+    );
+    
+    Map<String, dynamic> decodedResp = json.decode(resp.body);
+    print(decodedResp);
+
+    if(decodedResp.containsKey("idToken")){
+      return {"ok":true, "token":decodedResp["idToken"]};
+    }
+    return {"ok":false, "token":decodedResp["error"]["message"]};
+  }  
   ```
 - 13.7. Grabar Token en el storage del dispositivo
   - 

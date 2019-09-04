@@ -1,9 +1,12 @@
 //file:login_page.dart
 import 'package:flutter/material.dart';
 import 'package:flutter_formvalidation/src/bloc/provider.dart';
+import 'package:flutter_formvalidation/src/providers/usuario_provider.dart';
 
 class LoginPage extends StatelessWidget {
   
+  final oUsuarioProv = new UsuarioProvider();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -201,12 +204,8 @@ class LoginPage extends StatelessWidget {
   }//_get_fondo_wg 
 
   _login(LoginBloc bloc, BuildContext context){
-    
-    print("============");
-    print("Email: ${bloc.email}");
-    print("Passwrod: ${bloc.password}");
-    //Navigator.pushNamed(context,"home"); //mantinene la flecha de retorno
-    Navigator.pushReplacementNamed(context,"home");
+    oUsuarioProv.get_login_async(bloc.email, bloc.password);
+    //Navigator.pushReplacementNamed(context,"home");
   }
 
 }//class LoginPage
