@@ -1348,10 +1348,8 @@
   - Se trabajará con el patron BloC
 - 14.2. Temas puntuales de la sección
   - El objetivo central de la aplicación, es utilizar un Bloc para el manejo de los productos en lugar de hacer los llamadas directamente del Provider mediante FutureBuilders.
-- 14.
-  -
-  ```dart
-  ```    
+- 14.3. Inicio del proyecto - Detalles finales productos
+  - Probamos el acceso despues de adaptar el repo de Fernando
 - 14.
   -
   ```dart
