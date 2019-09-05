@@ -1350,24 +1350,21 @@
   - El objetivo central de la aplicación, es utilizar un Bloc para el manejo de los productos en lugar de hacer los llamadas directamente del Provider mediante FutureBuilders.
 - 14.3. Inicio del proyecto - Detalles finales productos
   - Probamos el acceso despues de adaptar el repo de Fernando
-- 14.
-  -
+- 14.4. ProductosBloc
+  - Se crea los metodos crud apoyados en streams
   ```dart
+  //productos_bloc
   ```
-- 14.
+- 14.5. Añadir un segundo Bloc a mi inheritedWidget
   -
   ```dart
   ```    
-- 14.
+- 14.6. Utilizando nuestro ProductosBloc
   -
   ```dart
   ```    
-- 14.
+- 14.7. ProductosBloc para actualizar y crear productos
   -
   ```dart
-  ```    
-- 14.
-  -
-  ```dart
-  ```      
+  ``` 
         
