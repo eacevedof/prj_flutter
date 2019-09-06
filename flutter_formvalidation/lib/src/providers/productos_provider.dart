@@ -41,6 +41,10 @@ class ProductosProvider{
 
     if(decodedData == null ) return [];
     
+    //tratando caducidad del token, se devuelve un array vacio pero se podria devolver un 
+    //mensaje de error
+    if(decodedData["error"] != null) return [];
+
     decodedData.forEach((id,prod){
       final oProd = ProductoModel.fromJson(prod);
       oProd.id = id;

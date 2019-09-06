@@ -6,18 +6,18 @@ import 'package:flutter_formvalidation/src/providers/productos_provider.dart';
 
 class HomePage extends StatelessWidget {
   
-  final prodProv = new ProductosProvider();
-
   @override
   Widget build(BuildContext context) {
-    final bloc = Provider.of(context);    
+
+    final prodBloc = Provider.get_prod_bloc(context);
+    prodBloc.cargar_productos_async();
 
     return Scaffold(
       appBar: AppBar(
         title: Text("Home Page"),
       ),
-      body: _get_listado_wg(context),
 
+      body: _get_listado_wg(prodBloc),
       floatingActionButton: _get_boton_wg(context),
 
     );
@@ -34,7 +34,7 @@ class HomePage extends StatelessWidget {
 
   }//_get_boton_wg
 
-  Widget _get_item_wg(BuildContext context, ProductoModel oProd){
+  Widget _get_item_wg(BuildContext context,ProductosBloc oProdBloc, ProductoModel oProd){
     //dismissible permite el borrado
     return Dismissible(
       key: UniqueKey(),
@@ -43,9 +43,10 @@ class HomePage extends StatelessWidget {
       ),
 
       //cuando se ejecuta el dismissible (desaparece de pantalla) lanza este evento
-      onDismissed: (direccion){
-        prodProv.getasync_deleted(oProd.id);
-      },
+      // onDismissed: (direccion){
+      //   oProdBloc.borrar_producto_async(oProd.id);
+      // },
+      onDismissed: (direccion) => oProdBloc.borrar_producto_async(oProd.id),
 
       child: Card(
         child: Column(
@@ -72,15 +73,15 @@ class HomePage extends StatelessWidget {
 
   }//_get_item_wg
 
-  Widget _get_listado_wg(BuildContext context){
-    return FutureBuilder(
-      future: prodProv.getasync_list(),
-      builder: (BuildContext context, AsyncSnapshot<List<ProductoModel>> snapshot) {
+  Widget _get_listado_wg(ProductosBloc oProdBloc){
+    return StreamBuilder(
+      stream: oProdBloc.get_productos_stream,
+      builder: (BuildContext context, AsyncSnapshot<List<ProductoModel>> snapshot){
         if(snapshot.hasData){
           final productos = snapshot.data;
           return ListView.builder(
             itemCount: productos.length,
-            itemBuilder: (context,i) => _get_item_wg(context,productos[i]),
+            itemBuilder: (context, i) => _get_item_wg(context, oProdBloc, productos[i]),
           );
         }
         else{

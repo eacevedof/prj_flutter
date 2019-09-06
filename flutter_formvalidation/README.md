@@ -1365,11 +1365,53 @@
   }
   ```    
 - 14.6. Utilizando nuestro ProductosBloc
-  -
+  - Ya se carga el home usando los streams
   ```dart
+  //productos_provider.dart
+  //tratando caducidad del token, se devuelve un array vacio pero se podria devolver un 
+  //mensaje de error
+  if(decodedData["error"] != null) return [];
+
+  //home_page.dart
+  final prodBloc = Provider.get_prod_bloc(context);
+  prodBloc.cargar_productos_async();
+
+  //esto pasa de un future builder a un streambuilder
+  Widget _get_listado_wg(ProductosBloc oProdBloc){
+    return StreamBuilder(
+      stream: oProdBloc.get_productos_stream,
+      builder: (BuildContext context, AsyncSnapshot<List<ProductoModel>> snapshot){
+        if(snapshot.hasData){
+          final productos = snapshot.data;
+          return ListView.builder(
+            itemCount: productos.length,
+            itemBuilder: (context, i) => _get_item_wg(context, oProdBloc, productos[i]),
+          );
+        }
+        else{
+          return Center(
+            child:CircularProgressIndicator(),
+          );
+        }
+      },
+    );
+  }//_get_listado_wg
+
+  //productos_bloc.dart
+  cambio los nombres de los metodos añadiendo sufijo async
+
+  //me está dando este error:
+  Launching lib\main.dart on Android SDK built for x86 64 in debug mode...
+  Built build\app\outputs\apk\debug\app-debug.apk.
+  Package install error: Failure [INSTALL_FAILED_DEXOPT]
+  Error launching application on Android SDK built for x86 64.
+  Exited (sigterm)
+  //solución
+  He tenido que cerrar todo vscode, android y he actualizado los plugins
+  de android studio
   ```    
 - 14.7. ProductosBloc para actualizar y crear productos
-  -
+  - 
   ```dart
   ``` 
         
