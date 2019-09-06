@@ -1356,8 +1356,13 @@
   //productos_bloc
   ```
 - 14.5. Añadir un segundo Bloc a mi inheritedWidget
-  -
+  - El provider es de tipo inheritedwidget que es como una caja de resonancia que permite a sus hijos escuchar los cambios por eso es el widget padre del resto
+  - Está dentro de **MyApp.build**
   ```dart
+  //bloc/provider.dart
+  static ProductosBloc get_prod_bloc (BuildContext context){
+    return (context.inheritFromWidgetOfExactType(Provider) as Provider)._productosBloc;
+  }
   ```    
 - 14.6. Utilizando nuestro ProductosBloc
   -
