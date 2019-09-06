@@ -2,8 +2,8 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_formvalidation/src/bloc/provider.dart';
 import 'package:flutter_formvalidation/src/models/producto_model.dart';
-import 'package:flutter_formvalidation/src/providers/productos_provider.dart';
 import 'package:flutter_formvalidation/src/utils/utils.dart' as u;
 import 'package:image_picker/image_picker.dart';
 
@@ -21,15 +21,18 @@ class _ProductoPageState extends State<ProductoPage> {
   //esta representa a la config del formulario
   final formkey = GlobalKey<FormState>();
   final scaffoldkey = GlobalKey<ScaffoldState>();
-  final productoprov = new ProductosProvider();
-  bool _guardando = false;
-  File foto;
 
+  ProductosBloc productosBloc;
   //tengo que saber si es nuevo o ya existía, viene con algún argumento
   ProductoModel producto = new ProductoModel();
 
+  bool _guardando = false;
+  File foto;
+
   @override
   Widget build(BuildContext context) {
+    productosBloc = Provider.get_prod_bloc(context);
+
     //aqui viene el dato de la otra pantalla
     final ProductoModel prodData = ModalRoute.of(context).settings.arguments;
     if(prodData!=null){
@@ -149,14 +152,14 @@ class _ProductoPageState extends State<ProductoPage> {
     });
 
     if(foto != null){
-      producto.fotoUrl = await productoprov.subir_imagen_async(foto);
+      producto.fotoUrl = await productosBloc.subir_foto_async(foto);
     }
     
     if(producto.id == null){
-      productoprov.getasync_producto(producto);
+      productosBloc.agregar_producto_async(producto);
     }
     else{
-      productoprov.getasync_productoup(producto);
+      productosBloc.editar_producto_async(producto);
     }
 
     //setState(() { _guardando = false; });

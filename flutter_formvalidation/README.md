@@ -1411,7 +1411,24 @@
   de android studio
   ```    
 - 14.7. ProductosBloc para actualizar y crear productos
-  - 
+  - Detalle del producto
+  - Pruebas de que todo funciona, pero ahora con Bloc
   ```dart
+  //producto_page
+  ProductosBloc productosBloc;
+  ...
+  productosBloc = Provider.get_prod_bloc(context);
+  ...
+
+  if(foto != null){
+    producto.fotoUrl = await productosBloc.subir_foto_async(foto);
+  }
+  
+  if(producto.id == null){
+    productosBloc.agregar_producto_async(producto);
+  }
+  else{
+    productosBloc.editar_producto_async(producto);
+  }
   ``` 
         
