@@ -35,9 +35,42 @@
         - Fernando trabajará con la app de películas dentro del proyecto (que es lo mismo)
         - No tiene que ser una app terminada, tiene que ser una app que funcione.
 - 15.4. Configuración del ícono de la aplicación
-    - 
-    ```dart
+  - Cambiar el ícono para que cuando se abra no se vea la F de flutter
+  - La carpeta de android e ios ya son aplicaciones generadas
+  - Dicho esto se podria configurar dentro de cada una de ellas las opciones propias de cada sistema como si fueran apps nativas
+  - Se puede cambiar el ícono de varias formas, usaremos [**flutter_launcher_icons**](https://pub.dev/packages/flutter_launcher_icons#-readme-tab-) (ver pdf)
+  - Usaremos dependencias de desarrollo **dev_dependencies:**
+  ```dart
+  //flutter_peliculas\pubspec.yaml
+  dependencies:
+    flutter:
+        sdk: flutter
+    flutter_launcher_icons: ^0.7.3
+  ```
+  - Creamos carpeta `assets\icon`
+  - copiamos el icono de **1024 x 1024**. Tiene que ser de este tamaño porque cuando generemos para IOS si la imágen se estirará la appstore no lo aceptaría
+  ```dart
+  //flutter_peliculas\pubspec.yaml
+  flutter_icons:
+    android: "launcher_icon" 
+    ios: true
+    image_path: "assets/icon/movie-icon.png"    
+  ```
+  - ejecutar: `flutter pub run flutter_launcher_icons:main -f <your config file name here>`
+    - **en pdf**: `flutter packages pub run flutter_launcher_icons:main`
+    ```js
+    Android minSdkVersion = 16
+    Creating default icons Android
+    Adding a new Android launcher icon
+    Overwriting default iOS launcher icon with new icon
     ```
+    - **resultados del comando:**
+    - ![Modificaciones en Android](https://trello-attachments.s3.amazonaws.com/5d658aa359dad4174c7cc48e/313x407/64679ab562f4bad28cdee635f31085ed/image.png)
+    - ![Modificaciones en IOS](https://trello-attachments.s3.amazonaws.com/5d658aa359dad4174c7cc48e/323x410/487422c2d7bd418c4911d7b5ff89dd2a/image.png)
+  - Lanzamos la app en el dispositivo o emulador
+    - **comprobamos el icono**
+    - ![Icono 1](https://trello-attachments.s3.amazonaws.com/5d658aa359dad4174c7cc48e/294x428/fa75faf29a36ff142b24352493d7c2c5/image.png)
+    - ![Icono 2](https://trello-attachments.s3.amazonaws.com/5d658aa359dad4174c7cc48e/298x447/6e8065a63aacabc1a5bc3b68a11f943d/image.png)
 - 15.5. Configurar el splashscreen
     - 
     ```dart
