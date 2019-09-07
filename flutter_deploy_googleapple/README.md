@@ -11,9 +11,17 @@
     - A partir del Iphone 5S ya vienen con procesadores de arq de 64 bits
     - [Pdf de soporte de Fernando]()
 - 15.2. Temas puntuales de la sección
-    - 
-    ```dart
-    ```
+    - **Temas de la sección:**
+        - Google PlayStore
+        - Apple AppStore
+        - Generación del APK de Android de 32 y 64bits
+        - Cambiar ícono de la aplicación
+        - SplashScreen
+        - Carga a la PlayStore
+        - Carga a la AppStore
+        - Configuraciones de AppStore Connect
+        - Configuraciones en el portal de developer de Apple
+        - Esta sección tiene por objetivo ayudarlos con los despliegues de sus aplicaciones en las tiendas, junto a una guía paso a paso detallada para un despliegue exitoso.
  - 15.3. Inicio de proyecto - Despliegues
     - 
     ```dart
