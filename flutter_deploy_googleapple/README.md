@@ -72,9 +72,47 @@
     - ![Icono 1](https://trello-attachments.s3.amazonaws.com/5d658aa359dad4174c7cc48e/294x428/fa75faf29a36ff142b24352493d7c2c5/image.png)
     - ![Icono 2](https://trello-attachments.s3.amazonaws.com/5d658aa359dad4174c7cc48e/298x447/6e8065a63aacabc1a5bc3b68a11f943d/image.png)
 - 15.5. Configurar el splashscreen
-    - 
-    ```dart
+    - El splashscreen es esa pantalla en blanco que aparece cuando se carga la app (cuando se abre y no está en memoria)
+    - Abrimos: `<project-path>\flutter_peliculas\android\app\src\main\res\drawable\launch_background.xml`
+    ```xml
+    //launch_background.xml
+    <?xml version="1.0" encoding="utf-8"?>
+    <!-- Modify this file to customize your launch splash screen -->
+    <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+      <item android:drawable="@android:color/white" />
+      <!-- You can insert your own image assets here -->
+      <!-- <item>
+          <bitmap
+              android:gravity="center"
+              android:src="@mipmap/launch_image" />
+      </item> -->
+    </layer-list>
     ```
+    - El fichero es de configuración de una app nativa de android, que es la app generada con lo cual se puede customizar en ese sentido
+    - Aqui se puede configurar:
+      - Animación
+      - Estilos del fondo
+      - etc
+    ```xml
+    //en pdf
+    <?xml version="1.0" encoding="utf-8"?>
+    <!-- Modify this file to customize your launch splash screen --> 
+    <layer-list xmlns:android="http://schemas.android.com/apk/res/android"> 
+      <item android:drawable="@android:color/black" /> 
+      <!-- You can insert your own image assets here --> 
+      <item> 
+        <bitmap 
+          android:gravity="center" 
+          android:src="@mipmap/ic_launcher" />  
+          //esto apunta flutter_peliculas\android\app\src\main\res\*\ic_launcher.png
+      </item> 
+    </layer-list>
+    ```
+    - Despues de los cambios ya se ve el splash screen negro con el icono de flutter en el medio
+    - Ahora vamos con IOS:
+      - Se reemplazan las imagenes en la ruta: `\flutter_peliculas\ios\Runner\Assets.xcassets\LaunchImage.imageset\`
+      - Desde esa ruta se recuperan los png
+      - En el emulador de Fernando se ve que funciona
 - 15.6. Corrección de tamaño de las películas (opcional)
     - 
     ```dart
