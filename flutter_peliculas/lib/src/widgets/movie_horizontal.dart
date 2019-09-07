@@ -29,7 +29,7 @@ class MovieHorizontal extends StatelessWidget {
     });
 
     return Container(
-      height: _screenSize.height * 0.2,
+      height: _screenSize.height * 0.25,
       //slider del footer. El pageview va a renderizar todos los items que se hayan cargado al mismo tiempo
       //Pageview.builder los va creando bajo demanda
       child: PageView.builder(

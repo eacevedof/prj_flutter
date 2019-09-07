@@ -114,8 +114,20 @@
       - Desde esa ruta se recuperan los png
       - En el emulador de Fernando se ve que funciona
 - 15.6. Corrección de tamaño de las películas (opcional)
-    - 
     ```dart
+    //flutter_peliculas\lib\src\widgets\movie_horizontal.dart
+    return Container(
+      height: _screenSize.height * 0.25, //cambia de 0.2
+      //slider del footer. El pageview va a renderizar todos los items que se hayan cargado al mismo tiempo
+      //Pageview.builder los va creando bajo demanda
+      child: PageView.builder(
+        pageSnapping: false,
+        controller: _pageController,
+        itemCount: peliculas.length,
+        //children: _tarjetas(context), //no va para pv.builder
+        itemBuilder: (context, i) => _tarjeta(context, peliculas[i]),
+      ),
+    );
     ```
  - 15.7. Cambiar el nombre de la aplicación en el HomeScreen
     - 
