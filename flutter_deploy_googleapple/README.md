@@ -148,9 +148,117 @@
     - ![app](https://trello-attachments.s3.amazonaws.com/5d658aa359dad4174c7cc48e/177x180/5a924f0f2b5c1ae6f33e13ebb32a1bc6/image.png)
     - ![icon](https://trello-attachments.s3.amazonaws.com/5d658aa359dad4174c7cc48e/75x76/4e8d369742babb190e10e7516ea95a2c/image.png)    
 - 15.8. Generación y subida del APK de Android
+  - Abrimos la guía oficial de despliegue [flutter.dev/docs/deployment/android](https://flutter.dev/docs/deployment/android)
+  - `\flutter_peliculas\android\app\build.gradle`
+    - cambiamos el id de la app
+    ```js
+    defaultConfig {
+      applicationId "com.eduardoaf.flutterpeliculas"
+    
+    //tambien en el manifest: 
+    //flutter_peliculas\android\app\src\main\AndroidManifest.xml
+    <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.eduardoaf.flutterpeliculas">
+    ```
+  - Podemos manejar manualmente la versión (build.gradle)
+  ```js
+      versionCode flutterVersionCode.toInteger() //tenemos que incrementar cada vez que hagamos un despliegue
+      versionName flutterVersionName //es lo que los usuarios ven
+
+      versionCode 1 //debe ser siempre un entero incremental
+      versionName "1.0.0"
+  ```
+  - Especificar la versión mínima para usar tu app (Android)
+    - [min version](https://trello-attachments.s3.amazonaws.com/5d658aa359dad4174c7cc48e/488x508/3dff617b9c91128d3c44971463074e07/image.png) 
+    - Flutter corre perfectamente en la version 16 pero puede haber otras librerias que no y obligue a usar una version superior
     - 
-    ```dart
-    ```       
+    ```js
+    minSdkVersion 16 //ver tabla
+    16 = Jelly Bean android 4.1
+    ```
+  - Firmar la app
+    - Esto va a evitar que otras personas se hagan pasar por mi
+    - [create a keystore](https://flutter.dev/docs/deployment/android#create-a-keystore)
+      - En windows:
+      - para ejecutar el comando hay que estar en la raíz del proyecto, es decir en **flutter_peliculas/**
+      - `<path-java-jdk>/keytool -genkey -v -keystore E:/private_keys/flutter/google/key.jks -keyalg RSA -keysize 2048 -validity 10000 -alias key`
+      - **error**:`bash: keytool: command not found`
+        - keytool esta dentro del bin del jdk instalado
+      - [Con esto ha funcionado](https://trello.com/c/W7Esvfng/1-generar-claves)
+      - Se ha generado el fichero **key.jks**
+  - El fichero [**key.properties**](https://flutter.dev/docs/deployment/android#reference-the-keystore-from-the-app)
+    - `\flutter_peliculas\android\key.properties`
+    ```js
+    storePassword=<password from previous step>
+    keyPassword=<password from previous step>
+    keyAlias=key
+    //la ruta debe ser con / y no con \ sino dará error
+    storeFile=<location of the key store file, such as /Users/<user name>/key.jks> 
+    ```
+    - En gitignore: `**/android/key.properties`
+  - [Configurar la firma en gradle](https://flutter.dev/docs/deployment/android#configure-signing-in-gradle)
+    - En build.gradle hay que incluir:
+    ```js
+    def keystoreProperties = new Properties()
+    def keystorePropertiesFile = rootProject.file('key.properties')
+    if (keystorePropertiesFile.exists()) {
+        keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+    }   
+    ...
+    signingConfigs {
+       release {
+           keyAlias keystoreProperties['keyAlias']
+           keyPassword keystoreProperties['keyPassword']
+           storeFile file(keystoreProperties['storeFile'])
+           storePassword keystoreProperties['storePassword']
+       }
+    }
+    buildTypes {
+        release {
+            signingConfig signingConfigs.release
+        }
+    } 
+    ```
+  - Generar la versión de producción de nuestra app
+    - `flutter build apk --release`
+    - Genera un fichero en: **flutter_peliculas\build\app\outputs\apk\release\app-release.apk**
+    - este es el **apk firmado** 
+    - Me lo ha generado de unos 12 MB
+  - Pagar la suscripción a Google play
+    - ![mi googleplay](https://play.google.com/apps/publish/?account=8700821796458106202#AppListPlace)
+    - Comprobar si se ha generado el apk para 64 bits
+    - cambiar la extensión de apk a zip (en una copia)
+    - Abrimos el .zip
+    - ![apk en zip](https://trello-attachments.s3.amazonaws.com/5d658aa359dad4174c7cc48e/377x135/fbfa7bf6b8ad8a26b5c38e18bf22c0ea/image.png)
+    - Se debe mostrar la carpeta: **arm64-v8a**
+    - **estos pasos no son necesarios si se ha creado la carpeta arm64-v8a**
+    - En build.gradle
+      - [copiar este contenido](https://gist.github.com/Klerith/53147980b8f6dc3ef5bbf3ef6b7472f6)
+      ```js
+      afterEvaluate {
+        mergeReleaseJniLibFolders.doLast {
+            def archTypes = ["arm-release", "arm64-release"] //en que arquitecturas lo debe generar
+            archTypes.forEach { item ->
+                copy {
+                    from zipTree("$flutterRoot/bin/cache/artifacts/engine/android-$item/flutter.jar")
+                    include 'lib/*/libflutter.so'
+                    into "$buildDir/intermediates/jniLibs/release/"
+                    eachFile {
+                        it.path = it.path.replaceFirst("lib/", "")
+                    }
+                }
+            }
+        }
+      }
+      ```
+      - ![lo que hay que pegar](https://trello-attachments.s3.amazonaws.com/5d658aa359dad4174c7cc48e/600x378/d4ff42c91272f34b14b027c271e5f746/image.png)
+      - Problemas al subir
+        - > Debes cambiar el tamaño de la captura de pantalla. Longitud mínima para los laterales: 320 píxeles. 
+        - > Longitud máxima para los laterales: 3840 píxeles. Relación de aspecto máxima: 2:1.
+        - con 320 de ancho y 640 de alto ya coge la imágen
+      - ![error optimización](https://trello-attachments.s3.amazonaws.com/5d658aa359dad4174c7cc48e/918x381/5cbd6b66d5d46d892b41e9cd084af53b/image.png)
+        - > Este APK tiene códigos y recursos que no se utilizan y que se están enviando a los usuarios. Reduce el tamaño de tu aplicación con el Android App Bundle...
+
 - 15.9. Generación y subida de la aplicación de IOS
     - 
     ```dart
