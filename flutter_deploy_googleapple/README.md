@@ -130,9 +130,23 @@
     );
     ```
  - 15.7. Cambiar el nombre de la aplicación en el HomeScreen
-    - 
+    - archivo manifest: `\flutter_peliculas\android\app\src\main\AndroidManifest.xml`
+    - Aqui se encuentra el id único de la app. **android:name**
     ```dart
+        android:name="io.flutter.app.FlutterApplication"
+        android:label="Películas"
     ```
+    - Ios:
+      - `\flutter_peliculas\ios\Runner\Info.plist`
+      ```xml
+      	<key>CFBundleName</key>
+	      <string>flutter_peliculas</string>
+        ...
+        <key>CFBundleName</key>
+	      <string>Películas</string>
+      ```
+    - ![app](https://trello-attachments.s3.amazonaws.com/5d658aa359dad4174c7cc48e/177x180/5a924f0f2b5c1ae6f33e13ebb32a1bc6/image.png)
+    - ![icon](https://trello-attachments.s3.amazonaws.com/5d658aa359dad4174c7cc48e/75x76/4e8d369742babb190e10e7516ea95a2c/image.png)    
 - 15.8. Generación y subida del APK de Android
     - 
     ```dart
