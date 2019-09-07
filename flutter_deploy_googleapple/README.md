@@ -23,9 +23,17 @@
         - Configuraciones en el portal de developer de Apple
         - Esta sección tiene por objetivo ayudarlos con los despliegues de sus aplicaciones en las tiendas, junto a una guía paso a paso detallada para un despliegue exitoso.
  - 15.3. Inicio de proyecto - Despliegues
-    - 
-    ```dart
-    ```
+    - Descargar material de despligues
+        - Icono de 2014*1024 que lo usaremos para generar todo lo demas
+        - Y otro par de imágenes que son propiamente para IOS
+        - Guía que no reemplaza a las oficiales
+        - Hay que pagar algo adicional para los despliegues
+        - Google: 30 $ de por vida
+        - Apple: 100 $ al año
+        - La app de películas
+        - Se abre en vscode, hacemos un **`flutter packages get`**
+        - Fernando trabajará con la app de películas dentro del proyecto (que es lo mismo)
+        - No tiene que ser una app terminada, tiene que ser una app que funcione.
 - 15.4. Configuración del ícono de la aplicación
     - 
     ```dart
