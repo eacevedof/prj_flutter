@@ -29,6 +29,8 @@
       <excludeFolder url="file://$MODULE_DIR$/flutter_peliculas/build" />
       <excludeFolder url="file://$MODULE_DIR$/flutter_preferencias_usuario/.pub" />
       <excludeFolder url="file://$MODULE_DIR$/flutter_preferencias_usuario/build" />
+      <excludeFolder url="file://$MODULE_DIR$/flutter_pushnotifications/push_local/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/flutter_pushnotifications/push_local/build" />
       <excludeFolder url="file://$MODULE_DIR$/flutter_qrreader/.pub" />
       <excludeFolder url="file://$MODULE_DIR$/flutter_qrreader/build" />
       <excludeFolder url="file://$MODULE_DIR$/flutter_vscode/.pub" />

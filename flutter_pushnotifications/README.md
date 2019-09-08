@@ -20,9 +20,11 @@
   - Con Postman emularemos la configuración que se tiene que hacer en **nuestro backend** para llamar al servicio de **Fbase** y que este último se encargue de enviar la NP
   - **Ver screenshots**
 - 16.4. Inicio de proyecto - Push Notifications
-  - 
-  ```dart
-  ```
+  - Requerimientos previos:
+    - Android: Ninguno
+    - IOS: Licencia de developer de apple vigente y activa
+    - **Flutter new project: push_local**
+    - se crea una app vacia y en main.dart: `debugShowCheckedModeBanner: false`
 - 16.5. Configuración de FCM (Firebase Cloud Messaging)
   - 
   ```dart
