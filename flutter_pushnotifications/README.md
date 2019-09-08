@@ -13,9 +13,12 @@
   - Uso de los argumentos de la push
   - Esta es una sección adicional que agregue al curso porque muchas personas me lo solicitaron, espero les guste y nos vemos en el siguiente video.
 - 16.3. Demostración de la sección
-  - 
-  ```dart
-  ```
+  - Como mandar NP a nuestros dispositivos 
+  - Como trataran estas NP los dispositivos
+  - Se hará de dos maneras con: **cloud messagin de firebase** y con el **servicio REST de Firebase**
+  - Para el segundo usarémos POSTMAN
+  - Con Postman emularemos la configuración que se tiene que hacer en **nuestro backend** para llamar al servicio de **Fbase** y que este último se encargue de enviar la NP
+  - **Ver screenshots**
 - 16.4. Inicio de proyecto - Push Notifications
   - 
   ```dart
