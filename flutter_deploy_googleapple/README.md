@@ -262,7 +262,8 @@
         - [uso de bundletool](https://developer.android.com/studio/command-line/bundletool)
         - Con este comando se genera el fichero en: `\flutter_peliculas\build\app\outputs\bundle\release\app.aab`
         - con esta sentencia no hace falta de comprimir el .apk, es mejor subir directamente el bundle ya que google lo optimiza
+    - Despues de subir la versión he tenido que contestar todos los cuestionarios y finalmente me ha dejado publicar la versión
 - 15.9. Generación y subida de la aplicación de IOS
-    - 
+    - Me la salto de momento
     ```dart
     ```       
