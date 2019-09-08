@@ -258,7 +258,7 @@
         - con 320 de ancho y 640 de alto ya coge la imágen
       - ![error optimización](https://trello-attachments.s3.amazonaws.com/5d658aa359dad4174c7cc48e/918x381/5cbd6b66d5d46d892b41e9cd084af53b/image.png)
         - > Este APK tiene códigos y recursos que no se utilizan y que se están enviando a los usuarios. Reduce el tamaño de tu aplicación con el Android App Bundle...
-
+        - Me comentan que use este comando: [`flutter build appbundle`](https://flutter.dev/docs/deployment/android#building-the-app-for-release)
 - 15.9. Generación y subida de la aplicación de IOS
     - 
     ```dart

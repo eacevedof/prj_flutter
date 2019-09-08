@@ -26,8 +26,18 @@
     - **Flutter new project: push_local**
     - se crea una app vacia y en main.dart: `debugShowCheckedModeBanner: false`
 - 16.5. Configuración de FCM (Firebase Cloud Messaging)
-  - 
+  - install [**firebase_messaging 5.1.5**](https://pub.dev/packages/firebase_messaging)
+  - ![flutter install push](https://trello-attachments.s3.amazonaws.com/5d658aa359dad4174c7cc48e/514x434/eee266c6d32a2106841305511d16a6c4/
+image.png)
+  - ![gradle](https://trello-attachments.s3.amazonaws.com/5d658aa359dad4174c7cc48e/446x86/652c27ed3498f9febaa29c36c6c6b76f/image.png)
+  - ![hash](https://trello-attachments.s3.amazonaws.com/5d658aa359dad4174c7cc48e/655x163/a7fb758694db6e6eb31e1d7cb4b5dc68/image.png)
+  - Para el hash hay que ejecutar el siguiente [comando](https://developers.google.com/android/guides/client-auth):
+    - **windows** `keytool -list -v \ -alias androiddebugkey -keystore %USERPROFILE%\.android\debug.keystore`
+    
   ```dart
+  //pubspeck.yaml
+    firebase_messaging: ^5.1.5
+  //
   ```
 - 16.6. Provider para controlar las notificaciones y FCM Token
   - 
