@@ -44,5 +44,4 @@ class PushNotificationsProvider{
 
   }//initNotifications
 
-
 }//class PushNotificationsProvider
