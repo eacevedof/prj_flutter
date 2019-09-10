@@ -69,14 +69,24 @@
     ```
   - **AndroidManifest.xml**
   - `\flutter_pushnotifications\push_local\android\app\src\main\AndroidManifest.xml`
-  - 
-
-
-
 - 16.6. Provider para controlar las notificaciones y FCM Token
-  - 
-  ```dart
-  ```
+  - **error**
+    ```
+    Se produjo una excepción.
+    PlatformException (PlatformException(error, Default FirebaseApp is not initialized in 
+    this process com.example.push_local. Make sure to call 
+    FirebaseApp.initializeApp(Context) first., null))
+    ```
+    - [En la docu de firebase_messaging:](https://pub.dev/packages/firebase_messaging)
+    ```
+    Note: If this section is not completed you will get an error like this:
+    java.lang.IllegalStateException:
+    Default FirebaseApp is not initialized in this process [package name].
+    Make sure to call FirebaseApp.initializeApp(Context) first.
+    ```
+    - He tenido que agregar `apply plugin: 'com.google.gms.google-services` en el archivo: `\flutter_pushnotifications\push_local\android\app\build.gradle`
+  - Ya tengo el token
+    - > `drAaitFuUwI:APA91bGFP337MuMbPJkiJEJRd8h8ZYQe2RSUwqzyW_IyeoGsV_76j7gs5bW3zJlVBWcwBHrIcocXllUc2TL5Juyp3ZtIFVTeb8GnAnn-faxHXe5SD2evvInSt6QvpIG7PUp0Ij3Tty4F`
 - 16.7. Recibir notificación - onMessage, onLaunch y onResume
   - 
   ```dart
