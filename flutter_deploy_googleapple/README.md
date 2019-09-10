@@ -1,5 +1,7 @@
 ## Madrid 2019/09/07 18:00
 
+- [Playstore Console](https://play.google.com/apps/publish/?account=8700821796458106202#AppListPlace)
+
 # 15. Despliegue en Google PlayStore y Apple AppStore
 - 15.1. Introducción a la sección
     - Despliegues en la nube

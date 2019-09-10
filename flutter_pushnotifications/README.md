@@ -69,6 +69,12 @@
     ```
   - **AndroidManifest.xml**
   - `\flutter_pushnotifications\push_local\android\app\src\main\AndroidManifest.xml`
+    ```xml
+    <intent-filter>
+      <action android:name="FLUTTER_NOTIFICATION_CLICK" />
+      <category android:name="android.intent.category.DEFAULT" />
+    </intent-filter>
+    ```
 - 16.6. Provider para controlar las notificaciones y FCM Token
   - **error**
     ```
@@ -84,12 +90,55 @@
     Default FirebaseApp is not initialized in this process [package name].
     Make sure to call FirebaseApp.initializeApp(Context) first.
     ```
-    - He tenido que agregar `apply plugin: 'com.google.gms.google-services` en el archivo: `\flutter_pushnotifications\push_local\android\app\build.gradle`
+    - **solución:**
+      - He tenido que agregar `apply plugin: 'com.google.gms.google-services` en el archivo: `\flutter_pushnotifications\push_local\android\app\build.gradle`
   - Ya tengo el token
     - > `drAaitFuUwI:APA91bGFP337MuMbPJkiJEJRd8h8ZYQe2RSUwqzyW_IyeoGsV_76j7gs5bW3zJlVBWcwBHrIcocXllUc2TL5Juyp3ZtIFVTeb8GnAnn-faxHXe5SD2evvInSt6QvpIG7PUp0Ij3Tty4F`
+    - El token solo cambia al reinstalar la app.
 - 16.7. Recibir notificación - onMessage, onLaunch y onResume
-  - 
+  - Hay notificaciones que llegarán cuando el usuario está usando la app, esta no es una notificación push.
+  - Recibimos esta notif y la manejariamos como una local notification porque la app está abierta
+  - Solo si la app está en el background se llama notificación push NP
+  - **configuración del mensaje en fbase**
+    - [config message en fbase](https://console.firebase.google.com/project/flutter-push-a5f21/notification/compose)
+    - ![config msg](https://trello-attachments.s3.amazonaws.com/5d658aa359dad4174c7cc48e/783x312/1f5d70af1b4fffe2e89090db07b9c5a5/image.png)
+    - El texto máximo: 1000 caracteres
+    - El título máximo: parece que no tiene limites
+      - **error:** Presiono testar y no me llega nada :S
+      - **solución** He eliminado el mensaje en cuestion puesto un titulo mas pequeño y ya ha funcionado
+    - ![flutter push](https://trello-attachments.s3.amazonaws.com/5d658aa359dad4174c7cc48e/255x187/aa9fb1def5a0ead595c414261ef48ad7/image.png)
   ```dart
+    //tratando los estados para la recepcion de la notificacion
+      _firebaseMessaging.configure(
+
+        //cuando la app está abierta
+        onMessage: (info){
+          print("======= On Message =============");
+          print(info);
+        },//onMessage
+
+        //en background
+        onLaunch: (info){
+          print("======= On Launch =============");
+          print(info);
+
+          final noti = info["data"]["comida"];
+          print(noti);
+        },//onLaunch
+
+        //al hacer click en el "botón" push y con la app en segundo plano entra aqui
+        onResume: (info){
+          print("======= On Resume =============");
+          print(info);
+          //final noti = info["data"]["comida"];
+          //print(noti);        
+        }//onResume
+
+      );//_firebaseMessaging.configure
+
+    }//initNotifications
+
+  }//class PushNotificationsProvider
   ```
 - 16.8. Reaccionar cuando recibimos una notificación y nuestra aplicación está abierta
   - 
