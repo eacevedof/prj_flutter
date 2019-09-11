@@ -1,12 +1,17 @@
 //push_notifications_provider.dart
+import 'dart:async';
+import 'dart:io';
+
 import 'package:firebase_messaging/firebase_messaging.dart';
 
 class PushNotificationsProvider{
 
   FirebaseMessaging _firebaseMessaging = FirebaseMessaging();
+  //listener, siempre es bueno usar broadcast
+  final _mensajesStreamController = StreamController<String>.broadcast();
+  Stream<String> get get_mensajes_stream => _mensajesStreamController.stream;
 
   initNotifications(){
-    
     //FirebaseMessaging.initializeApp(this);
     _firebaseMessaging.requestNotificationPermissions();
     _firebaseMessaging.getToken().then((token){
@@ -21,6 +26,14 @@ class PushNotificationsProvider{
       onMessage: (info){
         print("======= On Message =============");
         print(info);
+        //la info entre android e ios puede ser diferente cuando llega en push 
+        String argumento = 'no-data';
+        if(Platform.isAndroid ){
+          argumento = info["data"]["comida"] ?? "no-data";
+          //se agrega al stream
+          _mensajesStreamController.sink.add(argumento);
+        }      
+        //_mensajesStreamController.sink.add(event);
       },//onMessage
 
       //en background
@@ -41,7 +54,10 @@ class PushNotificationsProvider{
       }//onResume
 
     );//_firebaseMessaging.configure
-
   }//initNotifications
+
+  dispose(){
+    _mensajesStreamController?.close();
+  }//dispose
 
 }//class PushNotificationsProvider

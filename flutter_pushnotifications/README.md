@@ -141,8 +141,39 @@
   }//class PushNotificationsProvider
   ```
 - 16.8. Reaccionar cuando recibimos una notificación y nuestra aplicación está abierta
-  - 
+  - Para escuchar la notificación push, que puede ocurrir en cualquier momento se debe trabajar con **streams**
+  - **error** ^^ Ahora no me llegan las notificaciones ~~! vaya! sorpresa ... :s
+    - He desinstalado la app y vuelto a instalar
+    - me ha cambiado el token y con este ya funciona, me llegan las notif
+  - Los datos desde fbase pueden variar entre **android** e **ios**
+  - Recibe los argumentos escuchando el stream y teniendo la app en foreground
   ```dart
+  //home_page.dart
+  //mensaje_page.dart
+
+  //main.dart
+  rutas
+  //pus_notifications.dart
+  class PushNotificationsProvider{
+
+    FirebaseMessaging _firebaseMessaging = FirebaseMessaging();
+    //listener, siempre es bueno usar broadcast
+    final _mensajesStreamController = StreamController<String>.broadcast();
+    Stream<String> get get_mensajes_stream => _mensajesStreamController.stream;
+    ...
+    onMessage: (info){
+      print("======= On Message =============");
+      print(info);
+      //la info entre android e ios puede ser diferente cuando llega en push 
+      String argumento = 'no-data';
+      if(Platform.isAndroid ){
+        argumento = info["data"]["comida"] ?? "no-data";
+        //se agrega al stream
+        _mensajesStreamController.sink.add(argumento);
+      }      
+      //_mensajesStreamController.sink.add(event);
+    },//onMessage 
+    ...   
   ```
 - 16.9. Navegar a la segunda pantalla con los argumentos de la notificación
   - 
