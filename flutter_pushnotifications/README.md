@@ -176,11 +176,11 @@
     ...   
   ```
 - 16.9. Navegar a la segunda pantalla con los argumentos de la notificación
-  - 
+  - [me lo salto :)](https://www.udemy.com/flutter-ios-android-fernando-herrera/learn/lecture/14951738#overview)
   ```dart
   ```
 - 16.10. Inicio de configuraciones Push en IOS
-  - 
+  - [me lo salto :)](https://www.udemy.com/flutter-ios-android-fernando-herrera/learn/lecture/14952670#overview)
   ```dart
   ```
 - 16.11. Push Notification en segundo plano o terminada - IOS
