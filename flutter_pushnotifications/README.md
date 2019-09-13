@@ -293,6 +293,13 @@
   //lo mismo para onResume  
   ```
 - 16.12. Enviar notificaciones mediante un servicio REST
-  - 
-  ```dart
+  - La intención es enviar mensajes push sin necesidad de entrar al panel de control de Firebase
+  - La app móvil llamará a un endpoint de nuestro backend y este se comunique con Fbase
+  - ![get token](https://trello-attachments.s3.amazonaws.com/5d658aa359dad4174c7cc48e/576x480/dc97708c81a06f29140681532e360fbb/image.png)
+    - Obtengo la clave del servidor para la llamada
+  ```js
+  DATA='{"notification": {"body": "this is a body","title": "this is a title"}, "priority": "high", "data": {"click_action": "FLUTTER_NOTIFICATION_CLICK", "id": "1", "status": "done"}, "to": "<FCM TOKEN>"}'
+  curl https://fcm.googleapis.com/fcm/send -H "Content-Type:application/json" -X POST -d "$DATA" -H "Authorization: key=<FCM SERVER KEY>"
   ```
+  - ![resultado](https://trello-attachments.s3.amazonaws.com/5d658aa359dad4174c7cc48e/999x503/d498db8632df3cae73da422c57ff9327/image.png)
+  
