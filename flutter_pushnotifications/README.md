@@ -176,8 +176,65 @@
     ...   
   ```
 - 16.9. Navegar a la segunda pantalla con los argumentos de la notificación
-  - [me lo salto :)](https://www.udemy.com/flutter-ios-android-fernando-herrera/learn/lecture/14951738#overview)
+  - Se reciben los mensajes tanto en foreground como en background y al interactuar con este se navega a la página mensaje
   ```dart
+  //main.dart
+    final GlobalKey<NavigatorState> oGlobalNavkey = new GlobalKey<NavigatorState>();
+
+  @override
+  void initState(){
+    print("========= _MyappState.initState() ============");
+    super.initState();
+
+    final pushProvider = new PushNotificationsProvider();
+    pushProvider.initNotifications();
+    pushProvider.get_mensajes_stream.listen( (strdata){
+      //aqui no se puede llamar a pushNamed porque no tengo el objeto Navigator creado
+      //tengo que relacionar el build.materialapp y el pusprovider.argumento
+      //Navigator.pushNamed(context,"mensaje");
+      print("Argumento del push:");
+      print(strdata);
+
+      oGlobalNavkey.currentState.pushNamed("mensaje",arguments:strdata);
+    });
+
+  }//initState
+
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      //esta variable me permitirá controlar el estado de MaterialApp a lo largo de toda esta clase
+      navigatorKey: oGlobalNavkey,
+      ...
+  //push_notifications_provider.dart
+  onResume: (info){
+    print("======= On Resume =============");
+    print(info);
+
+    String argumento = 'no-data';
+    if(Platform.isAndroid ){
+      argumento = info["data"]["comida"] ?? "no-data";
+      //se agrega al stream, y esto desencadena en main.dart que se navegue a mensaje_page.dart
+      _mensajesStreamController.sink.add(argumento);
+    }      
+    //print(noti);  
+    ...
+
+  //mensaje_page.dart
+  Widget build(BuildContext context) {
+
+    final String strarg = ModalRoute.of(context).settings.arguments;
+
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Home Page"),
+      ),
+      body: Center(
+        child: Text(strarg),
+      ),
+    );
+
+  }
   ```
 - 16.10. Inicio de configuraciones Push en IOS
   - [me lo salto :)](https://www.udemy.com/flutter-ios-android-fernando-herrera/learn/lecture/14952670#overview)

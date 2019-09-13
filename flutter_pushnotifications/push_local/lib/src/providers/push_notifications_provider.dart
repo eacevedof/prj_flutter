@@ -36,7 +36,7 @@ class PushNotificationsProvider{
         //_mensajesStreamController.sink.add(event);
       },//onMessage
 
-      //en background
+      //terminada, cerrada
       onLaunch: (info){
         print("======= On Launch =============");
         print(info);
@@ -49,7 +49,13 @@ class PushNotificationsProvider{
       onResume: (info){
         print("======= On Resume =============");
         print(info);
-        //final noti = info["data"]["comida"];
+
+        String argumento = 'no-data';
+        if(Platform.isAndroid ){
+          argumento = info["data"]["comida"] ?? "no-data";
+          //se agrega al stream, y esto desencadena en main.dart que se navegue a mensaje_page.dart
+          _mensajesStreamController.sink.add(argumento);
+        }      
         //print(noti);        
       }//onResume
 
