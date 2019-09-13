@@ -29,10 +29,14 @@ class PushNotificationsProvider{
         //la info entre android e ios puede ser diferente cuando llega en push 
         String argumento = 'no-data';
         if(Platform.isAndroid ){
-          argumento = info["data"]["comida"] ?? "no-data";
-          //se agrega al stream
-          _mensajesStreamController.sink.add(argumento);
-        }      
+          argumento = info["data"]["comida"] ?? "no-data";      
+        }
+        //ios
+        else{
+          argumento = info["data"]["comida"] ?? "no-data-ios";
+        }   
+        //se agrega al stream
+        _mensajesStreamController.sink.add(argumento);
         //_mensajesStreamController.sink.add(event);
       },//onMessage
 
@@ -53,9 +57,13 @@ class PushNotificationsProvider{
         String argumento = 'no-data';
         if(Platform.isAndroid ){
           argumento = info["data"]["comida"] ?? "no-data";
-          //se agrega al stream, y esto desencadena en main.dart que se navegue a mensaje_page.dart
-          _mensajesStreamController.sink.add(argumento);
-        }      
+        }  
+        //ios
+        else{
+          argumento = info["data"]["comida"] ?? "no-data-ios";
+        }
+        //se agrega al stream, y esto desencadena en main.dart que se navegue a mensaje_page.dart
+        _mensajesStreamController.sink.add(argumento);            
         //print(noti);        
       }//onResume
 

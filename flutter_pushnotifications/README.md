@@ -237,12 +237,38 @@
   }
   ```
 - 16.10. Inicio de configuraciones Push en IOS
-  - [me lo salto :)](https://www.udemy.com/flutter-ios-android-fernando-herrera/learn/lecture/14952670#overview)
-  ```dart
-  ```
+  - [Video udemy](https://www.udemy.com/flutter-ios-android-fernando-herrera/learn/lecture/14951738#questions/8158031)
+
+
 - 16.11. Push Notification en segundo plano o terminada - IOS
-  - 
+  - [Video udemy](https://www.udemy.com/flutter-ios-android-fernando-herrera/learn/lecture/14952670#questions/8158031)
+  - **/ios/Runner.xcworkspace**
+  - se abre y se hace la comporobación del **bundle identifier** que no tenga espacios al principio ni fn
+  - con esta comprobación se lanza la app de ios en el emulador dentro de **xcode**
+  - se mostrará el token de firebase en xcode
+  - a partir de aqui se puede usar con vscode
+  - con el nuevo token ahora si la app en ios esta minimizada llegará el push
+  - cerramos todo **xcode**
   ```dart
+  //push_notifications_provider.dart
+      onMessage: (info){
+        print("======= On Message =============");
+        print(info);
+        //la info entre android e ios puede ser diferente cuando llega en push 
+        String argumento = 'no-data';
+        if(Platform.isAndroid ){
+          argumento = info["data"]["comida"] ?? "no-data";      
+        }
+        //ios
+        else{
+          argumento = info["data"]["comida"] ?? "no-data-ios";
+        }   
+        //se agrega al stream
+        _mensajesStreamController.sink.add(argumento);
+        //_mensajesStreamController.sink.add(event);
+      },//onMessage
+
+  //lo mismo para onResume  
   ```
 - 16.12. Enviar notificaciones mediante un servicio REST
   - 
