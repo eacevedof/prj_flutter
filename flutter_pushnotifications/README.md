@@ -238,8 +238,30 @@
   ```
 - 16.10. Inicio de configuraciones Push en IOS
   - [Video udemy](https://www.udemy.com/flutter-ios-android-fernando-herrera/learn/lecture/14951738#questions/8158031)
-
-
+  - Se necesita una cuenta de developer de apple pagada
+  - en el paquete firebase_messaging hay indicaciones de como montar el paquete en IOS
+  - nos podemos saltar el provisional profile
+  - configurar apns with fcm
+    - Gestión en developer.apple.com/account/ios/authkey/create
+    - la key generada solo la dejará descargar 1 vez (archivo.p8)
+    - esta hay que guardarla bien, en dropbox por ejemplo
+  - crear el app id
+    - en identifiers
+    - el bundle id: com.miweb.flutterpush
+    - se selecciona push notifications
+  - firebase console
+    - el bundle id: com.miweb.flutterpush
+    - nombre app: FlutterPush Ios
+    - descarga de googleservice-info.plist
+    - se coloca el fichero en ios/runner.xcworkspace
+    - se abre en xcode
+    - una vez abierto xcode se incluye dentro de runner el fichero .plist
+    - en el bundle identifier debe ser igual al "bundle id"
+  - En firebase/flutter push ios
+    - subimos el fichero .p8
+    - copiamos el id de la llave
+    - copiamos el team id de la cuenta de ios
+  - Las notificaciones no llegán, se corregirá en el prox video
 - 16.11. Push Notification en segundo plano o terminada - IOS
   - [Video udemy](https://www.udemy.com/flutter-ios-android-fernando-herrera/learn/lecture/14952670#questions/8158031)
   - **/ios/Runner.xcworkspace**
