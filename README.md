@@ -20,7 +20,6 @@
     - Falta readme.md
     - Caracteristicas del lenguaje. Imports, Widgets, etc
 - [5. Hola Mundo y Aplicación contador *](https://github.com/eacevedof/prj_flutter/tree/master/flutter_vscode)
-    - 
 - [6. Componentes de Flutter *](https://github.com/eacevedof/prj_flutter/tree/master/flutter_componentes)
 - [7. Aplicación de películas *](https://github.com/eacevedof/prj_flutter/tree/master/flutter_peliculas)
 - [8. Diseños en Flutter *](https://github.com/eacevedof/prj_flutter/tree/master/flutter_disenos)
