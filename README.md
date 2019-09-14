@@ -20,9 +20,9 @@
     - Falta readme.md
     - Caracteristicas del lenguaje. Imports, Widgets, etc
 - [5. Hola Mundo y Aplicación contador *](https://github.com/eacevedof/prj_flutter/tree/master/flutter_vscode)
-- [6. Componentes de Flutter *](https://github.com/eacevedof/prj_flutter/tree/master/flutter_componentes)
-- [7. Aplicación de películas *](https://github.com/eacevedof/prj_flutter/tree/master/flutter_peliculas)
-- [8. Diseños en Flutter *](https://github.com/eacevedof/prj_flutter/tree/master/flutter_disenos)
+- [6. Componentes de Flutter *](https://github.com/eacevedof/prj_flutter/tree/master/flutter_componentes#cap-6---flutter_componentes)
+- [7. Aplicación de películas *](https://github.com/eacevedof/prj_flutter/tree/master/flutter_peliculas#cap-7---flutter_peliculas)
+- [8. Diseños en Flutter *](https://github.com/eacevedof/prj_flutter/tree/master/flutter_disenos#8-dise%C3%B1os-en-flutter)
 - [9. QRScanner - SQLite *](https://github.com/eacevedof/prj_flutter/tree/master/flutter_qrreader#qr-reader-capitulo-9)
 - [10. Preferencias de usuario *](https://github.com/eacevedof/prj_flutter/tree/master/flutter_preferencias_usuario#qr-reader-capitulo-10)
 - [11. Validación de formularios - Patrón Bloc *](https://github.com/eacevedof/prj_flutter/tree/master/flutter_formvalidation#11-validaci%C3%B3n-de-formularios---patr%C3%B3n-bloc)
