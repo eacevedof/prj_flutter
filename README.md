@@ -19,18 +19,19 @@
 - [4. Introducción a Flutter]()
     - Falta readme.md
     - Caracteristicas del lenguaje. Imports, Widgets, etc
-- [5. Hola Mundo y Aplicación contador](https://github.com/eacevedof/prj_flutter/tree/master/flutter_vscode)
-- [6. Componentes de Flutter](https://github.com/eacevedof/prj_flutter/tree/master/flutter_componentes)
-- [7. Aplicación de películas](https://github.com/eacevedof/prj_flutter/tree/master/flutter_peliculas)
-- [8. Diseños en Flutter](https://github.com/eacevedof/prj_flutter/tree/master/flutter_disenos)
-- [9. QRScanner - SQLite](https://github.com/eacevedof/prj_flutter/tree/master/flutter_qrreader#qr-reader-capitulo-9)
-- [10. Preferencias de usuario](https://github.com/eacevedof/prj_flutter/tree/master/flutter_preferencias_usuario#qr-reader-capitulo-10)
-- [11. Validación de formularios - Patrón Bloc](https://github.com/eacevedof/prj_flutter/tree/master/flutter_formvalidation#11-validaci%C3%B3n-de-formularios---patr%C3%B3n-bloc)
-- [12. CRUD hacia servicios REST, uso de cámara y galería de imágenes](https://github.com/eacevedof/prj_flutter/tree/master/flutter_formvalidation#12-crud-hacia-servicios-rest-uso-de-c%C3%A1mara-y-galer%C3%ADa-de-im%C3%A1genes)
-- [13. Login y manejo de Tokens]()
-- [14. Detalles finales de la aplicación de productos]()
-- [15. Despliegue en Google PlayStore y Apple AppStore]()
-- [16. Bonus - Push notifications]()
+- [5. Hola Mundo y Aplicación contador *](https://github.com/eacevedof/prj_flutter/tree/master/flutter_vscode)
+    - 
+- [6. Componentes de Flutter *](https://github.com/eacevedof/prj_flutter/tree/master/flutter_componentes)
+- [7. Aplicación de películas *](https://github.com/eacevedof/prj_flutter/tree/master/flutter_peliculas)
+- [8. Diseños en Flutter *](https://github.com/eacevedof/prj_flutter/tree/master/flutter_disenos)
+- [9. QRScanner - SQLite *](https://github.com/eacevedof/prj_flutter/tree/master/flutter_qrreader#qr-reader-capitulo-9)
+- [10. Preferencias de usuario *](https://github.com/eacevedof/prj_flutter/tree/master/flutter_preferencias_usuario#qr-reader-capitulo-10)
+- [11. Validación de formularios - Patrón Bloc *](https://github.com/eacevedof/prj_flutter/tree/master/flutter_formvalidation#11-validaci%C3%B3n-de-formularios---patr%C3%B3n-bloc)
+- [12. CRUD hacia servicios REST, uso de cámara y galería de imágenes *](https://github.com/eacevedof/prj_flutter/tree/master/flutter_formvalidation#12-crud-hacia-servicios-rest-uso-de-c%C3%A1mara-y-galer%C3%ADa-de-im%C3%A1genes) 
+- [13. Login y manejo de Tokens *](https://github.com/eacevedof/prj_flutter/tree/master/flutter_formvalidation#13-login-y-manejo-de-tokens)
+- [14. Detalles finales de la aplicación de productos *](https://github.com/eacevedof/prj_flutter/tree/master/flutter_formvalidation#14-detalles-finales-de-la-aplicaci%C3%B3n-de-productos)
+- [15. Despliegue en Google PlayStore y Apple AppStore *](https://github.com/eacevedof/prj_flutter/tree/master/flutter_deploy_googleapple#15-despliegue-en-google-playstore-y-apple-appstore)
+- [16. Bonus - Push notifications *](https://github.com/eacevedof/prj_flutter/tree/master/flutter_pushnotifications#16-bonus---push-notifications)
 - [17. Despedida del curso]()
 
 ## Errores:
